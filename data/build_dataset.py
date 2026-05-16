@@ -22,10 +22,10 @@ from pathlib import Path
 DATA_DIR = Path(__file__).parent
 
 SOURCES = [
-    DATA_DIR / "annotation.csv",
-    DATA_DIR / "paired_rows.csv",
-    DATA_DIR / "kaggle_rows.csv",
-    DATA_DIR / "friends_rows.csv",
+    DATA_DIR / "synthetic.csv",      # base synthetic rows — never overwritten
+    DATA_DIR / "paired_rows.csv",     # real paired dataset rows
+    DATA_DIR / "kaggle_rows.csv",     # kaggle rows (if available)
+    DATA_DIR / "friends_rows.csv",    # friends' resume rows (if available)
 ]
 
 OUTPUT = DATA_DIR / "annotation.csv"

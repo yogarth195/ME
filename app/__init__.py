@@ -32,11 +32,13 @@ def create_app():
     from app.routes.match import match_bp
     from app.routes.history import history_bp
     from app.routes.ontology_view import ontology_bp
+    from app.routes.pipeline_view import pipeline_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(match_bp)
     app.register_blueprint(history_bp)
     app.register_blueprint(ontology_bp)
+    app.register_blueprint(pipeline_bp)
 
     # ── Template filters ──────────────────────────────────────────────────────
     @app.template_filter("pct")

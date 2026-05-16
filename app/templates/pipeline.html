@@ -1,0 +1,612 @@
+{% extends "base.html" %}
+{% block title %}How ExplainHire Works{% endblock %}
+
+{% block content %}
+<style>
+.pipe-hero {
+  text-align: center;
+  padding: 2.5rem 0 2rem;
+}
+.pipe-hero h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; }
+.pipe-hero p  { color: var(--muted); margin-top: 0.5rem; font-size: 0.95rem; }
+
+/* View toggle */
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+.vtog-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.vtog-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ── FLOW VIEW ───────────────────────────────────────────────────────────── */
+#view-flow { display: block; }
+#view-detail { display: none; }
+
+.pipeline-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.flow-node {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, border-color 0.15s;
+  cursor: default;
+}
+.flow-node:hover { transform: translateX(4px); border-color: var(--accent); }
+
+.flow-layer-badge {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+.l1 { background: rgba(99,102,241,0.15); color: var(--accent2); }
+.l2 { background: rgba(34,197,94,0.15);  color: var(--green); }
+.l3 { background: rgba(245,158,11,0.15); color: var(--yellow); }
+.l4 { background: rgba(239,68,68,0.15);  color: var(--red); }
+.l5 { background: rgba(168,85,247,0.15); color: #c084fc; }
+.l6 { background: rgba(20,184,166,0.15); color: #2dd4bf; }
+.l7 { background: rgba(251,146,60,0.15); color: #fb923c; }
+
+.flow-node-content { flex: 1; }
+.flow-node-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.flow-node-sub { color: var(--muted); font-size: 0.82rem; margin-top: 0.2rem; }
+.flow-node-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+.flow-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--surface2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.flow-tag.hot {
+  background: rgba(99,102,241,0.1);
+  color: var(--accent2);
+  border-color: rgba(99,102,241,0.2);
+}
+.flow-node-output {
+  font-size: 0.78rem;
+  color: var(--accent2);
+  margin-top: 0.5rem;
+  font-family: monospace;
+  background: var(--bg2);
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* Arrow between nodes */
+.flow-arrow {
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--border), var(--accent));
+  position: relative;
+  margin: 0 auto;
+}
+.flow-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--accent);
+}
+
+/* L4 split */
+.flow-split {
+  width: 100%;
+  display: flex;
+  gap: 0.75rem;
+  position: relative;
+}
+.flow-split::before {
+  content: '';
+  position: absolute;
+  top: -28px; left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: var(--border);
+}
+.flow-split-node {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.flow-split-node:hover { border-color: var(--accent); transform: translateY(-2px); }
+.flow-split-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+.flow-split-sub { color: var(--muted); font-size: 0.78rem; line-height: 1.5; }
+.flow-split-score {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent2);
+  font-family: monospace;
+}
+
+/* ── DETAIL VIEW ─────────────────────────────────────────────────────────── */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.detail-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s, transform 0.15s;
+}
+.detail-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.detail-card.full-width { grid-column: 1 / -1; }
+
+.detail-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.detail-layer-num {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 800;
+  flex-shrink: 0;
+}
+.detail-card-title { font-weight: 700; font-size: 1rem; }
+.detail-card-tech { color: var(--muted); font-size: 0.78rem; margin-top: 0.1rem; }
+
+.detail-card p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; margin-bottom: 0.75rem; }
+.detail-card p:last-child { margin-bottom: 0; }
+
+.detail-highlight {
+  background: var(--bg2);
+  border-left: 3px solid var(--accent);
+  padding: 0.6rem 0.9rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  margin-top: 0.6rem;
+  color: var(--text);
+}
+
+/* Ontology tree */
+.ont-tree {
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.9;
+  background: var(--bg2);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+.ont-tree .ont-root { color: var(--accent2); font-weight: 700; }
+.ont-tree .ont-child { color: var(--text); }
+.ont-tree .ont-leaf { color: var(--muted); }
+
+/* Match levels table */
+.match-levels { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.82rem; }
+.match-levels th { color: var(--muted); font-weight: 600; text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--border); }
+.match-levels td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--border); }
+.match-levels tr:last-child td { border-bottom: none; }
+.score-chip {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+.score-1_0 { background: rgba(34,197,94,0.15);  color: var(--green); }
+.score-0_9 { background: rgba(34,197,94,0.1);   color: #86efac; }
+.score-0_7 { background: rgba(99,102,241,0.15); color: var(--accent2); }
+.score-0_5 { background: rgba(245,158,11,0.15); color: var(--yellow); }
+.score-0_4 { background: rgba(245,158,11,0.1);  color: #fcd34d; }
+.score-0_3 { background: rgba(107,114,128,0.15);color: var(--muted); }
+.score-0_0 { background: rgba(239,68,68,0.1);   color: var(--red); }
+
+/* Feature bar */
+.feat-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; }
+.feat-row { display: flex; align-items: center; gap: 0.75rem; }
+.feat-name { font-size: 0.78rem; color: var(--muted); width: 130px; flex-shrink: 0; }
+.feat-bar-bg { flex: 1; background: var(--border); border-radius: 4px; height: 7px; overflow: hidden; }
+.feat-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 4px; }
+.feat-val { font-size: 0.75rem; font-weight: 700; color: var(--accent2); width: 36px; text-align: right; flex-shrink: 0; }
+
+/* Stats row */
+.stats-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+.stat-box {
+  flex: 1;
+  background: var(--bg2);
+  border-radius: 10px;
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.stat-box .stat-val { font-size: 1.4rem; font-weight: 800; color: var(--accent2); }
+.stat-box .stat-lbl { font-size: 0.72rem; color: var(--muted); margin-top: 0.1rem; }
+
+@media (max-width: 640px) {
+  .detail-grid { grid-template-columns: 1fr; }
+  .detail-card.full-width { grid-column: 1; }
+  .flow-split { flex-direction: column; }
+}
+</style>
+
+<div class="pipe-hero">
+  <h1>How ExplainHire Works</h1>
+  <p>A 7-layer hybrid pipeline — symbolic reasoning meets neural AI</p>
+</div>
+
+<div class="view-toggle">
+  <button class="vtog-btn active" id="btn-flow" onclick="switchView('flow')">Pipeline Flow</button>
+  <button class="vtog-btn" id="btn-detail" onclick="switchView('detail')">Layer Details</button>
+</div>
+
+<!-- ── FLOW VIEW ─────────────────────────────────────────────────────────── -->
+<div id="view-flow">
+<div class="pipeline-flow">
+
+  <!-- L1 -->
+  <div class="flow-node">
+    <div class="flow-layer-badge l1">L1</div>
+    <div class="flow-node-content">
+      <div class="flow-node-title">&#128196; Input Validation</div>
+      <div class="flow-node-sub">Accepts PDF or DOCX resume + raw JD text. Checks file type and size (&lt;5MB).</div>
+      <div class="flow-node-tags">
+        <span class="flow-tag hot">PDF</span>
+        <span class="flow-tag hot">DOCX</span>
+        <span class="flow-tag">pdfplumber</span>
+        <span class="flow-tag">python-docx</span>
+      </div>
+    </div>
+  </div>
+  <div class="flow-arrow"></div>
+
+  <!-- L2 -->
+  <div class="flow-node">
+    <div class="flow-layer-badge l2">L2</div>
+    <div class="flow-node-content">
+      <div class="flow-node-title">&#128269; Parse</div>
+      <div class="flow-node-sub">Extracts skills, years of experience, education level, and section structure from both resume and JD.</div>
+      <div class="flow-node-tags">
+        <span class="flow-tag hot">Skill extractor</span>
+        <span class="flow-tag hot">JD parser</span>
+        <span class="flow-tag">regex</span>
+        <span class="flow-tag">section detection</span>
+      </div>
+      <div class="flow-node-output">→ skills[], YOE, education, sections{}</div>
+    </div>
+  </div>
+  <div class="flow-arrow"></div>
+
+  <!-- L3 -->
+  <div class="flow-node">
+    <div class="flow-layer-badge l3">L3</div>
+    <div class="flow-node-content">
+      <div class="flow-node-title">&#127760; Skill Ontology</div>
+      <div class="flow-node-sub">A 434-node knowledge graph of tech skills with parent-child relationships. Built from O*NET occupational database. Understands that PyTorch → deep_learning → machine_learning.</div>
+      <div class="flow-node-tags">
+        <span class="flow-tag hot">434 skill nodes</span>
+        <span class="flow-tag hot">O*NET data</span>
+        <span class="flow-tag">NetworkX DiGraph</span>
+        <span class="flow-tag">CHILD_OF edges</span>
+        <span class="flow-tag">IS_ALIAS_OF edges</span>
+      </div>
+      <div class="flow-node-output">→ graph ready for matching</div>
+    </div>
+  </div>
+  <div class="flow-arrow"></div>
+
+  <!-- L4 split -->
+  <div style="width:100%;text-align:center;color:var(--muted);font-size:0.78rem;font-weight:600;margin-bottom:0.5rem;letter-spacing:0.05em;text-transform:uppercase;">3 Independent Signals</div>
+  <div class="flow-split">
+    <div class="flow-split-node">
+      <div class="flow-split-title"><span style="color:var(--red)">&#9651;</span> Graph Score</div>
+      <div class="flow-split-sub">Ontology-based skill matching. 6 match levels from exact (1.0) to no match (0.0). Symbolic AI.</div>
+      <div class="flow-split-score">graph_score ∈ [0, 1]</div>
+    </div>
+    <div class="flow-split-node">
+      <div class="flow-split-title"><span style="color:#c084fc">&#9670;</span> SBERT Score</div>
+      <div class="flow-split-sub">Neural sentence embeddings. Measures overall semantic similarity between resume and JD text.</div>
+      <div class="flow-split-score">sbert_score ∈ [0, 1]</div>
+    </div>
+    <div class="flow-split-node">
+      <div class="flow-split-title"><span style="color:var(--yellow)">&#9632;</span> Structural Score</div>
+      <div class="flow-split-sub">Rule-based. Scores YOE gap, education gap, and presence of key resume sections.</div>
+      <div class="flow-split-score">structural_score ∈ [0, 1]</div>
+    </div>
+  </div>
+  <div class="flow-arrow"></div>
+
+  <!-- L5 -->
+  <div class="flow-node">
+    <div class="flow-layer-badge l5">L5</div>
+    <div class="flow-node-content">
+      <div class="flow-node-title">&#129302; XGBoost Classifier</div>
+      <div class="flow-node-sub">Fuses all 14 features from L4 into a final match/no-match prediction. Trained on 967 real + synthetic resume-JD pairs. SHAP explains which feature drove the score.</div>
+      <div class="flow-node-tags">
+        <span class="flow-tag hot">XGBoost</span>
+        <span class="flow-tag hot">SHAP</span>
+        <span class="flow-tag">14 features</span>
+        <span class="flow-tag">967 training rows</span>
+        <span class="flow-tag">CV F1 = 0.803</span>
+      </div>
+      <div class="flow-node-output">→ label (0/1) + probability + shap_values[]</div>
+    </div>
+  </div>
+  <div class="flow-arrow"></div>
+
+  <!-- L6 -->
+  <div class="flow-node">
+    <div class="flow-layer-badge l6">L6</div>
+    <div class="flow-node-content">
+      <div class="flow-node-title">&#128161; Explain</div>
+      <div class="flow-node-sub">Evidence mapper finds exact sentences in the resume proving each matched skill. Skill gap analyzer greedily adds missing skills until the match threshold is crossed.</div>
+      <div class="flow-node-tags">
+        <span class="flow-tag hot">Evidence mapper</span>
+        <span class="flow-tag hot">Skill gap analysis</span>
+        <span class="flow-tag">sentence matching</span>
+        <span class="flow-tag">greedy threshold</span>
+      </div>
+      <div class="flow-node-output">→ evidence{skill: [sentences]}, gap_skills[]</div>
+    </div>
+  </div>
+  <div class="flow-arrow"></div>
+
+  <!-- L7 -->
+  <div class="flow-node">
+    <div class="flow-layer-badge l7">L7</div>
+    <div class="flow-node-content">
+      <div class="flow-node-title">&#127760; Present</div>
+      <div class="flow-node-sub">Flask UI renders verdict banner, 3 score cards, SHAP reasons, skill breakdown with evidence, skill gap, and learning resource suggestions.</div>
+      <div class="flow-node-tags">
+        <span class="flow-tag hot">Flask 3.x</span>
+        <span class="flow-tag hot">Jinja2</span>
+        <span class="flow-tag">dark/light theme</span>
+        <span class="flow-tag">drag-drop upload</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end pipeline-flow -->
+</div><!-- end view-flow -->
+
+<!-- ── DETAIL VIEW ───────────────────────────────────────────────────────── -->
+<div id="view-detail">
+<div class="detail-grid">
+
+  <!-- L1 + L2 -->
+  <div class="detail-card">
+    <div class="detail-card-header">
+      <div class="detail-layer-num l1">L1</div>
+      <div>
+        <div class="detail-card-title">Input Validation</div>
+        <div class="detail-card-tech">pdfplumber · python-docx</div>
+      </div>
+    </div>
+    <p>Validates uploaded file is PDF or DOCX and under 5MB. Extracts raw text using pdfplumber for PDFs and python-docx for Word files.</p>
+    <div class="detail-highlight">Supported: .pdf · .docx · .doc &nbsp;|&nbsp; Max 5 MB</div>
+  </div>
+
+  <div class="detail-card">
+    <div class="detail-card-header">
+      <div class="detail-layer-num l2">L2</div>
+      <div>
+        <div class="detail-card-title">Parse</div>
+        <div class="detail-card-tech">regex · section detection · JD parser</div>
+      </div>
+    </div>
+    <p>Splits resume into sections (Experience, Education, Skills, Projects) using heading detection. Extracts YOE from date ranges, education level from degree names, and skill list from all sections with confidence weights.</p>
+    <div class="detail-highlight">Section confidence: Experience 1.0 → Projects 0.9 → Skills 0.8 → Education 0.5</div>
+  </div>
+
+  <!-- L3 full width -->
+  <div class="detail-card full-width">
+    <div class="detail-card-header">
+      <div class="detail-layer-num l3">L3</div>
+      <div>
+        <div class="detail-card-title">Skill Ontology</div>
+        <div class="detail-card-tech">NetworkX DiGraph · O*NET 30.2</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-start;">
+      <div style="flex:1;min-width:200px;">
+        <p>A directed knowledge graph where edges encode skill relationships. Two edge types: CHILD_OF (skill is a subtype of another) and IS_ALIAS_OF (alternate name for the same skill).</p>
+        <p>Built from our manual taxonomy + O*NET Technology Skills database filtered to hot/in-demand tech occupations.</p>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-val">434</div><div class="stat-lbl">Skill nodes</div></div>
+          <div class="stat-box"><div class="stat-val">270</div><div class="stat-lbl">Alias nodes</div></div>
+          <div class="stat-box"><div class="stat-val">414</div><div class="stat-lbl">CHILD_OF edges</div></div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:200px;">
+        <div class="ont-tree">
+<span class="ont-root">machine_learning</span>
+├── <span class="ont-child">deep_learning</span>
+│   ├── <span class="ont-leaf">pytorch</span>
+│   ├── <span class="ont-leaf">tensorflow</span>
+│   └── <span class="ont-leaf">huggingface</span>
+├── <span class="ont-leaf">scikit_learn</span>
+└── <span class="ont-leaf">xgboost</span>
+
+<span class="ont-root">project_management</span>
+├── <span class="ont-child">agile</span>
+├── <span class="ont-child">scrum</span>
+├── <span class="ont-leaf">jira</span>
+└── <span class="ont-leaf">confluence</span>
+
+<span class="ont-root">devops</span>
+├── <span class="ont-child">ci_cd</span>
+│   ├── <span class="ont-leaf">github_actions</span>
+│   └── <span class="ont-leaf">jenkins</span>
+├── <span class="ont-leaf">terraform</span>
+└── <span class="ont-child">docker</span>
+    └── <span class="ont-leaf">kubernetes</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L4 full width -->
+  <div class="detail-card full-width">
+    <div class="detail-card-header">
+      <div class="detail-layer-num l4">L4</div>
+      <div>
+        <div class="detail-card-title">Match — 3 Independent Signals</div>
+        <div class="detail-card-tech">Graph matcher · SBERT all-MiniLM-L6-v2 · Structural scorer</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+      <div style="flex:1;min-width:180px;">
+        <p><strong style="color:var(--red)">Signal 1 — Graph Score</strong></p>
+        <p>For each JD skill, traverses the ontology to find the best match in the resume. 6 directional levels:</p>
+        <table class="match-levels">
+          <tr><th>Match type</th><th>Score</th><th>Example</th></tr>
+          <tr><td>Exact</td><td><span class="score-chip score-1_0">1.0</span></td><td>python = python</td></tr>
+          <tr><td>Alias</td><td><span class="score-chip score-0_9">0.9</span></td><td>js = javascript</td></tr>
+          <tr><td>Child→Parent</td><td><span class="score-chip score-0_7">0.7</span></td><td>pytorch → ML</td></tr>
+          <tr><td>Parent→Child</td><td><span class="score-chip score-0_5">0.5</span></td><td>ML → pytorch</td></tr>
+          <tr><td>Sibling</td><td><span class="score-chip score-0_4">0.4</span></td><td>pytorch ~ tensorflow</td></tr>
+          <tr><td>2-hop ancestor</td><td><span class="score-chip score-0_3">0.3</span></td><td>pytorch → AI</td></tr>
+          <tr><td>No match</td><td><span class="score-chip score-0_0">0.0</span></td><td>python vs swift</td></tr>
+        </table>
+      </div>
+      <div style="flex:1;min-width:180px;">
+        <p><strong style="color:#c084fc">Signal 2 — SBERT Score</strong></p>
+        <p>Encodes resume text and JD text into 384-dimension vectors using all-MiniLM-L6-v2. Cosine similarity gives a score from 0 to 1. Captures semantic meaning beyond keywords — "developed APIs" matches "REST API experience".</p>
+        <p><strong style="color:var(--yellow)">Signal 3 — Structural Score</strong></p>
+        <p>Rule-based scoring of: YOE gap (0yr→1.0, 3yr+→0.1), education gap (same→1.0, 2 levels below→0.2), section completeness (4 key sections). Weighted 40%/30%/30%.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- L5 -->
+  <div class="detail-card">
+    <div class="detail-card-header">
+      <div class="detail-layer-num l5">L5</div>
+      <div>
+        <div class="detail-card-title">XGBoost Classifier</div>
+        <div class="detail-card-tech">XGBoost · SHAP TreeExplainer</div>
+      </div>
+    </div>
+    <p>Takes 14 numeric features from L4 and predicts match probability. Trained with 5-fold stratified cross-validation. SHAP assigns each feature a contribution score for every prediction.</p>
+    <div class="feat-list">
+      <div class="feat-row"><span class="feat-name">coverage</span><div class="feat-bar-bg"><div class="feat-bar-fill" style="width:100%"></div></div><span class="feat-val">13.7%</span></div>
+      <div class="feat-row"><span class="feat-name">edu_score</span><div class="feat-bar-bg"><div class="feat-bar-fill" style="width:69%"></div></div><span class="feat-val">9.4%</span></div>
+      <div class="feat-row"><span class="feat-name">sbert_score</span><div class="feat-bar-bg"><div class="feat-bar-fill" style="width:66%"></div></div><span class="feat-val">9.1%</span></div>
+      <div class="feat-row"><span class="feat-name">graph_score</span><div class="feat-bar-bg"><div class="feat-bar-fill" style="width:58%"></div></div><span class="feat-val">7.9%</span></div>
+      <div class="feat-row"><span class="feat-name">yoe_score</span><div class="feat-bar-bg"><div class="feat-bar-fill" style="width:50%"></div></div><span class="feat-val">6.8%</span></div>
+    </div>
+    <div class="detail-highlight">CV F1 = 0.803 &nbsp;·&nbsp; Full-data F1 = 0.90 &nbsp;·&nbsp; 967 training rows</div>
+  </div>
+
+  <!-- L6 -->
+  <div class="detail-card">
+    <div class="detail-card-header">
+      <div class="detail-layer-num l6">L6</div>
+      <div>
+        <div class="detail-card-title">Explain</div>
+        <div class="detail-card-tech">Evidence mapper · Skill gap engine</div>
+      </div>
+    </div>
+    <p><strong>Evidence mapper:</strong> For each matched skill, scans resume sentences for the skill name and its variants (nodejs → "node.js", cicd → "ci/cd"). Returns up to 2 evidence sentences per skill.</p>
+    <p><strong>Skill gap analysis:</strong> Greedily adds the highest-impact missing skills until the predicted graph_score crosses 0.7. Assigns learning resources with priority ranking.</p>
+    <div class="detail-highlight">Priority 1: missing skills &nbsp;·&nbsp; P2: parent→child gaps &nbsp;·&nbsp; P3: sibling gaps</div>
+  </div>
+
+  <!-- Results full width -->
+  <div class="detail-card full-width">
+    <div class="detail-card-header">
+      <div class="detail-layer-num l7">&#128200;</div>
+      <div>
+        <div class="detail-card-title">Evaluation Results</div>
+        <div class="detail-card-tech">Ablation study on 967 samples</div>
+      </div>
+    </div>
+    <p>Each row below removes one component to prove it adds value:</p>
+    <table class="match-levels" style="width:100%">
+      <tr><th>Method</th><th>F1</th><th>What it proves</th></tr>
+      <tr><td>TF-IDF baseline</td><td><span class="score-chip score-0_0">0.09</span></td><td>Keyword matching alone is useless</td></tr>
+      <tr><td>SBERT only</td><td><span class="score-chip score-0_5">0.64</span></td><td>Neural semantics alone is not enough</td></tr>
+      <tr><td>Graph only</td><td><span class="score-chip score-0_5">0.66</span></td><td>Ontology alone is not enough</td></tr>
+      <tr><td>Graph + SBERT</td><td><span class="score-chip score-0_7">0.69</span></td><td>Missing structural signals</td></tr>
+      <tr><td><strong>ExplainHire full</strong></td><td><span class="score-chip score-1_0">0.90</span></td><td>All 3 signals + learned fusion = best</td></tr>
+    </table>
+    <div class="detail-highlight">+21.1% F1 over best single baseline &nbsp;·&nbsp; Each component justified by ablation</div>
+  </div>
+
+</div>
+</div><!-- end view-detail -->
+
+<script>
+function switchView(v) {
+  document.getElementById('view-flow').style.display   = v === 'flow'   ? 'block' : 'none';
+  document.getElementById('view-detail').style.display = v === 'detail' ? 'block' : 'none';
+  document.getElementById('btn-flow').classList.toggle('active',   v === 'flow');
+  document.getElementById('btn-detail').classList.toggle('active', v === 'detail');
+}
+</script>
+{% endblock %}

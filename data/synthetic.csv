@@ -1,0 +1,168 @@
+resume_id,jd_id,resume_category,graph_score,coverage,exact_matches,partial_matches,no_matches,sbert_score,structural_score,yoe_score,edu_score,section_score,resume_yoe,required_yoe,resume_edu_rank,required_edu_rank,label
+r_backend_senior,Senior Backend Engineer,backend,0.8333,0.8667,12,1,2,0.6161,1.0,1.0,1.0,1.0,5,4,3,3,1
+r_backend_senior,Backend Developer,backend,0.8375,0.875,6,1,1,0.6029,1.0,1.0,1.0,1.0,5,2,3,3,1
+r_backend_senior,Junior Backend Developer,backend,0.925,1.0,3,1,0,0.4918,1.0,1.0,1.0,1.0,5,1,3,3,1
+r_backend_senior,Senior Frontend Engineer,backend,0.43,0.7,2,4,3,0.4983,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_backend_senior,Frontend Developer,backend,0.5,0.6,2,1,2,0.512,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_backend_senior,Senior DevOps Engineer,backend,0.4231,0.4615,5,1,7,0.4894,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_backend_senior,DevOps Engineer,backend,0.8,0.8,4,0,1,0.3912,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_backend_senior,Senior ML Engineer,backend,0.0909,0.0909,1,0,10,0.3547,0.76,1.0,0.2,1.0,5,0,3,5,0
+r_backend_senior,Data Scientist,backend,0.425,0.5,1,1,2,0.2577,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_backend_senior,Data Engineer,backend,0.2125,0.25,1,1,6,0.3623,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_backend_senior,Senior Mobile Developer,backend,0.15,0.2,1,1,8,0.371,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_backend_senior,Full Stack Developer,backend,0.8889,1.0,7,2,0,0.6064,1.0,1.0,1.0,1.0,5,0,3,3,1
+r_backend_mid,Senior Backend Engineer,backend,0.3667,0.4,5,1,9,0.5435,0.88,0.7,1.0,1.0,3,4,3,3,1
+r_backend_mid,Backend Developer,backend,0.6875,0.75,5,1,2,0.611,1.0,1.0,1.0,1.0,3,2,3,3,1
+r_backend_mid,Junior Backend Developer,backend,0.75,0.75,3,0,1,0.5249,1.0,1.0,1.0,1.0,3,1,3,3,1
+r_backend_mid,Senior Frontend Engineer,backend,0.1,0.1,1,0,9,0.4044,1.0,1.0,1.0,1.0,3,0,3,3,0
+r_backend_mid,Frontend Developer,backend,0.2,0.2,1,0,4,0.4871,1.0,1.0,1.0,1.0,3,0,3,3,0
+r_backend_mid,Senior DevOps Engineer,backend,0.1154,0.1538,1,1,11,0.3943,1.0,1.0,1.0,1.0,3,0,3,3,0
+r_backend_mid,DevOps Engineer,backend,0.3,0.4,1,1,3,0.2802,1.0,1.0,1.0,1.0,3,0,3,3,0
+r_backend_mid,Senior ML Engineer,backend,0.0909,0.0909,1,0,10,0.3956,0.76,1.0,0.2,1.0,3,0,3,5,0
+r_backend_mid,Data Scientist,backend,0.5,0.5,2,0,2,0.3545,1.0,1.0,1.0,1.0,3,0,3,3,0
+r_backend_mid,Data Engineer,backend,0.25,0.25,2,0,6,0.3808,1.0,1.0,1.0,1.0,3,0,3,3,0
+r_backend_mid,Senior Mobile Developer,backend,0.1,0.1,1,0,9,0.3796,1.0,1.0,1.0,1.0,3,0,3,3,0
+r_backend_mid,Full Stack Developer,backend,0.4444,0.4444,4,0,5,0.548,1.0,1.0,1.0,1.0,3,0,3,3,1
+r_backend_junior,Senior Backend Engineer,backend,0.1333,0.1333,2,0,13,0.5435,0.64,0.1,1.0,1.0,1,4,3,3,1
+r_backend_junior,Backend Developer,backend,0.4625,0.5,3,1,4,0.5833,0.88,0.7,1.0,1.0,1,2,3,3,1
+r_backend_junior,Junior Backend Developer,backend,0.675,0.75,2,1,1,0.5942,1.0,1.0,1.0,1.0,1,1,3,3,1
+r_backend_junior,Senior Frontend Engineer,backend,0.1,0.1,1,0,9,0.4355,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_backend_junior,Frontend Developer,backend,0.2,0.2,1,0,4,0.4943,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_backend_junior,Senior DevOps Engineer,backend,0.0,0.0,0,0,13,0.3832,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_backend_junior,DevOps Engineer,backend,0.0,0.0,0,0,5,0.2556,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_backend_junior,Senior ML Engineer,backend,0.0909,0.0909,1,0,10,0.4371,0.76,1.0,0.2,1.0,1,0,3,5,0
+r_backend_junior,Data Scientist,backend,0.425,0.5,1,1,2,0.4566,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_backend_junior,Data Engineer,backend,0.2125,0.25,1,1,6,0.4301,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_backend_junior,Senior Mobile Developer,backend,0.1,0.1,1,0,9,0.3848,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_backend_junior,Full Stack Developer,backend,0.2222,0.2222,2,0,7,0.5095,1.0,1.0,1.0,1.0,1,0,3,3,1
+r_frontend_senior,Senior Backend Engineer,frontend,0.2333,0.2667,3,1,11,0.4119,1.0,1.0,1.0,1.0,5,4,3,3,0
+r_frontend_senior,Backend Developer,frontend,0.3125,0.375,2,1,5,0.4087,1.0,1.0,1.0,1.0,5,2,3,3,0
+r_frontend_senior,Junior Backend Developer,frontend,0.5,0.5,2,0,2,0.3597,1.0,1.0,1.0,1.0,5,1,3,3,0
+r_frontend_senior,Senior Frontend Engineer,frontend,0.9,0.9,9,0,1,0.6807,1.0,1.0,1.0,1.0,5,0,3,3,1
+r_frontend_senior,Frontend Developer,frontend,1.0,1.0,5,0,0,0.5645,1.0,1.0,1.0,1.0,5,0,3,3,1
+r_frontend_senior,Senior DevOps Engineer,frontend,0.0,0.0,0,0,13,0.2829,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_frontend_senior,DevOps Engineer,frontend,0.0,0.0,0,0,5,0.197,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_frontend_senior,Senior ML Engineer,frontend,0.0,0.0,0,0,11,0.2492,0.76,1.0,0.2,1.0,5,0,3,5,0
+r_frontend_senior,Data Scientist,frontend,0.0,0.0,0,0,4,0.1915,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_frontend_senior,Data Engineer,frontend,0.0,0.0,0,0,8,0.2064,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_frontend_senior,Senior Mobile Developer,frontend,0.2,0.2,2,0,8,0.3648,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_frontend_senior,Full Stack Developer,frontend,0.5,0.5556,4,1,4,0.4884,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_frontend_mid,Senior Backend Engineer,frontend,0.1667,0.2,2,1,12,0.4748,0.76,0.4,1.0,1.0,2,4,3,3,0
+r_frontend_mid,Backend Developer,frontend,0.3125,0.375,2,1,5,0.4847,1.0,1.0,1.0,1.0,2,2,3,3,0
+r_frontend_mid,Junior Backend Developer,frontend,0.5,0.5,2,0,2,0.4161,1.0,1.0,1.0,1.0,2,1,3,3,0
+r_frontend_mid,Senior Frontend Engineer,frontend,0.55,0.7,4,3,3,0.6372,1.0,1.0,1.0,1.0,2,0,3,3,1
+r_frontend_mid,Frontend Developer,frontend,1.0,1.0,5,0,0,0.6377,1.0,1.0,1.0,1.0,2,0,3,3,1
+r_frontend_mid,Senior DevOps Engineer,frontend,0.0,0.0,0,0,13,0.3899,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_frontend_mid,DevOps Engineer,frontend,0.0,0.0,0,0,5,0.328,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_frontend_mid,Senior ML Engineer,frontend,0.0,0.0,0,0,11,0.3526,0.76,1.0,0.2,1.0,2,0,3,5,0
+r_frontend_mid,Data Scientist,frontend,0.0,0.0,0,0,4,0.2749,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_frontend_mid,Data Engineer,frontend,0.0,0.0,0,0,8,0.274,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_frontend_mid,Senior Mobile Developer,frontend,0.2,0.2,2,0,8,0.4766,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_frontend_mid,Full Stack Developer,frontend,0.4444,0.5556,3,2,4,0.5569,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_devops_senior,Senior Backend Engineer,devops,0.4667,0.4667,7,0,8,0.5297,1.0,1.0,1.0,1.0,6,4,3,3,0
+r_devops_senior,Backend Developer,devops,0.125,0.125,1,0,7,0.4619,1.0,1.0,1.0,1.0,6,2,3,3,0
+r_devops_senior,Junior Backend Developer,devops,0.0,0.0,0,0,4,0.293,1.0,1.0,1.0,1.0,6,1,3,3,0
+r_devops_senior,Senior Frontend Engineer,devops,0.0,0.0,0,0,10,0.3543,1.0,1.0,1.0,1.0,6,0,3,3,0
+r_devops_senior,Frontend Developer,devops,0.0,0.0,0,0,5,0.3451,1.0,1.0,1.0,1.0,6,0,3,3,0
+r_devops_senior,Senior DevOps Engineer,devops,0.9769,1.0,12,1,0,0.7173,1.0,1.0,1.0,1.0,6,0,3,3,1
+r_devops_senior,DevOps Engineer,devops,1.0,1.0,5,0,0,0.6325,1.0,1.0,1.0,1.0,6,0,3,3,1
+r_devops_senior,Senior ML Engineer,devops,0.0,0.0,0,0,11,0.3239,0.76,1.0,0.2,1.0,6,0,3,5,0
+r_devops_senior,Data Scientist,devops,0.0,0.0,0,0,4,0.253,1.0,1.0,1.0,1.0,6,0,3,3,0
+r_devops_senior,Data Engineer,devops,0.0,0.0,0,0,8,0.4052,1.0,1.0,1.0,1.0,6,0,3,3,0
+r_devops_senior,Senior Mobile Developer,devops,0.0,0.0,0,0,10,0.2452,1.0,1.0,1.0,1.0,6,0,3,3,0
+r_devops_senior,Full Stack Developer,devops,0.1111,0.1111,1,0,8,0.4451,1.0,1.0,1.0,1.0,6,0,3,3,0
+r_devops_mid,Senior Backend Engineer,devops,0.3333,0.4,4,2,9,0.5966,0.805,0.7,1.0,0.75,3,4,3,3,0
+r_devops_mid,Backend Developer,devops,0.125,0.125,1,0,7,0.5524,0.925,1.0,1.0,0.75,3,2,3,3,0
+r_devops_mid,Junior Backend Developer,devops,0.0,0.0,0,0,4,0.4019,0.925,1.0,1.0,0.75,3,1,3,3,0
+r_devops_mid,Senior Frontend Engineer,devops,0.0,0.0,0,0,10,0.4177,0.925,1.0,1.0,0.75,3,0,3,3,0
+r_devops_mid,Frontend Developer,devops,0.0,0.0,0,0,5,0.425,0.925,1.0,1.0,0.75,3,0,3,3,0
+r_devops_mid,Senior DevOps Engineer,devops,0.6692,0.7692,7,3,3,0.7327,0.925,1.0,1.0,0.75,3,0,3,3,1
+r_devops_mid,DevOps Engineer,devops,1.0,1.0,5,0,0,0.7261,0.925,1.0,1.0,0.75,3,0,3,3,1
+r_devops_mid,Senior ML Engineer,devops,0.0,0.0,0,0,11,0.3673,0.685,1.0,0.2,0.75,3,0,3,5,0
+r_devops_mid,Data Scientist,devops,0.0,0.0,0,0,4,0.3443,0.925,1.0,1.0,0.75,3,0,3,3,0
+r_devops_mid,Data Engineer,devops,0.0,0.0,0,0,8,0.4724,0.925,1.0,1.0,0.75,3,0,3,3,0
+r_devops_mid,Senior Mobile Developer,devops,0.0,0.0,0,0,10,0.377,0.925,1.0,1.0,0.75,3,0,3,3,0
+r_devops_mid,Full Stack Developer,devops,0.1111,0.1111,1,0,8,0.5293,0.925,1.0,1.0,0.75,3,0,3,3,0
+r_ml_senior,Senior Backend Engineer,ml,0.2333,0.2667,3,1,11,0.3604,1.0,1.0,1.0,1.0,4,4,4,3,0
+r_ml_senior,Backend Developer,ml,0.25,0.25,2,0,6,0.3037,1.0,1.0,1.0,1.0,4,2,4,3,0
+r_ml_senior,Junior Backend Developer,ml,0.25,0.25,1,0,3,0.2323,1.0,1.0,1.0,1.0,4,1,4,3,0
+r_ml_senior,Senior Frontend Engineer,ml,0.0,0.0,0,0,10,0.2295,1.0,1.0,1.0,1.0,4,0,4,3,0
+r_ml_senior,Frontend Developer,ml,0.0,0.0,0,0,5,0.253,1.0,1.0,1.0,1.0,4,0,4,3,0
+r_ml_senior,Senior DevOps Engineer,ml,0.1923,0.2308,2,1,10,0.2789,1.0,1.0,1.0,1.0,4,0,4,3,0
+r_ml_senior,DevOps Engineer,ml,0.5,0.6,2,1,2,0.2612,1.0,1.0,1.0,1.0,4,0,4,3,0
+r_ml_senior,Senior ML Engineer,ml,1.0,1.0,11,0,0,0.5633,0.88,1.0,0.6,1.0,4,0,4,5,1
+r_ml_senior,Data Scientist,ml,0.75,0.75,3,0,1,0.3737,1.0,1.0,1.0,1.0,4,0,4,3,1
+r_ml_senior,Data Engineer,ml,0.3375,0.375,2,1,5,0.4014,1.0,1.0,1.0,1.0,4,0,4,3,0
+r_ml_senior,Senior Mobile Developer,ml,0.0,0.0,0,0,10,0.1564,1.0,1.0,1.0,1.0,4,0,4,3,0
+r_ml_senior,Full Stack Developer,ml,0.2222,0.2222,2,0,7,0.2545,1.0,1.0,1.0,1.0,4,0,4,3,0
+r_ml_mid,Senior Backend Engineer,ml,0.1,0.1333,1,1,13,0.2821,0.76,0.4,1.0,1.0,2,4,3,3,0
+r_ml_mid,Backend Developer,ml,0.375,0.5,2,2,4,0.3217,1.0,1.0,1.0,1.0,2,2,3,3,0
+r_ml_mid,Junior Backend Developer,ml,0.5,0.5,2,0,2,0.2937,1.0,1.0,1.0,1.0,2,1,3,3,0
+r_ml_mid,Senior Frontend Engineer,ml,0.0,0.0,0,0,10,0.1623,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_ml_mid,Frontend Developer,ml,0.0,0.0,0,0,5,0.2558,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_ml_mid,Senior DevOps Engineer,ml,0.0,0.0,0,0,13,0.2058,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_ml_mid,DevOps Engineer,ml,0.0,0.0,0,0,5,0.1951,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_ml_mid,Senior ML Engineer,ml,0.4909,0.7273,4,1,3,0.4118,0.76,1.0,0.2,1.0,2,0,3,5,1
+r_ml_mid,Data Scientist,ml,1.0,1.0,4,0,0,0.5454,1.0,1.0,1.0,1.0,2,0,3,3,1
+r_ml_mid,Data Engineer,ml,0.25,0.25,2,0,6,0.4067,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_ml_mid,Senior Mobile Developer,ml,0.0,0.0,0,0,10,0.1802,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_ml_mid,Full Stack Developer,ml,0.1667,0.2222,1,1,7,0.3039,1.0,1.0,1.0,1.0,2,0,3,3,0
+r_data_eng,Senior Backend Engineer,data_eng,0.2333,0.2667,3,1,11,0.408,1.0,1.0,1.0,1.0,4,4,3,3,0
+r_data_eng,Backend Developer,data_eng,0.5625,0.625,4,1,3,0.342,1.0,1.0,1.0,1.0,4,2,3,3,0
+r_data_eng,Junior Backend Developer,data_eng,0.5,0.5,2,0,2,0.2862,1.0,1.0,1.0,1.0,4,1,3,3,0
+r_data_eng,Senior Frontend Engineer,data_eng,0.0,0.0,0,0,10,0.2228,1.0,1.0,1.0,1.0,4,0,3,3,0
+r_data_eng,Frontend Developer,data_eng,0.0,0.0,0,0,5,0.25,1.0,1.0,1.0,1.0,4,0,3,3,0
+r_data_eng,Senior DevOps Engineer,data_eng,0.1154,0.1538,1,1,11,0.2933,1.0,1.0,1.0,1.0,4,0,3,3,0
+r_data_eng,DevOps Engineer,data_eng,0.3,0.4,1,1,3,0.2843,1.0,1.0,1.0,1.0,4,0,3,3,0
+r_data_eng,Senior ML Engineer,data_eng,0.1818,0.1818,2,0,9,0.381,0.76,1.0,0.2,1.0,4,0,3,5,0
+r_data_eng,Data Scientist,data_eng,0.5,0.5,2,0,2,0.3779,1.0,1.0,1.0,1.0,4,0,3,3,0
+r_data_eng,Data Engineer,data_eng,1.0,1.0,8,0,0,0.6269,1.0,1.0,1.0,1.0,4,0,3,3,1
+r_data_eng,Senior Mobile Developer,data_eng,0.0,0.0,0,0,10,0.1905,1.0,1.0,1.0,1.0,4,0,3,3,0
+r_data_eng,Full Stack Developer,data_eng,0.3333,0.3333,3,0,6,0.3293,1.0,1.0,1.0,1.0,4,0,3,3,0
+r_mobile_senior,Senior Backend Engineer,mobile,0.1133,0.1333,1,1,13,0.3,1.0,1.0,1.0,1.0,5,4,3,3,0
+r_mobile_senior,Backend Developer,mobile,0.2125,0.25,1,1,6,0.3583,1.0,1.0,1.0,1.0,5,2,3,3,0
+r_mobile_senior,Junior Backend Developer,mobile,0.425,0.5,1,1,2,0.3014,1.0,1.0,1.0,1.0,5,1,3,3,0
+r_mobile_senior,Senior Frontend Engineer,mobile,0.32,0.4,2,2,6,0.3315,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_mobile_senior,Frontend Developer,mobile,0.54,0.6,2,1,2,0.4472,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_mobile_senior,Senior DevOps Engineer,mobile,0.0,0.0,0,0,13,0.2483,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_mobile_senior,DevOps Engineer,mobile,0.0,0.0,0,0,5,0.2049,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_mobile_senior,Senior ML Engineer,mobile,0.0,0.0,0,0,11,0.2435,0.76,1.0,0.2,1.0,5,0,3,5,0
+r_mobile_senior,Data Scientist,mobile,0.0,0.0,0,0,4,0.1869,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_mobile_senior,Data Engineer,mobile,0.0,0.0,0,0,8,0.1742,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_mobile_senior,Senior Mobile Developer,mobile,1.0,1.0,10,0,0,0.7199,1.0,1.0,1.0,1.0,5,0,3,3,1
+r_mobile_senior,Full Stack Developer,mobile,0.3,0.3333,2,1,6,0.3749,1.0,1.0,1.0,1.0,5,0,3,3,0
+r_chef,Senior Backend Engineer,chef,0.0,0.0,0,0,15,0.2889,0.925,1.0,1.0,0.75,5,4,2,3,0
+r_chef,Backend Developer,chef,0.0,0.0,0,0,8,0.2457,0.925,1.0,1.0,0.75,5,2,2,3,0
+r_chef,Junior Backend Developer,chef,0.0,0.0,0,0,4,0.2887,0.925,1.0,1.0,0.75,5,1,2,3,0
+r_chef,Senior Frontend Engineer,chef,0.0,0.0,0,0,10,0.2717,0.925,1.0,1.0,0.75,5,0,2,3,0
+r_chef,Frontend Developer,chef,0.0,0.0,0,0,5,0.2443,0.925,1.0,1.0,0.75,5,0,2,3,0
+r_chef,Senior DevOps Engineer,chef,0.0,0.0,0,0,13,0.229,0.925,1.0,1.0,0.75,5,0,2,3,0
+r_chef,DevOps Engineer,chef,0.0,0.0,0,0,5,0.1692,0.925,1.0,1.0,0.75,5,0,2,3,0
+r_chef,Senior ML Engineer,chef,0.0,0.0,0,0,11,0.2875,0.685,1.0,0.2,0.75,5,0,2,5,0
+r_chef,Data Scientist,chef,0.0,0.0,0,0,4,0.1935,0.925,1.0,1.0,0.75,5,0,2,3,0
+r_chef,Data Engineer,chef,0.0,0.0,0,0,8,0.1941,0.925,1.0,1.0,0.75,5,0,2,3,0
+r_chef,Senior Mobile Developer,chef,0.0,0.0,0,0,10,0.2478,0.925,1.0,1.0,0.75,5,0,2,3,0
+r_chef,Full Stack Developer,chef,0.0,0.0,0,0,9,0.1566,0.925,1.0,1.0,0.75,5,0,2,3,0
+r_accountant,Senior Backend Engineer,finance,0.0,0.0,0,0,15,0.276,0.925,1.0,1.0,0.75,4,4,3,3,0
+r_accountant,Backend Developer,finance,0.0,0.0,0,0,8,0.2575,0.925,1.0,1.0,0.75,4,2,3,3,0
+r_accountant,Junior Backend Developer,finance,0.0,0.0,0,0,4,0.3386,0.925,1.0,1.0,0.75,4,1,3,3,0
+r_accountant,Senior Frontend Engineer,finance,0.0,0.0,0,0,10,0.2336,0.925,1.0,1.0,0.75,4,0,3,3,0
+r_accountant,Frontend Developer,finance,0.0,0.0,0,0,5,0.2717,0.925,1.0,1.0,0.75,4,0,3,3,0
+r_accountant,Senior DevOps Engineer,finance,0.0,0.0,0,0,13,0.2151,0.925,1.0,1.0,0.75,4,0,3,3,0
+r_accountant,DevOps Engineer,finance,0.0,0.0,0,0,5,0.1696,0.925,1.0,1.0,0.75,4,0,3,3,0
+r_accountant,Senior ML Engineer,finance,0.0,0.0,0,0,11,0.2116,0.685,1.0,0.2,0.75,4,0,3,5,0
+r_accountant,Data Scientist,finance,0.0,0.0,0,0,4,0.2544,0.925,1.0,1.0,0.75,4,0,3,3,0
+r_accountant,Data Engineer,finance,0.0,0.0,0,0,8,0.245,0.925,1.0,1.0,0.75,4,0,3,3,0
+r_accountant,Senior Mobile Developer,finance,0.0,0.0,0,0,10,0.239,0.925,1.0,1.0,0.75,4,0,3,3,0
+r_accountant,Full Stack Developer,finance,0.0,0.0,0,0,9,0.2032,0.925,1.0,1.0,0.75,4,0,3,3,0
+r_junior_backend_1,jd_senior_backend_5yr,backend,0.7667,0.8333,8,2,2,0.6864,0.88,1.0,0.6,1.0,1,0,3,4,0
+r_junior_backend_1,jd_senior_backend_7yr,backend,0.6833,0.75,7,2,3,0.6085,0.88,1.0,0.6,1.0,1,0,3,4,0
+r_junior_backend_1,jd_lead_backend_8yr,backend,0.6833,0.75,7,2,3,0.6014,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_junior_backend_2,jd_senior_backend_5yr,backend,0.625,0.6667,7,1,4,0.6474,0.88,1.0,0.6,1.0,1,0,3,4,0
+r_junior_backend_2,jd_senior_backend_7yr,backend,0.5417,0.5833,6,1,5,0.5747,0.88,1.0,0.6,1.0,1,0,3,4,0
+r_junior_backend_2,jd_lead_backend_8yr,backend,0.5417,0.5833,6,1,5,0.6195,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_junior_ml_1,jd_senior_ml_5yr,ml,0.6286,1.0,2,5,0,0.553,0.76,1.0,0.2,1.0,1,0,3,5,0
+r_junior_ml_1,jd_staff_ml_7yr,ml,0.4571,0.7143,2,3,2,0.4786,0.76,1.0,0.2,1.0,1,0,3,5,0
+r_junior_frontend_1,jd_senior_frontend_5yr,frontend,0.8333,0.8333,5,0,1,0.7355,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_junior_devops_1,jd_senior_devops_6yr,devops,0.7667,0.8333,8,2,2,0.6808,1.0,1.0,1.0,1.0,1,0,3,3,0
+r_junior_devops_1,jd_senior_devops_5yr,devops,0.9625,1.0,7,1,0,0.7842,1.0,1.0,1.0,1.0,1,0,3,3,0
