@@ -1,0 +1,13 @@
+{
+  "_comment": "Maps canonical skill node IDs to curated free learning resources.",
+  "machine_learning": [
+    {"title": "fast.ai Practical Deep Learning", "url": "https://course.fast.ai"},
+    {"title": "Coursera ML Specialization (Andrew Ng)", "url": "https://www.coursera.org/specializations/machine-learning-introduction"}
+  ],
+  "docker": [
+    {"title": "Docker Official Get Started", "url": "https://docs.docker.com/get-started/"}
+  ],
+  "kubernetes": [
+    {"title": "Kubernetes Official Tutorials", "url": "https://kubernetes.io/docs/tutorials/"}
+  ]
+}

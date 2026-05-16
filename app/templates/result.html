@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block title %}Results — {{ r.jd_meta.job_title }}{% endblock %}
+
+{% block content %}
+
+<div class="result-header">
+  <div class="result-title">
+    <h2>{{ r.jd_meta.job_title }}</h2>
+    <p class="meta">
+      {{ r.resume_meta.file_name }} &nbsp;·&nbsp;
+      {{ r.resume_meta.years_of_experience }} yr exp &nbsp;·&nbsp;
+      {{ r.resume_meta.education_level }}
+    </p>
+  </div>
+  <a href="{{ url_for('match.index') }}" class="btn-secondary">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+    </svg>
+    New Analysis
+  </a>
+</div>
+
+<!-- Verdict -->
+{% if r.label == 1 %}
+<div class="verdict verdict-match">
+  <div class="verdict-icon">&#10003;</div>
+  <div>
+    <strong>Strong Match</strong>
+    <p>{{ r.probability | pct }} confidence &nbsp;·&nbsp; {{ r.explanation }}</p>
+  </div>
+</div>
+{% else %}
+<div class="verdict verdict-nomatch">
+  <div class="verdict-icon">&#10007;</div>
+  <div>
+    <strong>Poor Match</strong>
+    <p>{{ (1 - r.probability) | pct }} confidence &nbsp;·&nbsp; {{ r.explanation }}</p>
+  </div>
+</div>
+{% endif %}
+
+<!-- Score cards -->
+<div class="score-grid">
+  <div class="score-card">
+    <div class="score-value">{{ r.graph_score | pct }}</div>
+    <div class="score-label">Skill Match</div>
+    <div class="score-sub">{{ r.coverage | pct }} JD coverage</div>
+    <div class="score-bar"><div class="score-fill" style="width:{{ r.graph_score * 100 }}%"></div></div>
+  </div>
+  <div class="score-card">
+    <div class="score-value">{{ r.sbert_score | pct }}</div>
+    <div class="score-label">Semantic Fit</div>
+    <div class="score-sub">{{ r.sbert_score | interpretation }}</div>
+    <div class="score-bar"><div class="score-fill" style="width:{{ r.sbert_score * 100 }}%"></div></div>
+  </div>
+  <div class="score-card">
+    <div class="score-value">{{ r.structural_score | pct }}</div>
+    <div class="score-label">Structural Fit</div>
+    <div class="score-sub">{{ r.yoe_reasoning }}</div>
+    <div class="score-bar"><div class="score-fill" style="width:{{ r.structural_score * 100 }}%"></div></div>
+  </div>
+</div>
+
+<!-- SHAP reasons -->
+{% if r.top_reasons %}
+<div class="section-card">
+  <h3><span class="section-icon">&#128200;</span> Why this score?</h3>
+  <div class="shap-list">
+    {% for reason in r.top_reasons %}
+    <div class="shap-row">
+      <span class="shap-feature">{{ reason.feature | friendly_name }}</span>
+      <div class="shap-bar-wrap">
+        <span class="shap-bar shap-{{ 'pos' if reason.shap > 0 else 'neg' }}"
+              style="width:{{ [reason.shap | abs * 110, 100] | min }}%"></span>
+      </div>
+      <span class="shap-reasoning">{{ reason.reasoning }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Skill breakdown -->
+<div class="section-card">
+  <h3><span class="section-icon">&#127981;</span> Skill-by-skill breakdown</h3>
+  <div class="skill-table">
+    {% for m in r.matched %}
+    <div class="skill-row skill-{{ m.match_type }}">
+      <div class="skill-left">
+        <span class="skill-tag skill-tag-{{ m.match_type }}">{{ m.match_type | friendly_match }}</span>
+        <span class="skill-name">{{ m.jd_skill | replace('_', ' ') }}</span>
+      </div>
+      <div class="skill-right">
+        {% if m.evidence %}
+          {% for sent in m.evidence %}
+          <p class="evidence-sent">"{{ sent[:120] }}{% if sent|length > 120 %}…{% endif %}"</p>
+          {% endfor %}
+        {% elif m.match_type != 'no_match' %}
+          <p class="evidence-sent muted">{{ m.reasoning }}</p>
+        {% else %}
+          <p class="evidence-sent missing">Not found in resume</p>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Skill gap -->
+<div class="section-card counterfactual">
+  <h3><span class="section-icon">&#128161;</span> Skill gap analysis</h3>
+  <p class="cf-text">{{ r.counterfactual.explanation }}</p>
+  {% if r.counterfactual.skills_needed %}
+  <div class="cf-skills">
+    {% for skill in r.counterfactual.skills_needed %}
+    <span class="cf-tag">+ {{ skill | replace('_', ' ') }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+<!-- Suggestions -->
+{% if r.suggestions %}
+<div class="section-card">
+  <h3><span class="section-icon">&#127919;</span> Recommended next steps</h3>
+  <div class="suggestions-list">
+    {% for s in r.suggestions %}
+    <div class="suggestion-row">
+      <span class="priority-badge p{{ s.priority }}">P{{ s.priority }}</span>
+      <div class="suggestion-content">
+        <strong>{{ s.skill | replace('_', ' ') | title }}</strong>
+        <p>{{ s.reason }}</p>
+        <span class="resource-tag">{{ s.resource.type | title }} &nbsp;·&nbsp; {{ s.resource.platform }} &nbsp;·&nbsp; {{ s.resource.title }}</span>
+      </div>
+      <span class="gain-badge">+{{ (s.score_gain * 100) | round(1) }}%</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Domain mismatch -->
+{% if r.domain_mismatch.is_mismatch %}
+<div class="alert alert-warning">
+  <strong>Domain Mismatch Detected</strong> &mdash; {{ r.domain_mismatch.warning }}
+</div>
+{% endif %}
+
+<!-- Timing -->
+<details class="timing-details">
+  <summary>Pipeline timing</summary>
+  <pre>{{ r.timing_ms }}</pre>
+</details>
+
+{% endblock %}

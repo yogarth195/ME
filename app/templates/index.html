@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}ExplainHire — Resume Matcher{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <div class="hero-badge">&#x26A1; AI-Powered Matching</div>
+  <h1>Match your resume to<br><span>any job description</span></h1>
+  <p class="subtitle">Hybrid skill graph + semantic AI with explainable results</p>
+  <div class="hero-features">
+    <div class="hero-feature"><div class="hero-feature-dot"></div>Skill ontology matching</div>
+    <div class="hero-feature"><div class="hero-feature-dot"></div>SBERT semantic analysis</div>
+    <div class="hero-feature"><div class="hero-feature-dot"></div>SHAP explanations</div>
+    <div class="hero-feature"><div class="hero-feature-dot"></div>Skill gap analysis</div>
+  </div>
+</div>
+
+<div class="upload-card">
+  <form method="POST" action="{{ url_for('match.analyze') }}" enctype="multipart/form-data" id="upload-form">
+
+    <div class="form-section">
+      <label class="form-label">Resume <span class="badge">PDF or DOCX</span></label>
+      <div class="file-drop" id="file-drop">
+        <input type="file" name="resume" id="resume-input" accept=".pdf,.docx,.doc" required />
+        <div class="file-drop-inner" id="drop-inner">
+          <div class="upload-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 16V4m0 0L8 8m4-4 4 4M4 20h16" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p>Drop your resume here or <span class="link">browse files</span></p>
+          <p class="hint">PDF or DOCX &nbsp;·&nbsp; Max 5 MB</p>
+        </div>
+        <div class="file-name" id="file-name" style="display:none">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span id="file-name-text"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <label class="form-label" for="jd-input">Job Description</label>
+      <textarea
+        name="jd_text"
+        id="jd-input"
+        rows="10"
+        placeholder="Paste the full job description here — requirements, responsibilities, skills needed..."
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn-primary" id="submit-btn">
+      <span class="btn-text">Analyze Match</span>
+      <span class="btn-loading" style="display:none">
+        <div class="spinner"></div>
+        Analyzing...
+      </span>
+    </button>
+
+  </form>
+</div>
+
+<script>
+  const input   = document.getElementById('resume-input');
+  const drop    = document.getElementById('file-drop');
+  const nameBox = document.getElementById('file-name');
+  const nameText= document.getElementById('file-name-text');
+  const inner   = document.getElementById('drop-inner');
+  const form    = document.getElementById('upload-form');
+  const btn     = document.getElementById('submit-btn');
+
+  input.addEventListener('change', () => {
+    if (input.files[0]) {
+      nameText.textContent = input.files[0].name;
+      nameBox.style.display = 'flex';
+      inner.style.display = 'none';
+    }
+  });
+
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('drag-over'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('drag-over'));
+  drop.addEventListener('drop', e => {
+    e.preventDefault();
+    drop.classList.remove('drag-over');
+    if (e.dataTransfer.files.length) {
+      input.files = e.dataTransfer.files;
+      input.dispatchEvent(new Event('change'));
+    }
+  });
+
+  form.addEventListener('submit', () => {
+    btn.querySelector('.btn-text').style.display = 'none';
+    btn.querySelector('.btn-loading').style.display = 'inline-flex';
+    btn.disabled = true;
+  });
+</script>
+{% endblock %}
