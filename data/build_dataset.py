@@ -56,8 +56,9 @@ def main():
                 print(f"  SKIP (not found): {source.name}")
             continue
 
-        added = 0
-        dupes = 0
+        added    = 0
+        dupes    = 0
+        unlabeled = 0
         for row in rows:
             key = (row.get("resume_id", ""), row.get("jd_id", ""))
             if key in seen_keys:
@@ -65,12 +66,18 @@ def main():
                 continue
             seen_keys.add(key)
 
+            # Skip rows that haven't been manually annotated yet
+            if str(row.get("label", "")).strip() in ("-1", "", "None"):
+                unlabeled += 1
+                continue
+
             # Normalise: keep only known fields, fill missing with 0
             clean = {f: row.get(f, 0) for f in FIELDNAMES}
             merged.append(clean)
             added += 1
 
-        print(f"  {source.name:30} -> {added:4} new rows  ({dupes} dupes skipped)")
+        unlabeled_note = f"  ({unlabeled} unlabeled skipped)" if unlabeled else ""
+        print(f"  {source.name:30} -> {added:4} new rows  ({dupes} dupes skipped){unlabeled_note}")
 
     if not merged:
         print("No rows found in any source. Nothing to write.")

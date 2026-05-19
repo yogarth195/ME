@@ -15,15 +15,19 @@ Model loads once at module level (singleton) — not per call.
 """
 
 from functools import lru_cache
+from pathlib import Path
 
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-MODEL_NAME = "all-MiniLM-L6-v2"
+MODEL_NAME      = "all-MiniLM-L6-v2"
+FINETUNED_PATH  = Path(__file__).parent.parent.parent / "models" / "sbert_finetuned"
 
 
 @lru_cache(maxsize=1)
 def _load_model() -> SentenceTransformer:
+    if FINETUNED_PATH.exists():
+        return SentenceTransformer(str(FINETUNED_PATH))
     return SentenceTransformer(MODEL_NAME)
 
 
