@@ -1,6 +1,5 @@
 {
   "_comment": "Maps raw skill strings (lowercase) to canonical ontology node IDs.",
-
   "ml": "machine_learning",
   "deep learning": "deep_learning",
   "dl": "deep_learning",
@@ -33,7 +32,6 @@
   "gen ai": "generative_ai",
   "rag": "retrieval_augmented_generation",
   "retrieval augmented generation": "retrieval_augmented_generation",
-
   "js": "javascript",
   "ts": "typescript",
   "react.js": "react",
@@ -57,7 +55,6 @@
   "css3": "css",
   "sass/scss": "sass",
   "scss": "sass",
-
   "py": "python",
   "python3": "python",
   "rb": "ruby",
@@ -76,7 +73,6 @@
   "shell": "bash",
   "shell scripting": "bash",
   "bash scripting": "bash",
-
   "k8s": "kubernetes",
   "ci/cd": "cicd",
   "ci cd": "cicd",
@@ -94,7 +90,6 @@
   "tf": "terraform",
   "ansible playbook": "ansible",
   "prometheus/grafana": "prometheus",
-
   "aws": "amazon_web_services",
   "amazon aws": "amazon_web_services",
   "gcp": "google_cloud",
@@ -108,7 +103,6 @@
   "aws lambda": "aws_lambda",
   "bigquery": "google_bigquery",
   "bq": "google_bigquery",
-
   "rn": "react_native",
   "react-native": "react_native",
   "flutter/dart": "flutter",
@@ -117,7 +111,6 @@
   "android sdk": "android",
   "xcode": "ios",
   "swift ui": "swiftui",
-
   "pen test": "penetration_testing",
   "pentest": "penetration_testing",
   "pentesting": "penetration_testing",
@@ -132,7 +125,6 @@
   "vapt": "vulnerability_assessment",
   "vulnerability assessment": "vulnerability_assessment",
   "network security": "network_security",
-
   "mysql database": "mysql",
   "ms sql": "mssql",
   "microsoft sql server": "mssql",
@@ -148,7 +140,6 @@
   "aws dynamodb": "dynamodb",
   "neo4j graph": "neo4j",
   "graph database": "neo4j",
-
   "etl pipeline": "etl",
   "data pipeline": "etl",
   "apache spark": "spark",
@@ -164,7 +155,6 @@
   "tableau desktop": "tableau",
   "power bi desktop": "power_bi",
   "powerbi": "power_bi",
-
   "rest api": "rest",
   "restful api": "rest",
   "restful": "rest",
@@ -186,7 +176,6 @@
   "version control": "git",
   "linux/unix": "linux",
   "unix/linux": "linux",
-
   "qa": "software_testing",
   "quality assurance": "software_testing",
   "qe": "software_testing",
@@ -205,7 +194,6 @@
   "apache jmeter": "jmeter",
   "api test": "api_testing",
   "unit test": "unit_testing",
-
   "web3.js": "web3_js",
   "ethers.js": "ethers_js",
   "smart contract": "smart_contracts",
@@ -218,7 +206,6 @@
   "zk": "zero_knowledge_proofs",
   "layer 2": "layer2_scaling",
   "l2": "layer2_scaling",
-
   "unity3d": "unity",
   "unity 3d": "unity",
   "unreal engine 4": "unreal_engine",
@@ -231,7 +218,6 @@
   "game dev": "game_development",
   "game design": "game_design",
   "blender 3d": "blender",
-
   "embedded c": "c_embedded",
   "c for embedded": "c_embedded",
   "embedded linux": "embedded_systems",
@@ -247,7 +233,6 @@
   "stm 32": "stm32",
   "plc": "plc_programming",
   "ble": "bluetooth_le",
-
   "r programming": "r_lang",
   "r language": "r_lang",
   "latex typesetting": "latex",
@@ -261,7 +246,6 @@
   "data analytics": "data_analysis",
   "statistical modeling": "statistical_analysis",
   "stats": "statistical_analysis",
-
   "tailwind": "tailwindcss",
   "tailwind css": "tailwindcss",
   "socket.io": "websockets",
@@ -282,9 +266,6 @@
   "mongo aggregation": "mongodb",
   "mern": "nodejs",
   "mern stack": "nodejs",
-  "restful api": "rest",
-  "rest api": "rest",
-  "graphql api": "graphql",
   "lighthouse": "performance_testing",
   "lazy loading": "javascript",
   "code splitting": "javascript",
