@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="460" font-family="Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="700" height="460" fill="#f9f9f9" rx="12"/>
+
+  <!-- Title -->
+  <text x="350" y="36" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a2e">Ablation Study — Macro F1 Score by Configuration</text>
+  <text x="350" y="56" text-anchor="middle" font-size="12" fill="#666">5-fold stratified cross-validation · 1,854 labeled resume–JD pairs</text>
+
+  <!-- Y-axis label -->
+  <text x="22" y="270" text-anchor="middle" font-size="12" fill="#444" transform="rotate(-90,22,270)">Macro F1 Score</text>
+
+  <!-- Axes -->
+  <line x1="85" y1="80" x2="85" y2="370" stroke="#333" stroke-width="2"/>
+  <line x1="85" y1="370" x2="665" y2="370" stroke="#333" stroke-width="2"/>
+
+  <!-- Y gridlines: 0.0=370, 0.2=314, 0.4=258, 0.6=202, 0.8=146, 1.0=90 -->
+  <!-- scale: 280px = 1.0 -->
+
+  <line x1="85" y1="370" x2="660" y2="370" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4"/>
+  <text x="75" y="374" text-anchor="end" font-size="11" fill="#888">0.0</text>
+
+  <line x1="85" y1="314" x2="660" y2="314" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4"/>
+  <text x="75" y="318" text-anchor="end" font-size="11" fill="#888">0.2</text>
+
+  <line x1="85" y1="258" x2="660" y2="258" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4"/>
+  <text x="75" y="262" text-anchor="end" font-size="11" fill="#888">0.4</text>
+
+  <line x1="85" y1="202" x2="660" y2="202" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4"/>
+  <text x="75" y="206" text-anchor="end" font-size="11" fill="#888">0.6</text>
+
+  <line x1="85" y1="146" x2="660" y2="146" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4"/>
+  <text x="75" y="150" text-anchor="end" font-size="11" fill="#888">0.8</text>
+
+  <line x1="85" y1="90" x2="660" y2="90" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4"/>
+  <text x="75" y="94" text-anchor="end" font-size="11" fill="#888">1.0</text>
+
+  <!-- Bar positions: centers at 155, 260, 365, 470, 575 -->
+  <!-- Bar width = 80 -->
+  <!-- y = 370 - (F1 * 280) -->
+  <!-- TF-IDF  0.037 → y=359.6  h=10.4 -->
+  <!-- SBERT   0.484 → y=234.5  h=135.5 -->
+  <!-- Graph   0.747 → y=160.8  h=209.2 -->
+  <!-- G+S     0.832 → y=137.0  h=233.0 -->
+  <!-- Full    0.951 → y=103.7  h=266.3 -->
+
+  <!-- Bar 1: TF-IDF -->
+  <rect x="115" y="360" width="80" height="10" rx="4" fill="#ef9a9a"/>
+  <text x="155" y="354" text-anchor="middle" font-size="12" font-weight="bold" fill="#b71c1c">0.037</text>
+  <text x="155" y="390" text-anchor="middle" font-size="11" fill="#555">TF-IDF</text>
+  <text x="155" y="406" text-anchor="middle" font-size="10" fill="#888">Baseline</text>
+
+  <!-- Bar 2: SBERT-only -->
+  <rect x="220" y="235" width="80" height="135" rx="4" fill="#90caf9"/>
+  <text x="260" y="229" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565c0">0.484</text>
+  <text x="260" y="390" text-anchor="middle" font-size="11" fill="#555">SBERT</text>
+  <text x="260" y="406" text-anchor="middle" font-size="10" fill="#888">Only</text>
+
+  <!-- Bar 3: Graph-only -->
+  <rect x="325" y="161" width="80" height="209" rx="4" fill="#ffcc80"/>
+  <text x="365" y="155" text-anchor="middle" font-size="12" font-weight="bold" fill="#e65100">0.747</text>
+  <text x="365" y="390" text-anchor="middle" font-size="11" fill="#555">Graph</text>
+  <text x="365" y="406" text-anchor="middle" font-size="10" fill="#888">Only</text>
+
+  <!-- Bar 4: Graph+SBERT (best baseline — dotted top border) -->
+  <rect x="430" y="137" width="80" height="233" rx="4" fill="#a5d6a7"/>
+  <line x1="430" y1="137" x2="510" y2="137" stroke="#2e7d32" stroke-width="2" stroke-dasharray="5"/>
+  <text x="470" y="131" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b5e20">0.832</text>
+  <text x="470" y="390" text-anchor="middle" font-size="11" fill="#555">Graph + SBERT</text>
+  <text x="470" y="406" text-anchor="middle" font-size="10" fill="#888">No structural</text>
+
+  <!-- Bar 5: Full Pipeline -->
+  <rect x="535" y="104" width="80" height="266" rx="4" fill="#1a1a2e"/>
+  <text x="575" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a2e">0.951</text>
+  <text x="575" y="390" text-anchor="middle" font-size="11" fill="#555">Full Pipeline</text>
+  <text x="575" y="406" text-anchor="middle" font-size="10" fill="#888">ExplainHire</text>
+
+  <!-- Star badge on top of full pipeline bar -->
+  <circle cx="575" cy="115" r="12" fill="#E91E63"/>
+  <text x="575" y="120" text-anchor="middle" font-size="13" fill="white">★</text>
+
+  <!-- Improvement bracket: from top of bar 4 to top of bar 5 -->
+  <line x1="510" y1="137" x2="535" y2="104" stroke="#E91E63" stroke-width="1.5" stroke-dasharray="4"/>
+  <line x1="535" y1="104" x2="535" y2="137" stroke="#E91E63" stroke-width="1.5"/>
+
+  <!-- Caption line -->
+  <text x="350" y="435" text-anchor="middle" font-size="11" fill="#E91E63" font-weight="bold">
+    Full pipeline improves over best single-signal baseline by +11.86% F1
+  </text>
+
+</svg>

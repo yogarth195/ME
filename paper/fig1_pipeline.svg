@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" font-family="Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="700" height="900" fill="#f9f9f9" rx="12"/>
+
+  <!-- Title -->
+  <text x="350" y="40" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">ExplainHire — Seven-Layer Pipeline</text>
+
+  <!-- INPUT BOX -->
+  <rect x="200" y="65" width="300" height="50" rx="8" fill="#1a1a2e" stroke="#1a1a2e"/>
+  <text x="350" y="85" text-anchor="middle" font-size="12" fill="white" font-weight="bold">INPUT</text>
+  <text x="350" y="103" text-anchor="middle" font-size="11" fill="#aad4f5">PDF Resume  +  Job Description Text</text>
+
+  <!-- Arrow -->
+  <line x1="350" y1="115" x2="350" y2="135" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- L1 -->
+  <rect x="150" y="135" width="400" height="60" rx="8" fill="#e8f4fd" stroke="#2196F3" stroke-width="2"/>
+  <text x="350" y="158" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">L1 — Input Validation</text>
+  <text x="350" y="178" text-anchor="middle" font-size="11" fill="#444">File type · Size · Readability · Non-empty</text>
+
+  <line x1="350" y1="195" x2="350" y2="215" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- L2 -->
+  <rect x="150" y="215" width="400" height="60" rx="8" fill="#e8f4fd" stroke="#2196F3" stroke-width="2"/>
+  <text x="350" y="238" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">L2 — Parse</text>
+  <text x="350" y="258" text-anchor="middle" font-size="11" fill="#444">Skills · Years of Experience · Education · Sections</text>
+
+  <line x1="350" y1="275" x2="350" y2="295" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- L3 -->
+  <rect x="150" y="295" width="400" height="60" rx="8" fill="#e8f4fd" stroke="#2196F3" stroke-width="2"/>
+  <text x="350" y="318" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">L3 — Normalize</text>
+  <text x="350" y="338" text-anchor="middle" font-size="11" fill="#444">Alias table (800+ entries) → canonical ontology nodes</text>
+
+  <!-- Split arrow to 3 boxes -->
+  <line x1="350" y1="355" x2="350" y2="370" stroke="#555" stroke-width="2"/>
+  <line x1="140" y1="370" x2="560" y2="370" stroke="#555" stroke-width="2"/>
+  <line x1="140" y1="370" x2="140" y2="390" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="350" y1="370" x2="350" y2="390" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="560" y1="370" x2="560" y2="390" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- L4a -->
+  <rect x="50" y="390" width="180" height="80" rx="8" fill="#fff3e0" stroke="#FF9800" stroke-width="2"/>
+  <text x="140" y="413" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">L4a — Graph</text>
+  <text x="140" y="430" text-anchor="middle" font-size="10" fill="#444">434-node ontology</text>
+  <text x="140" y="447" text-anchor="middle" font-size="10" fill="#444">6-level weighted</text>
+  <text x="140" y="464" text-anchor="middle" font-size="10" fill="#E65100">Symbolic AI</text>
+
+  <!-- L4b -->
+  <rect x="260" y="390" width="180" height="80" rx="8" fill="#f3e5f5" stroke="#9C27B0" stroke-width="2"/>
+  <text x="350" y="413" text-anchor="middle" font-size="12" font-weight="bold" fill="#6A1B9A">L4b — SBERT</text>
+  <text x="350" y="430" text-anchor="middle" font-size="10" fill="#444">Fine-tuned on 887</text>
+  <text x="350" y="447" text-anchor="middle" font-size="10" fill="#444">resume-JD pairs</text>
+  <text x="350" y="464" text-anchor="middle" font-size="10" fill="#6A1B9A">Neural AI</text>
+
+  <!-- L4c -->
+  <rect x="470" y="390" width="180" height="80" rx="8" fill="#e8f5e9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="560" y="413" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">L4c — Structural</text>
+  <text x="560" y="430" text-anchor="middle" font-size="10" fill="#444">YOE · Education</text>
+  <text x="560" y="447" text-anchor="middle" font-size="10" fill="#444">Section coverage</text>
+  <text x="560" y="464" text-anchor="middle" font-size="10" fill="#1B5E20">Rule-based</text>
+
+  <!-- Merge arrows -->
+  <line x1="140" y1="470" x2="140" y2="490" stroke="#555" stroke-width="2"/>
+  <line x1="350" y1="470" x2="350" y2="490" stroke="#555" stroke-width="2"/>
+  <line x1="560" y1="470" x2="560" y2="490" stroke="#555" stroke-width="2"/>
+  <line x1="140" y1="490" x2="560" y2="490" stroke="#555" stroke-width="2"/>
+  <line x1="350" y1="490" x2="350" y2="510" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 14 features label -->
+  <text x="350" y="505" text-anchor="middle" font-size="11" fill="#777" font-style="italic">14 numeric features</text>
+  <line x1="350" y1="508" x2="350" y2="525" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- L5 -->
+  <rect x="150" y="525" width="400" height="60" rx="8" fill="#fce4ec" stroke="#E91E63" stroke-width="2"/>
+  <text x="350" y="548" text-anchor="middle" font-size="13" font-weight="bold" fill="#880E4F">L5 — XGBoost + SHAP</text>
+  <text x="350" y="568" text-anchor="middle" font-size="11" fill="#444">Classification · Feature Attribution · Confidence %</text>
+
+  <line x1="350" y1="585" x2="350" y2="605" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- L6 -->
+  <rect x="150" y="605" width="400" height="60" rx="8" fill="#e8f4fd" stroke="#2196F3" stroke-width="2"/>
+  <text x="350" y="628" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">L6 — Explainer</text>
+  <text x="350" y="648" text-anchor="middle" font-size="11" fill="#444">Evidence mapper · Skill gap ranker (ranked by impact)</text>
+
+  <line x1="350" y1="665" x2="350" y2="685" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- L7 -->
+  <rect x="150" y="685" width="400" height="60" rx="8" fill="#1a1a2e" stroke="#1a1a2e"/>
+  <text x="350" y="708" text-anchor="middle" font-size="13" font-weight="bold" fill="white">L7 — Flask Web Application</text>
+  <text x="350" y="728" text-anchor="middle" font-size="11" fill="#aad4f5">Results · History · Ontology Visualizer · Dark/Light Theme</text>
+
+  <!-- OUTPUT -->
+  <line x1="350" y1="745" x2="350" y2="765" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="175" y="765" width="350" height="70" rx="8" fill="#e8f5e9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="350" y="788" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">OUTPUT</text>
+  <text x="350" y="806" text-anchor="middle" font-size="11" fill="#333">Match / No Match  +  Confidence %</text>
+  <text x="350" y="822" text-anchor="middle" font-size="11" fill="#333">Evidence sentences  +  Skill gap ranking</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Footer -->
+  <text x="350" y="870" text-anchor="middle" font-size="10" fill="#999">ExplainHire · Delhi Technological University · 2025-26</text>
+
+</svg>

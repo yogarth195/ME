@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="500" font-family="Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="720" height="500" fill="#f9f9f9" rx="12"/>
+
+  <!-- Title -->
+  <text x="360" y="35" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a2e">Skill Ontology — Example Subgraph</text>
+  <text x="360" y="55" text-anchor="middle" font-size="12" fill="#666">434-node O*NET-derived directed graph · IS-A relationships · 6-level weighted traversal</text>
+
+  <!-- LEGEND -->
+  <rect x="30" y="75" width="200" height="130" rx="6" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="130" y="95" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">Match Weights</text>
+  <circle cx="50" cy="112" r="7" fill="#1a1a2e"/>
+  <text x="65" y="116" font-size="10" fill="#333">Exact match = 1.0</text>
+  <circle cx="50" cy="130" r="7" fill="#2196F3"/>
+  <text x="65" y="134" font-size="10" fill="#333">Alias match = 0.9</text>
+  <circle cx="50" cy="148" r="7" fill="#FF9800"/>
+  <text x="65" y="152" font-size="10" fill="#333">Child to Parent = 0.7</text>
+  <circle cx="50" cy="166" r="7" fill="#9C27B0"/>
+  <text x="65" y="170" font-size="10" fill="#333">Parent to Child = 0.5</text>
+  <circle cx="50" cy="184" r="7" fill="#4CAF50"/>
+  <text x="65" y="188" font-size="10" fill="#333">Sibling = 0.4</text>
+  <circle cx="50" cy="202" r="7" fill="#F44336"/>
+  <text x="65" y="206" font-size="10" fill="#333">Two-hop = 0.3</text>
+
+  <!-- ROOT: software engineering -->
+  <ellipse cx="360" cy="100" rx="90" ry="24" fill="#1a1a2e" stroke="#1a1a2e"/>
+  <text x="360" y="105" text-anchor="middle" font-size="11" font-weight="bold" fill="white">software engineering</text>
+
+  <!-- LEVEL 1 nodes -->
+  <ellipse cx="180" cy="185" rx="72" ry="22" fill="#1565C0" stroke="#1565C0"/>
+  <text x="180" y="190" text-anchor="middle" font-size="11" font-weight="bold" fill="white">machine learning</text>
+
+  <ellipse cx="360" cy="185" rx="68" ry="22" fill="#1565C0" stroke="#1565C0"/>
+  <text x="360" y="190" text-anchor="middle" font-size="11" font-weight="bold" fill="white">web development</text>
+
+  <ellipse cx="540" cy="185" rx="68" ry="22" fill="#1565C0" stroke="#1565C0"/>
+  <text x="540" y="190" text-anchor="middle" font-size="11" font-weight="bold" fill="white">backend dev</text>
+
+  <!-- Edges L0 to L1 -->
+  <line x1="300" y1="118" x2="222" y2="163" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+  <line x1="360" y1="124" x2="360" y2="163" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+  <line x1="420" y1="118" x2="498" y2="163" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+
+  <!-- LEVEL 2 under machine learning -->
+  <ellipse cx="80" cy="285" rx="58" ry="20" fill="#E65100" stroke="#E65100"/>
+  <text x="80" y="290" text-anchor="middle" font-size="10" font-weight="bold" fill="white">deep learning</text>
+
+  <ellipse cx="210" cy="285" rx="55" ry="20" fill="#E65100" stroke="#E65100"/>
+  <text x="210" y="290" text-anchor="middle" font-size="10" font-weight="bold" fill="white">scikit learn</text>
+
+  <ellipse cx="335" cy="285" rx="48" ry="20" fill="#E65100" stroke="#E65100"/>
+  <text x="335" y="290" text-anchor="middle" font-size="10" font-weight="bold" fill="white">xgboost</text>
+
+  <!-- Edges L1 to L2 ML -->
+  <line x1="140" y1="198" x2="100" y2="265" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+  <line x1="180" y1="207" x2="210" y2="265" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+  <line x1="210" y1="200" x2="310" y2="268" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+
+  <!-- LEVEL 2 under web development -->
+  <ellipse cx="430" cy="285" rx="40" ry="20" fill="#6A1B9A" stroke="#6A1B9A"/>
+  <text x="430" y="290" text-anchor="middle" font-size="10" font-weight="bold" fill="white">react</text>
+
+  <ellipse cx="520" cy="285" rx="42" ry="20" fill="#6A1B9A" stroke="#6A1B9A"/>
+  <text x="520" y="290" text-anchor="middle" font-size="10" font-weight="bold" fill="white">node js</text>
+
+  <!-- Edges L1 to L2 web -->
+  <line x1="340" y1="200" x2="415" y2="265" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+  <line x1="375" y1="200" x2="505" y2="265" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+
+  <!-- LEVEL 2 under backend -->
+  <ellipse cx="615" cy="285" rx="52" ry="20" fill="#1B5E20" stroke="#1B5E20"/>
+  <text x="615" y="290" text-anchor="middle" font-size="10" font-weight="bold" fill="white">rest api</text>
+
+  <!-- Edge L1 to L2 backend -->
+  <line x1="555" y1="200" x2="615" y2="265" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+
+  <!-- LEVEL 3 under deep learning -->
+  <ellipse cx="35" cy="390" rx="32" ry="18" fill="#FF9800" stroke="#FF9800"/>
+  <text x="35" y="395" text-anchor="middle" font-size="10" font-weight="bold" fill="white">pytorch</text>
+
+  <ellipse cx="108" cy="390" rx="40" ry="18" fill="#FF9800" stroke="#FF9800"/>
+  <text x="108" y="395" text-anchor="middle" font-size="10" font-weight="bold" fill="white">tensorflow</text>
+
+  <ellipse cx="196" cy="390" rx="46" ry="18" fill="#FF9800" stroke="#FF9800"/>
+  <text x="196" y="395" text-anchor="middle" font-size="10" font-weight="bold" fill="white">huggingface</text>
+
+  <!-- Edges deep learning to L3 -->
+  <line x1="60" y1="300" x2="45" y2="372" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+  <line x1="80" y1="305" x2="108" y2="372" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+  <line x1="98" y1="302" x2="173" y2="374" stroke="#555" stroke-width="1.5" marker-end="url(#ontarr)"/>
+
+  <!-- EXAMPLE MATCH ANNOTATION -->
+  <rect x="255" y="355" width="448" height="118" rx="8" fill="white" stroke="#E91E63" stroke-width="1.5" stroke-dasharray="5"/>
+  <text x="479" y="375" text-anchor="middle" font-size="11" font-weight="bold" fill="#880E4F">Example: JD requires "machine learning"</text>
+  <text x="479" y="394" text-anchor="middle" font-size="10" fill="#333">Resume has "pytorch" — child of deep learning — child of machine learning</text>
+  <text x="479" y="413" text-anchor="middle" font-size="10" fill="#E65100">pytorch  →  deep learning  →  machine learning</text>
+  <text x="479" y="432" text-anchor="middle" font-size="10" fill="#555">Match weight = 0.7  (child-to-parent, one hop)</text>
+  <text x="479" y="451" text-anchor="middle" font-size="10" fill="#555">Candidate gets credit despite not listing ML explicitly.</text>
+  <text x="479" y="467" text-anchor="middle" font-size="10" font-weight="bold" fill="#E91E63">Keyword matcher scores this 0. ExplainHire scores 0.7.</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="ontarr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+  </defs>
+
+</svg>

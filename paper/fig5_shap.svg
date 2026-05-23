@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="520" font-family="Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="700" height="520" fill="#f9f9f9" rx="12"/>
+
+  <!-- Title -->
+  <text x="350" y="35" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a2e">SHAP Feature Attribution — Example Prediction</text>
+  <text x="350" y="54" text-anchor="middle" font-size="12" fill="#666">Which of the 14 features drove the Match / No Match decision?</text>
+
+  <!-- Verdict box -->
+  <rect x="220" y="68" width="260" height="40" rx="8" fill="#1a1a2e"/>
+  <text x="350" y="84" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Prediction: MATCH</text>
+  <text x="350" y="100" text-anchor="middle" font-size="11" fill="#aad4f5">Confidence: 87.3%  ·  Base rate: 50%</text>
+
+  <!-- Axis line center -->
+  <line x1="350" y1="125" x2="350" y2="480" stroke="#999" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="200" y="118" text-anchor="middle" font-size="10" fill="#777">No Match</text>
+  <text x="500" y="118" text-anchor="middle" font-size="10" fill="#777">Match</text>
+  <line x1="130" y1="122" x2="350" y2="122" stroke="#aaa" stroke-width="1" marker-end="url(#larr)"/>
+  <line x1="570" y1="122" x2="350" y2="122" stroke="#aaa" stroke-width="1" marker-end="url(#rarr)"/>
+
+  <!-- Feature 1: no matches (negative) -->
+  <text x="120" y="155" text-anchor="end" font-size="11" fill="#333">no matches</text>
+  <rect x="170" y="138" width="180" height="26" rx="4" fill="#ef5350"/>
+  <text x="165" y="155" text-anchor="end" font-size="10" font-weight="bold" fill="#c62828">-0.28</text>
+
+  <!-- Feature 2: graph score (positive) -->
+  <text x="120" y="191" text-anchor="end" font-size="11" fill="#333">graph score</text>
+  <rect x="350" y="174" width="145" height="26" rx="4" fill="#42a5f5"/>
+  <text x="502" y="191" font-size="10" font-weight="bold" fill="#1565c0"> +0.23</text>
+
+  <!-- Feature 3: sbert score (positive) -->
+  <text x="120" y="227" text-anchor="end" font-size="11" fill="#333">sbert score</text>
+  <rect x="350" y="210" width="115" height="26" rx="4" fill="#42a5f5"/>
+  <text x="472" y="227" font-size="10" font-weight="bold" fill="#1565c0"> +0.18</text>
+
+  <!-- Feature 4: yoe score (negative) -->
+  <text x="120" y="263" text-anchor="end" font-size="11" fill="#333">yoe score</text>
+  <rect x="240" y="246" width="110" height="26" rx="4" fill="#ef9a9a"/>
+  <text x="235" y="263" text-anchor="end" font-size="10" font-weight="bold" fill="#c62828">-0.17</text>
+
+  <!-- Feature 5: exact matches (positive) -->
+  <text x="120" y="299" text-anchor="end" font-size="11" fill="#333">exact matches</text>
+  <rect x="350" y="282" width="90" height="26" rx="4" fill="#42a5f5"/>
+  <text x="447" y="299" font-size="10" font-weight="bold" fill="#1565c0"> +0.14</text>
+
+  <!-- Feature 6: coverage (positive) -->
+  <text x="120" y="335" text-anchor="end" font-size="11" fill="#333">coverage</text>
+  <rect x="350" y="318" width="70" height="26" rx="4" fill="#42a5f5"/>
+  <text x="427" y="335" font-size="10" font-weight="bold" fill="#1565c0"> +0.11</text>
+
+  <!-- Feature 7: edu score (positive small) -->
+  <text x="120" y="371" text-anchor="end" font-size="11" fill="#333">edu score</text>
+  <rect x="350" y="354" width="44" height="26" rx="4" fill="#90caf9"/>
+  <text x="401" y="371" font-size="10" font-weight="bold" fill="#1565c0"> +0.07</text>
+
+  <!-- Feature 8: structural score (positive small) -->
+  <text x="120" y="407" text-anchor="end" font-size="11" fill="#333">structural score</text>
+  <rect x="350" y="390" width="32" height="26" rx="4" fill="#90caf9"/>
+  <text x="389" y="407" font-size="10" font-weight="bold" fill="#1565c0"> +0.05</text>
+
+  <!-- Feature 9: section score (tiny) -->
+  <text x="120" y="443" text-anchor="end" font-size="11" fill="#333">section score</text>
+  <rect x="350" y="426" width="20" height="26" rx="4" fill="#bbdefb"/>
+  <text x="377" y="443" font-size="10" font-weight="bold" fill="#1565c0"> +0.03</text>
+
+  <!-- Feature 10: partial matches (tiny) -->
+  <text x="120" y="479" text-anchor="end" font-size="11" fill="#333">partial matches</text>
+  <rect x="350" y="462" width="12" height="26" rx="4" fill="#bbdefb"/>
+  <text x="369" y="479" font-size="10" font-weight="bold" fill="#1565c0"> +0.02</text>
+
+  <!-- Legend -->
+  <rect x="470" y="375" width="195" height="75" rx="6" fill="white" stroke="#ccc"/>
+  <rect x="485" y="390" width="18" height="12" rx="2" fill="#42a5f5"/>
+  <text x="510" y="401" font-size="10" fill="#333">Pushes toward Match</text>
+  <rect x="485" y="413" width="18" height="12" rx="2" fill="#ef5350"/>
+  <text x="510" y="424" font-size="10" fill="#333">Pushes toward No Match</text>
+  <text x="558" y="443" text-anchor="middle" font-size="9" fill="#777">SHAP value</text>
+
+  <!-- Explanation note -->
+  <rect x="30" y="436" width="290" height="60" rx="6" fill="white" stroke="#E91E63" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="175" y="456" text-anchor="middle" font-size="10" font-weight="bold" fill="#880E4F">Key insight for this prediction:</text>
+  <text x="175" y="472" text-anchor="middle" font-size="10" fill="#333">Strong graph and SBERT scores drive Match</text>
+  <text x="175" y="488" text-anchor="middle" font-size="10" fill="#333">verdict, despite a YOE shortfall (-0.17)</text>
+
+  <defs>
+    <marker id="larr" markerWidth="8" markerHeight="6" refX="1" refY="3" orient="auto">
+      <polygon points="8 0, 0 3, 8 6" fill="#aaa"/>
+    </marker>
+    <marker id="rarr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#aaa"/>
+    </marker>
+  </defs>
+
+</svg>

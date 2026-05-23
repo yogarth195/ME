@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="520" font-family="Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="750" height="520" fill="#f9f9f9" rx="12"/>
+
+  <!-- Title -->
+  <text x="375" y="38" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a2e">ExplainHire — Neurosymbolic Architecture</text>
+  <text x="375" y="58" text-anchor="middle" font-size="12" fill="#666">Symbolic AI  +  Neural AI  →  Learned Fusion  →  Explainability</text>
+
+  <!-- INPUTS -->
+  <rect x="60" y="85" width="160" height="55" rx="8" fill="#1a1a2e"/>
+  <text x="140" y="107" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Resume (PDF)</text>
+  <text x="140" y="126" text-anchor="middle" font-size="11" fill="#aad4f5">Candidate document</text>
+
+  <rect x="530" y="85" width="160" height="55" rx="8" fill="#1a1a2e"/>
+  <text x="610" y="107" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Job Description</text>
+  <text x="610" y="126" text-anchor="middle" font-size="11" fill="#aad4f5">Role requirements</text>
+
+  <line x1="140" y1="140" x2="140" y2="185" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="610" y1="140" x2="610" y2="185" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- PARSE + NORMALIZE -->
+  <rect x="60" y="185" width="160" height="50" rx="8" fill="#e3f2fd" stroke="#1976D2" stroke-width="1.5"/>
+  <text x="140" y="205" text-anchor="middle" font-size="11" font-weight="bold" fill="#1565C0">Parse + Normalize</text>
+  <text x="140" y="222" text-anchor="middle" font-size="10" fill="#444">Skills · YOE · Education</text>
+
+  <rect x="530" y="185" width="160" height="50" rx="8" fill="#e3f2fd" stroke="#1976D2" stroke-width="1.5"/>
+  <text x="610" y="205" text-anchor="middle" font-size="11" font-weight="bold" fill="#1565C0">Parse + Normalize</text>
+  <text x="610" y="222" text-anchor="middle" font-size="10" fill="#444">Skills · YOE · Education</text>
+
+  <text x="375" y="250" text-anchor="middle" font-size="11" fill="#888" font-style="italic">Three independent matching signals</text>
+
+  <line x1="140" y1="235" x2="140" y2="268" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="375" y1="240" x2="375" y2="268" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="610" y1="235" x2="610" y2="268" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- SIGNAL 1: GRAPH -->
+  <rect x="40" y="268" width="200" height="100" rx="8" fill="#fff8e1" stroke="#FF9800" stroke-width="2"/>
+  <text x="140" y="290" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">Signal 1: Graph</text>
+  <text x="140" y="308" text-anchor="middle" font-size="10" fill="#555">434-node O*NET ontology</text>
+  <text x="140" y="324" text-anchor="middle" font-size="10" fill="#555">6-level weighted traversal</text>
+  <text x="140" y="340" text-anchor="middle" font-size="10" fill="#555">exact · alias · child · sibling</text>
+  <text x="140" y="358" text-anchor="middle" font-size="10" font-weight="bold" fill="#E65100">SYMBOLIC AI</text>
+
+  <!-- SIGNAL 2: SBERT -->
+  <rect x="275" y="268" width="200" height="100" rx="8" fill="#f3e5f5" stroke="#9C27B0" stroke-width="2"/>
+  <text x="375" y="290" text-anchor="middle" font-size="12" font-weight="bold" fill="#6A1B9A">Signal 2: SBERT</text>
+  <text x="375" y="308" text-anchor="middle" font-size="10" fill="#555">all-MiniLM-L6-v2</text>
+  <text x="375" y="324" text-anchor="middle" font-size="10" fill="#555">Fine-tuned on 887 pairs</text>
+  <text x="375" y="340" text-anchor="middle" font-size="10" fill="#555">384-dim cosine similarity</text>
+  <text x="375" y="358" text-anchor="middle" font-size="10" font-weight="bold" fill="#6A1B9A">NEURAL AI</text>
+
+  <!-- SIGNAL 3: STRUCTURAL -->
+  <rect x="510" y="268" width="200" height="100" rx="8" fill="#e8f5e9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="610" y="290" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">Signal 3: Structural</text>
+  <text x="610" y="308" text-anchor="middle" font-size="10" fill="#555">YOE gap score</text>
+  <text x="610" y="324" text-anchor="middle" font-size="10" fill="#555">Education rank score</text>
+  <text x="610" y="340" text-anchor="middle" font-size="10" fill="#555">Section coverage score</text>
+  <text x="610" y="358" text-anchor="middle" font-size="10" font-weight="bold" fill="#1B5E20">RULE-BASED</text>
+
+  <text x="140" y="385" text-anchor="middle" font-size="10" fill="#888">5 features</text>
+  <text x="375" y="385" text-anchor="middle" font-size="10" fill="#888">1 feature</text>
+  <text x="610" y="385" text-anchor="middle" font-size="10" fill="#888">8 features</text>
+
+  <!-- Merge to classifier -->
+  <line x1="140" y1="368" x2="140" y2="398" stroke="#555" stroke-width="1.5"/>
+  <line x1="375" y1="368" x2="375" y2="398" stroke="#555" stroke-width="1.5"/>
+  <line x1="610" y1="368" x2="610" y2="398" stroke="#555" stroke-width="1.5"/>
+  <line x1="140" y1="398" x2="610" y2="398" stroke="#555" stroke-width="1.5"/>
+  <line x1="375" y1="398" x2="375" y2="418" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <text x="375" y="414" text-anchor="middle" font-size="10" fill="#888" font-style="italic">14 features</text>
+
+  <!-- XGBOOST -->
+  <rect x="220" y="420" width="310" height="55" rx="8" fill="#fce4ec" stroke="#E91E63" stroke-width="2"/>
+  <text x="375" y="443" text-anchor="middle" font-size="13" font-weight="bold" fill="#880E4F">XGBoost Classifier + SHAP</text>
+  <text x="375" y="462" text-anchor="middle" font-size="11" fill="#555">Match / No Match  ·  Confidence %  ·  Feature Attribution</text>
+
+  <line x1="310" y1="475" x2="240" y2="495" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="440" y1="475" x2="510" y2="495" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="100" y="495" width="180" height="18" rx="4" fill="#e8f5e9" stroke="#4CAF50"/>
+  <text x="190" y="508" text-anchor="middle" font-size="10" fill="#1B5E20">Evidence sentences per skill</text>
+
+  <rect x="420" y="495" width="180" height="18" rx="4" fill="#fff3e0" stroke="#FF9800"/>
+  <text x="510" y="508" text-anchor="middle" font-size="10" fill="#E65100">Ranked skill gap analysis</text>
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+  </defs>
+
+</svg>
