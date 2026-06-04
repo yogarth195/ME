@@ -19,8 +19,7 @@ app/static/uploads/*
 !app/static/uploads/.gitkeep
 
 # Models (large binaries — store in DVC or releases)
-models/*.json
-models/*.pkl
+models/sbert_finetuned/model.safetensors
 
 # Data (raw CSVs are large — download from Kaggle)
 data/raw/
