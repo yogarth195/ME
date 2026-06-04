@@ -1,0 +1,415 @@
+================================================================
+EXPLAINHIRE — IMAGE GENERATION PROMPTS
+All figures for B.Tech Project Report, DTU 2026
+================================================================
+
+HOW TO USE:
+- Copy each prompt into ChatGPT (GPT-4o)
+- Say: "Generate this as a Python matplotlib figure and show me the image"
+- For Figure 3.3 say: "Generate this using Python networkx and matplotlib"
+- Save each image and insert at the location specified
+
+================================================================
+PLACEMENT SUMMARY
+================================================================
+
+Figure 3.1  →  Page 9   — After "...full explainability." before Design Principles
+Figure 3.2  →  Page 10  — ALREADY DONE
+Figure 3.3  →  Page 15  — After "...partial-credit matching works across ontological distances."
+Figure 3.4  →  Page 19  — After "...illustrating which features pushed the classifier..." before Eq 3.11
+Figure 5.1  →  Page 27  — Inside Section 5.2, after the ablation table, before "Analysis of results"
+
+================================================================
+FIGURE 3.1
+Three Matching Signals Fused by XGBoost Classifier
+================================================================
+
+Create a clean, professional system architecture diagram for an academic
+paper figure. White background, suitable for publication.
+
+The diagram shows THREE parallel input boxes all feeding into ONE
+fusion box, which produces ONE output. Layout: horizontal, left to right.
+
+LEFT SIDE — Three input boxes stacked vertically:
+
+Box 1 (TOP) — Blue (#1565C0), white text:
+Label: "L4a — Graph Matcher"
+Subtitle: "Symbolic AI"
+Detail: "434-node O*NET ontology
+6-level weighted traversal"
+Output arrow label: "GraphScore"
+
+Box 2 (MIDDLE) — Orange (#E65100), white text:
+Label: "L4b — Semantic Matcher"
+Subtitle: "Neural AI"
+Detail: "Fine-tuned SBERT
+all-MiniLM-L6-v2"
+Output arrow label: "SBERTScore"
+
+Box 3 (BOTTOM) — Green (#2E7D32), white text:
+Label: "L4c — Structural Matcher"
+Subtitle: "Rule-based"
+Detail: "YOE gap + Education gap
++ Section coverage"
+Output arrow label: "StructuralScore"
+
+CENTER — Large dark gray box (#37474F), white text:
+Label: "L5 — XGBoost Fusion"
+Detail: "14 features | Learned weighting"
+Small label below: "+ SHAP Explainer"
+
+RIGHT SIDE — Dark navy box (#1A237E), white text:
+Label: "Output"
+Three bullet points:
+  • Match Verdict + Confidence %
+  • SHAP feature attribution φ
+  • Sentence-level evidence
+
+Three arrows flow from left boxes into center fusion box.
+One arrow flows from center to output box.
+Arrow labels: "GraphScore", "SBERTScore", "StructuralScore"
+on the respective arrows going into XGBoost.
+
+Style: flat design, rounded rectangles, thick arrows,
+sans-serif font, drop shadows on boxes.
+Size: 1200 x 500 pixels. White background.
+No title text on the image itself.
+
+
+================================================================
+FIGURE 3.2 — ALREADY DONE, NO PROMPT NEEDED
+================================================================
+
+
+================================================================
+FIGURE 3.3
+Skill Ontology Subgraph (Simple Version)
+================================================================
+
+Create a simple, clean directed graph diagram for an academic paper.
+White background. Easy to read at small sizes.
+Use Python networkx and matplotlib to generate this.
+
+Show exactly 6 nodes and the edges between them.
+Use a top-down tree layout.
+
+NODES (draw as rounded rectangles):
+
+Top center — dark navy (#1A237E), white text:
+  Label: "machine_learning"
+  Add small tag: "★ JD Requirement"
+
+Second level — two boxes side by side:
+  Left  — medium blue (#1565C0), white text: "deep_learning"
+  Right — medium blue (#1565C0), white text: "statistical_learning"
+
+Third level — two boxes below deep_learning:
+  Left  — light blue (#42A5F5), dark text, GOLD BORDER 3px:
+    Label: "pytorch"
+    Small tag below: "★ Resume Skill"
+  Right — light blue (#42A5F5), dark text:
+    Label: "tensorflow"
+
+One alias box, same level as pytorch, dashed gray border:
+  Label: "torch"
+  Small italic label: "(alias)"
+
+EDGES with labels:
+
+"pytorch" → "deep_learning"
+  solid arrow, label: "CHILD_OF  w=0.7"
+
+"tensorflow" → "deep_learning"
+  solid arrow, label: "CHILD_OF"
+
+"deep_learning" → "machine_learning"
+  solid arrow, label: "CHILD_OF  w=0.7"
+
+"statistical_learning" → "machine_learning"
+  solid arrow, label: "CHILD_OF"
+
+"torch" → "pytorch"
+  dashed gray arrow, label: "IS_ALIAS_OF  w=0.9"
+
+ONE special curved RED DASHED arrow:
+  From "pytorch" → "machine_learning"
+  Label: "Two-hop path  →  w = 0.3"
+  (this shows the actual traversal path used for scoring)
+
+ANNOTATION BOX at bottom of image:
+  Light yellow background (#FFFDE7), black border
+  Text:
+  "Keyword ATS score: 0
+  ExplainHire score:  w = 0.3  ✓"
+
+WEIGHT LEGEND in top-right corner — small simple box:
+  Exact match       w = 1.0
+  Alias             w = 0.9
+  Child → Parent    w = 0.7
+  Parent → Child    w = 0.5
+  Sibling           w = 0.4
+  Two-hop           w = 0.3
+
+Style: clean, minimal, sans-serif font 13pt.
+White background. No title text on image.
+Size: 900 x 650 pixels.
+
+
+================================================================
+FIGURE 3.4
+SHAP Feature Attribution Bar Chart
+================================================================
+
+Create a horizontal bar chart for an academic paper using matplotlib.
+White background, clean publication style.
+
+Center vertical line at x = 0.
+Label below center line: "Base value = 0.50"
+
+Features listed TOP to BOTTOM on Y-axis with exact SHAP values:
+
+Feature              | SHAP value | Bar direction
+---------------------|------------|---------------
+exact_matches        | +0.142     | RIGHT
+graph_score          | +0.098     | RIGHT
+coverage             | +0.071     | RIGHT
+sbert_score          | +0.063     | RIGHT
+section_score        | +0.021     | RIGHT
+edu_score            | +0.009     | RIGHT
+partial_matches      | +0.006     | RIGHT
+structural_score     | -0.019     | LEFT
+required_yoe         | -0.031     | LEFT
+yoe_score            | -0.048     | LEFT
+
+Bar colors by feature type:
+  Blue   (#1565C0): exact_matches, graph_score, coverage,
+                    partial_matches (symbolic/graph features)
+  Orange (#E65100): sbert_score (neural SBERT feature)
+  Green  (#2E7D32): edu_score, section_score (structural, positive)
+  Red    (#C62828): structural_score, required_yoe, yoe_score
+                    (negative SHAP, left-pointing bars)
+
+Show exact value label at tip of each bar in bold.
+
+X-axis label: "SHAP value (impact on prediction)"
+X-axis range: -0.08 to +0.18
+
+Annotation text at top of chart:
+  "Prediction: MATCH  |  Confidence: 87%"
+
+Small annotation box pointing to yoe_score bar:
+  "YOE gap: candidate 1yr vs required 3yr"
+
+Small annotation box pointing to exact_matches bar:
+  "6 of 9 required skills matched exactly"
+
+Text at bottom of chart:
+  "Final score = base (0.50) + Σ SHAP values = 0.812"
+
+Right side label: "→ Pushes toward MATCH"
+Left side label:  "Pushes toward NO MATCH ←"
+
+Style: no top/right chart borders, light gray gridlines,
+sans-serif font 13pt.
+Size: 900 x 550 pixels.
+No title text on image — caption is added in the document.
+
+
+================================================================
+FIGURE 5.1
+Ablation Study Bar Chart
+================================================================
+
+Create a vertical bar chart for an academic paper using matplotlib.
+White background, clean publication style.
+
+X-axis — 5 bars with exact labels left to right:
+  1. "TF-IDF\nonly"
+  2. "SBERT\nonly"
+  3. "Graph\nonly"
+  4. "Graph +\nSBERT"
+  5. "Full\nExplainHire"
+
+Y-axis:
+  Label: "Macro F1 Score"
+  Range: 0.0 to 1.0
+  Gridlines at: 0.2, 0.4, 0.6, 0.8, 1.0
+
+Bar heights — exact values from Table 5.1 in the report:
+  1. TF-IDF only:      0.037
+  2. SBERT only:       0.484
+  3. Graph only:       0.747
+  4. Graph + SBERT:    0.832
+  5. Full ExplainHire: 0.951
+
+Bar colors:
+  Bars 1 to 4: medium gray (#90A4AE)
+  Bar 5 only:  deep blue (#1565C0) with drop shadow
+
+Value label on top of each bar in bold black:
+  0.037 | 0.484 | 0.747 | 0.832 | 0.951
+
+Annotations:
+  - Double-headed arrow between bar 4 and bar 5
+    Label: "+11.86% over best baseline"
+  - Dashed horizontal red line at y = 0.832
+    Label: "Best baseline (Graph + SBERT)"
+  - Dashed horizontal green line at y = 0.951
+    Label: "Full ExplainHire"
+  - Small rounded badge below bar 5:
+    "CV F1 = 0.9045 ± 0.0085"
+
+Text note below the chart:
+  "conSultantBERT (prior work, 270K training pairs): F1 = 0.749
+  ExplainHire     (this work,   1,854 training pairs): F1 = 0.951"
+
+Style: no top/right chart borders, light gray gridlines,
+bold axis labels, sans-serif font.
+Size: 900 x 600 pixels.
+No title text on the image — caption is added in the document.
+
+
+================================================================
+FIGURE 3.3 (FULL VERSION) — Complete Ontology Graph
+Real data from ExplainHire's 434-node O*NET skill graph
+================================================================
+
+Use Python networkx and matplotlib to generate this.
+White background. Clean academic paper style.
+
+CONTEXT:
+This is the actual skill ontology graph used in ExplainHire, a
+neurosymbolic resume-job matching system. The graph has 434 nodes
+total derived from the O*NET occupational database plus manual
+extensions for Indian tech hiring. This image shows a representative
+subgraph of ~25 real nodes from the actual system, covering the
+Machine Learning, Web Development, and DevOps domains.
+
+SHOW THESE EXACT NODES (real nodes from the ExplainHire ontology):
+
+DOMAIN 1 — Machine Learning cluster (color: #1565C0 dark blue):
+  Root:     "machine_learning"
+  Children: "deep_learning", "statistical_learning", "nlp"
+  Under deep_learning: "pytorch", "tensorflow", "keras"
+  Under statistical_learning: "scikit_learn", "pandas", "numpy"
+  Under nlp: "transformers", "sbert", "spacy"
+  Alias edges:
+    "torch" → "pytorch"   (IS_ALIAS_OF)
+    "sklearn" → "scikit_learn"  (IS_ALIAS_OF)
+    "tf" → "tensorflow"   (IS_ALIAS_OF)
+
+DOMAIN 2 — Web Development cluster (color: #2E7D32 dark green):
+  Root:     "web_development"
+  Children: "frontend", "backend"
+  Under frontend: "react", "html_css", "javascript"
+  Under backend:  "node.js", "fastapi", "django"
+  Alias edges:
+    "reactjs" → "react"   (IS_ALIAS_OF)
+    "nodejs" → "node.js"  (IS_ALIAS_OF)
+
+DOMAIN 3 — DevOps cluster (color: #E65100 dark orange):
+  Root:     "devops"
+  Children: "containerization", "ci_cd"
+  Under containerization: "docker", "kubernetes"
+  Under ci_cd: "jenkins", "github_actions"
+  Alias edges:
+    "k8s" → "kubernetes"  (IS_ALIAS_OF)
+
+NODE VISUAL DESIGN:
+  - Root nodes of each domain: large rectangle, dark color, white text
+  - Mid-level nodes: medium rectangle, medium color, white text
+  - Leaf nodes (actual skills): smaller rectangle, light color, dark text
+  - Alias nodes: dashed border, light gray fill, italic text, small size
+  - HIGHLIGHT these 2 nodes with special borders:
+      "pytorch"  — thick GOLD border (3px), label: "★ In Resume"
+      "machine_learning" — thick RED border (3px), label: "★ In JD"
+
+EDGES:
+  - All CHILD_OF edges: solid dark gray arrows, pointing upward (child→parent)
+  - All IS_ALIAS_OF edges: dashed light gray arrows
+  - ONE special curved red dashed arrow from "pytorch" to "machine_learning"
+    Label on this arrow: "Two-hop traversal  w = 0.3"
+
+LAYOUT:
+  - Three separate cluster groups arranged left-center-right
+  - ML cluster on LEFT
+  - Web Dev cluster in CENTER
+  - DevOps cluster on RIGHT
+  - Each cluster has its root at the top, leaves at bottom
+  - Leave clear space between clusters
+
+ANNOTATION BOX (bottom center, light yellow #FFFDE7, black border):
+  "ExplainHire Skill Ontology: 434 nodes total
+  Derived from O*NET database + 127 manually added tech nodes
+  Edge types: CHILD_OF (subsumption) | IS_ALIAS_OF (synonymy)
+  Example: 'pytorch' in resume matches 'machine_learning' in JD
+  via two-hop traversal → assigned weight w = 0.3"
+
+WEIGHT LEGEND (top right corner, small clean box):
+  Exact match       w = 1.0   ██ (solid line)
+  Alias match       w = 0.9   ██ (dashed)
+  Child → Parent    w = 0.7
+  Parent → Child    w = 0.5
+  Sibling           w = 0.4
+  Two-hop           w = 0.3
+
+DOMAIN COLOR LEGEND (top left corner):
+  ■ Blue  = Machine Learning domain
+  ■ Green = Web Development domain
+  ■ Orange = DevOps domain
+
+Style: clean, readable, sans-serif font 11pt for leaf nodes,
+13pt for root nodes. No background color on canvas — white only.
+Size: 1400 x 900 pixels.
+No title on the image — caption will be added in the document.
+
+
+================================================================
+WHERE TO ADD THE ONTOLOGY GRAPH IN THE REPORT
+================================================================
+
+LOCATION: Chapter 3 — System Architecture
+Section:  3.6.1 — L4a Graph Matcher (Symbolic AI) → "Ontology Graph Structure"
+Page:     14-15
+
+EXACT SPOT — After this paragraph:
+  "Manual Extension: O*NET's technology coverage is biased toward
+  U.S. occupational contexts and does not include many skills that
+  are central to Indian software engineering hiring. We manually
+  added nodes for frameworks, tools, and technologies that appear
+  in our 17 real job descriptions and 144 real resumes, including
+  Flutter, FastAPI, Golang, Redis, Docker, Kubernetes, and their
+  relationships."
+
+AND before this sentence:
+  "Figure 3.3 illustrates an example subgraph of the ontology,
+  showing how skills are organized hierarchically and how
+  partial-credit matching works across ontological distances."
+
+So the sentence "Figure 3.3 illustrates..." already exists in your
+report — just place the image right before it and it will
+serve as the figure being referenced.
+
+CAPTION TO USE IN REPORT:
+  "Figure 3.3: Representative subgraph of the ExplainHire skill
+  ontology showing three domain clusters (Machine Learning, Web
+  Development, DevOps) with real nodes from the 434-node graph.
+  CHILD_OF edges (solid) encode IS-A subsumption; IS_ALIAS_OF
+  edges (dashed) encode surface-form synonymy. The highlighted
+  traversal (pytorch → machine_learning, w = 0.3) illustrates
+  how partial-credit matching captures competence that keyword
+  ATS systems would score as zero."
+
+WHY THIS LOCATION MAKES SENSE:
+  - You just finished explaining where the ontology came from
+    (O*NET + manual extension)
+  - The reader now needs to SEE what the graph looks like
+    before you explain the traversal algorithm in the next
+    subsection
+  - The sentence "Figure 3.3 illustrates..." is already written
+    in your report — so the reference is already there,
+    you just need the image
+
+================================================================
+END OF PROMPTS
+================================================================

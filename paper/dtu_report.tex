@@ -11,7 +11,6 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{caption}
-\usepackage{subcaption}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{tocloft}
@@ -25,7 +24,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{float}
-\usepackage{svg}
+\usepackage{tikz}
 
 \hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue}
 
@@ -46,7 +45,7 @@
 % ── Header/Footer ─────────────────────────────────────────────────────────────
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\textit{ExplainHire — B.Tech Major Project Report}}
+\fancyhead[L]{\small\textit{ExplainHire --- B.Tech Major Project Report}}
 \fancyhead[R]{\small\textit{DTU, 2025--26}}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
@@ -57,6 +56,14 @@
   breaklines=true,
   frame=single,
   backgroundcolor=\color{gray!10}
+}
+
+% ── Figure placeholder command ────────────────────────────────────────────────
+\newcommand{\figplaceholder}[2][0.85\textwidth]{%
+  \begin{tikzpicture}
+    \draw[thick, dashed, gray] (0,0) rectangle (#1, 5cm);
+    \node[gray] at (#1/2, 2.5cm) {\textit{[Figure: #2]}};
+  \end{tikzpicture}%
 }
 
 % ══════════════════════════════════════════════════════════════════════════════
@@ -71,9 +78,6 @@
 \textbf{\large DELHI TECHNOLOGICAL UNIVERSITY}\\[2pt]
 {\small (Formerly Delhi College of Engineering)}\\
 {\small Bawana Road, Delhi--110042}\\[24pt]
-
-% Uncomment if you have the DTU logo:
-% \includegraphics[width=3cm]{dtu_logo.png}\\[20pt]
 
 \rule{\linewidth}{0.5pt}\\[12pt]
 
@@ -128,23 +132,14 @@ Delhi Technological University\\[28pt]
 
 \vspace{14pt}
 
-We, \textbf{Yoosha Raza (2K22/CO/521)}, \textbf{Yanshu (2K22/CO/507)}, and \textbf{Yogarth (2K22/CO/519)}, students of B.Tech (Computer Science \& Engineering), Batch 2022--2026, hereby declare that the Project Dissertation titled:
+We, \textbf{Yoosha Raza (2K22/CO/521)}, \textbf{Yanshu (2K22/CO/507)}, and \textbf{Yogarth (2K22/CO/519)}, students of B.Tech (Computer Science \& Engineering), Batch 2022--2026, hereby declare that the Project Dissertation titled \textit{``ExplainHire: Neurosymbolic AI for Explainable Resume--Job Matching''}, submitted to the Department of Computer Science \& Engineering, Delhi Technological University, is an original work carried out by us. This work has not previously formed the basis for the award of any Degree, Diploma, or similar title by this or any other institution. All sources have been duly cited and referenced.
 
-\begin{center}
-\textit{``ExplainHire: Neurosymbolic AI for Explainable Resume--Job Matching''}
-\end{center}
+The implementation, experiments, results, and analysis presented in this report are the result of our own independent work, conducted between August 2025 and May 2026, under the supervision of \textbf{Gull Kaur}, Assistant Professor, CSE, DTU.
 
-which is submitted by us to the Department of Computer Science \& Engineering, Delhi Technological University, Delhi, in fulfillment of the requirement for the award of the degree of Bachelor of Technology, is an original work carried out by us. This work has not previously formed the basis for the award of any Degree, Diploma, Associateship, Fellowship, or any other similar title or recognition by this or any other institution or university. All sources of information used in this work have been duly cited and referenced.
+\vspace{24pt}
+\noindent Place: New Delhi \hfill Date: May 2026
 
-We further declare that the implementation, experiments, results, and analysis presented in this report are the result of our own independent work, conducted between August 2025 and May 2026, under the supervision of \textbf{Gull Kaur}, Assistant Professor, Department of Computer Science \& Engineering, Delhi Technological University.
-
-\vspace{30pt}
-
-\noindent Place: New Delhi\\
-Date: May 2026
-
-\vspace{40pt}
-
+\vspace{36pt}
 \begin{tabular}{p{4cm} p{4cm} p{4cm}}
 \textbf{Yoosha Raza} & \textbf{Yanshu} & \textbf{Yogarth} \\
 (2K22/CO/521) & (2K22/CO/507) & (2K22/CO/519) \\
@@ -168,31 +163,17 @@ Date: May 2026
 
 \vspace{14pt}
 
-This is to certify that the project report titled:
+This is to certify that the project report titled \textit{``ExplainHire: Neurosymbolic AI for Explainable Resume--Job Matching''}, submitted by \textbf{Yoosha Raza (2K22/CO/521)}, \textbf{Yanshu (2K22/CO/507)}, and \textbf{Yogarth (2K22/CO/519)} in partial fulfillment of the requirements for the award of the degree of \textbf{Bachelor of Technology in Computer Science \& Engineering} from Delhi Technological University, is a bonafide record of the project work carried out by them under my guidance during the academic year 2025--26.
 
-\begin{center}
-\textit{``ExplainHire: Neurosymbolic AI for Explainable Resume--Job Matching''}
-\end{center}
-
-submitted by \textbf{Yoosha Raza (2K22/CO/521)}, \textbf{Yanshu (2K22/CO/507)}, and \textbf{Yogarth (2K22/CO/519)} in partial fulfillment of the requirements for the award of the degree of \textbf{Bachelor of Technology in Computer Science \& Engineering} from Delhi Technological University is a bonafide record of the project work carried out by them under my guidance and supervision during the academic year 2025--26.
-
-The project work reported herein is original and has not been submitted to any other university or institution, either in whole or in part, for the award of any degree or diploma. To the best of my knowledge and belief, this work satisfies the requirements prescribed for the Major Project of the B.Tech programme at Delhi Technological University.
-
-I recommend this project report for acceptance.
+The project work is original and has not been submitted to any other university or institution. I recommend this report for acceptance.
 
 \vspace{30pt}
+\noindent Place: New Delhi \hfill Date: May 2026
 
-\noindent Place: New Delhi\\
-Date: May 2026
-
-\vspace{40pt}
-
+\vspace{36pt}
 \noindent\textbf{Gull Kaur}\\
 (Supervisor)\\
-Assistant Professor\\
-Department of Computer Science \& Engineering\\
-Delhi Technological University\\
-Delhi -- 110042
+Assistant Professor, CSE, DTU, Delhi--110042
 
 \vspace*{\fill}
 \begin{center}{\small \textit{ii}}\end{center}
@@ -208,17 +189,17 @@ Delhi -- 110042
 
 \vspace{10pt}
 
-\noindent\textbf{Keywords---} Neurosymbolic Artificial Intelligence, Resume--Job Description Matching, Skill Ontology Graph, Sentence-BERT, XGBoost, SHAP Explainability, Applicant Tracking System, Natural Language Processing, Information Retrieval
+\noindent\textbf{Keywords---} Neurosymbolic AI, Resume--Job Matching, Skill Ontology, Sentence-BERT, XGBoost, SHAP Explainability, Applicant Tracking System, NLP
 
 \vspace{12pt}
 
-Automated resume screening represents one of the most consequential yet technically underdeveloped applications of artificial intelligence in modern industry. Existing Applicant Tracking Systems (ATS), which filter the majority of job applications before any human review, rely fundamentally on keyword co-occurrence and rule-based scoring. This approach suffers from two well-documented and critical failures: \textit{semantic blindness}, wherein semantically equivalent skill descriptions fail to match due to surface-form differences, and \textit{decision opacity}, wherein neither candidates nor recruiters can obtain any structured justification for a screening outcome. These failures have measurable real-world consequences --- qualified candidates are systematically eliminated based on phrasing choices, and recruitment processes lack the auditability required by emerging regulatory frameworks around algorithmic decision-making in employment.
+Existing Applicant Tracking Systems (ATS) rely on keyword co-occurrence to screen resumes, causing two critical failures: \textit{semantic blindness} (equivalent skills described differently score zero) and \textit{decision opacity} (no structured justification for outcomes). This report presents \textbf{ExplainHire}, a neurosymbolic AI system that resolves both.
 
-This report presents \textbf{ExplainHire}, a neurosymbolic artificial intelligence system for explainable resume--job description matching. ExplainHire is organized as a seven-layer sequential pipeline that addresses both failures simultaneously. The system integrates three complementary matching signals: (1) a \textbf{symbolic skill ontology graph} comprising 434 nodes and hierarchical IS-A relationships derived from the O*NET occupational database, enabling six-level weighted graph traversal that captures exact matches, alias matches, and ontological proximity relationships between skills; (2) a \textbf{domain-adapted SBERT sentence embedding model} (\texttt{all-MiniLM-L6-v2}) fine-tuned on 887 real resume--job description pairs drawn from 144 genuine B.Tech student resumes matched against 17 real industry job descriptions manually collected from Naukri and LinkedIn, covering roles spanning Full Stack Development, Data Science, Backend Engineering, Flutter Development, Machine Learning Engineering, and Golang Development; and (3) \textbf{structural feature signals} capturing years-of-experience gap, education level gap, and resume section coverage. These three signals are decomposed into 14 numeric features and fused by an XGBoost classifier trained on 1,854 labeled resume--job description pairs assembled from synthetic, Kaggle, and real-world sources.
+ExplainHire integrates three complementary matching signals in a seven-layer pipeline: (1) a \textbf{434-node symbolic skill ontology graph} derived from O*NET, enabling six-level weighted traversal capturing exact, alias, and ontological proximity matches; (2) a \textbf{domain-adapted SBERT model} (\texttt{all-MiniLM-L6-v2}) fine-tuned on 887 real resume--JD pairs from 144 genuine B.Tech student resumes matched against 17 industry job descriptions; and (3) \textbf{structural features} capturing years-of-experience gap, education level, and resume section coverage. The three signals are decomposed into 14 numeric features and fused by an XGBoost classifier trained on 1,854 labeled pairs.
 
-Explainability is delivered through two mechanisms: SHAP (SHapley Additive exPlanations) TreeExplainer provides feature-level attribution for every prediction, while a sentence-level evidence mapper identifies the precise resume sentence supporting each matched skill claim. A skill gap ranker computes counterfactual score improvements for each missing skill and presents them in ranked order with curated learning resource links.
+Explainability is delivered through SHAP TreeExplainer (feature-level attribution) and a sentence-level evidence mapper (exact resume sentence proving each matched skill), complemented by a counterfactual skill gap ranker.
 
-ExplainHire achieves a five-fold stratified cross-validated F1 score of \textbf{0.9045} and a full-dataset F1 of \textbf{0.951}, representing an improvement of \textbf{+11.86\%} over the best single-ablation configuration (Graph + SBERT without structural features, F1 = 0.832). On the public ResuméAtlas benchmark dataset (Heakl et al., 2024), containing 13,389 resumes across 43 job categories, ExplainHire achieves a macro F1 of \textbf{0.720}, outperforming the reported TF-IDF baseline of 0.61 by \textbf{+11.06\%}. ExplainHire achieves the highest reported F1 among all comparable published systems and is, to our knowledge, the first resume--job matching system to provide structured, auditable, sentence-level explanations combined with ranked skill gap analysis.
+ExplainHire achieves a 5-fold stratified CV F1 of \textbf{0.9045} and a full-dataset F1 of \textbf{0.951}, representing \textbf{+11.86\%} improvement over the best single-signal baseline (Graph + SBERT, F1 = 0.832). On the public ResumeAtlas benchmark (Heakl et al., 2024), it achieves macro F1 of \textbf{0.720} vs. a reported TF-IDF baseline of 0.61 (\textbf{+11.06\%}). ExplainHire is, to our knowledge, the first resume--job matching system to provide structured, auditable, sentence-level explanations combined with ranked skill gap analysis.
 
 \vspace*{\fill}
 \begin{center}{\small \textit{iii}}\end{center}
@@ -234,20 +215,13 @@ ExplainHire achieves a five-fold stratified cross-validated F1 score of \textbf{
 
 \vspace{12pt}
 
-The successful completion of this project has been made possible through the support, guidance, and generosity of many individuals, and we take this opportunity to express our sincere and heartfelt gratitude to each of them.
+We are deeply grateful to our project supervisor, \textbf{Gull Kaur}, Assistant Professor, CSE, DTU, for her invaluable guidance throughout this project. Her insight into artificial intelligence and natural language processing shaped every stage of our work.
 
-First and foremost, we are deeply grateful to our project supervisor, \textbf{Gull Kaur}, Assistant Professor, Department of Computer Science \& Engineering, Delhi Technological University, for her invaluable guidance throughout the course of this project. Her insight into the intersection of artificial intelligence, natural language processing, and human-centered system design continuously shaped the direction of our work. Her willingness to engage with our ideas critically and constructively, and to challenge us to think beyond implementation toward genuine research contributions, has been the single most important factor in the quality of this work.
+We thank the \textbf{Head of Department} and all faculty of the CSE Department, DTU, for creating a research environment that supports ambitious final-year projects. We owe a special debt to our \textbf{144 fellow B.Tech students} who generously contributed their resumes --- our results rest on their participation. We also thank the creators of O*NET, the sentence-transformers library, the ResumeAtlas benchmark, and the Kaggle resume dataset.
 
-We express our sincere gratitude to the \textbf{Head of Department} and all faculty members of the Department of Computer Science \& Engineering, Delhi Technological University, for creating a research environment that encourages ambitious final-year projects and provides the academic resources necessary to pursue them.
+Finally, we thank our \textbf{families and parents}, whose unwavering support through four years of engineering education made everything possible.
 
-We owe a special debt of gratitude to our \textbf{144 fellow B.Tech students} who generously contributed their resumes to our dataset. The quality of our training data --- and therefore the quality of our results --- rests entirely on their willingness to share their professional documents for academic research. This project would not exist without them.
-
-We also thank the creators of the open-source tools and datasets that made this work possible: the O*NET Center at the University of North Carolina for the occupational skills database; the authors of the sentence-transformers library; the creators of the ResuméAtlas public benchmark; and the contributors to the Kaggle resume dataset.
-
-Finally, and most importantly, we thank our \textbf{families and parents}, whose unwavering support --- emotional, practical, and financial --- through four years of engineering education has made everything possible. This work is dedicated to them.
-
-\vspace{40pt}
-
+\vspace{36pt}
 \begin{tabular}{p{4cm} p{4cm} p{4cm}}
 \textbf{Yoosha Raza} & \textbf{Yanshu} & \textbf{Yogarth} \\
 (2K22/CO/521) & (2K22/CO/507) & (2K22/CO/519) \\
@@ -272,7 +246,6 @@ Finally, and most importantly, we thank our \textbf{families and parents}, whose
 \textbf{\Large LIST OF SYMBOLS, ABBREVIATIONS AND NOMENCLATURE}\\[4pt]
 \rule{0.5\linewidth}{0.4pt}
 \end{center}
-
 \vspace{14pt}
 
 \begin{longtable}{p{3cm} p{10cm}}
@@ -292,27 +265,19 @@ CV & Cross-Validation \\
 F1 & F1 Score (harmonic mean of Precision and Recall) \\
 TF-IDF & Term Frequency -- Inverse Document Frequency \\
 DTU & Delhi Technological University \\
-PDF & Portable Document Format \\
-DOCX & Microsoft Word Document Format \\
 API & Application Programming Interface \\
-REST & Representational State Transfer \\
 BERT & Bidirectional Encoder Representations from Transformers \\
-CNN & Convolutional Neural Network \\
-GNN & Graph Neural Network \\
 DiGraph & Directed Graph \\
-IS-A & Ontological subsumption relationship (child is a type of parent) \\
+IS-A & Ontological subsumption relationship \\
 LR & Logistic Regression \\
-SVM & Support Vector Machine \\
-HOD & Head of Department \\
 $G$ & Skill ontology graph \\
 $V$ & Set of ontology nodes (skills) \\
 $E$ & Set of ontology edges (relationships) \\
-$S_R$ & Set of skills extracted from resume \\
-$S_J$ & Set of skills required in job description \\
-$w(s_r, s_j)$ & Ontology traversal weight between skill $s_r$ and $s_j$ \\
-$\vec{v}_R$ & SBERT embedding vector of resume text \\
-$\vec{v}_J$ & SBERT embedding vector of job description text \\
-$\mathcal{L}$ & Training loss function \\
+$S_R$ & Skills extracted from resume \\
+$S_J$ & Skills required in job description \\
+$w(s_r, s_j)$ & Ontology traversal weight \\
+$\vec{v}_R$ & SBERT embedding of resume \\
+$\vec{v}_J$ & SBERT embedding of job description \\
 \bottomrule
 \end{longtable}
 
@@ -327,66 +292,40 @@ $\mathcal{L}$ & Training loss function \\
 
 \section{Overview and Motivation}
 
-The modern job market operates at a scale that fundamentally exceeds human processing capacity. In India alone, Naukri.com reports receiving over 80 million registered job seekers interacting with millions of active job postings at any given time. LinkedIn India hosts over 100 million professionals, and the volume of resume submissions for a single corporate job posting routinely exceeds several hundred applications within the first 48 hours of posting. This volume has made automated resume screening not merely convenient but operationally necessary for most organizations of scale.
+The modern job market operates at a scale that exceeds human processing capacity. A single corporate job posting routinely receives several hundred applications within 48 hours, making automated resume screening operationally necessary. The dominant technology for this screening is the \textbf{Applicant Tracking System (ATS)} --- platforms such as Workday, Greenhouse, and their Indian equivalents embedded in Naukri and LinkedIn Recruiter. These systems score candidate profiles against job descriptions using keyword frequency and rule-based matching, and industry surveys consistently show that 75--88\% of applicants are eliminated at this stage before any human reads their application.
 
-The dominant technology used for this screening is the \textbf{Applicant Tracking System (ATS)} --- software platforms such as Workday, Greenhouse, iCIMS, and their Indian equivalents built into Naukri and LinkedIn Recruiter. These systems parse resumes into structured fields and score candidate profiles against job descriptions using keyword frequency and rule-based matching. The fundamental algorithm underlying most commercial ATS products has not changed substantially in two decades: count how many words from the job description appear in the resume, apply weights to preferred terms, and rank candidates accordingly.
+This approach suffers from two fundamental failures. First, it is \textit{semantically blind}: a system that scores ``built distributed backend services with Go'' as zero against a JD requiring ``Golang developer with microservices experience'' has not understood anything --- it has merely counted words. Second, it is \textit{completely opaque}: neither candidates nor recruiters can obtain any structured justification for a screening outcome. Emerging regulations such as the EU AI Act classify employment-related AI systems as ``high-risk'' and mandate explainability, human oversight, and documentation of decision logic.
 
-This approach is deeply flawed. Research consistently shows that ATS systems eliminate between 75\% and 88\% of applicants before any human review --- and that a significant fraction of those eliminated candidates would have been strong matches had the system understood the content of their resumes rather than merely their surface text. The problem is not lack of computational power; it is an architectural limitation. Keyword matching is \textit{semantically blind} and \textit{completely opaque}. A system that scores ``built distributed backend services with Go'' as zero against a job description requiring ``Golang developer with microservices experience'' has not understood anything --- it has merely counted words.
-
-Beyond the candidate experience, this opacity creates systemic problems for employers. Hiring decisions made by black-box systems cannot be audited, cannot be explained to candidates who request justification, and increasingly cannot comply with emerging regulations around algorithmic accountability in employment. The European Union's AI Act, for example, classifies employment-related AI systems as ``high-risk'' and mandates explainability, human oversight, and documentation of decision logic. Indian regulatory frameworks around workplace discrimination are evolving similarly.
-
-\textbf{ExplainHire} is our response to this problem. It is a \textbf{neurosymbolic artificial intelligence system} that combines the structured reasoning capability of symbolic AI (a 434-node skill ontology graph derived from the O*NET occupational database) with the semantic language understanding capability of neural AI (a fine-tuned SBERT sentence embedding model trained on real recruitment data) and the learned fusion of a gradient-boosted classifier (XGBoost). The result is a system that not only predicts match/no-match with state-of-the-art accuracy (F1 = 0.951) but provides complete, structured, sentence-level explanations for every decision it makes.
+\textbf{ExplainHire} addresses both failures. It is a \textbf{neurosymbolic AI system} that combines a 434-node skill ontology graph (symbolic AI), a fine-tuned SBERT sentence embedding model (neural AI), and an XGBoost gradient-boosted classifier (learned fusion), delivering a full match/no-match prediction with sentence-level, SHAP-attributed explanations for every decision.
 
 \section{Problem Statement}
 
-The technical problem addressed by ExplainHire can be formally stated as follows.
+Given a resume document $R$ (PDF or DOCX) and a job description $J$ (plain text), produce:
 
-Given:
-\begin{itemize}
-  \item A resume document $R$ in PDF or DOCX format, containing unstructured text describing a candidate's skills, work experience, education, and projects
-  \item A job description $J$ as plain text, specifying required skills, years of experience, educational qualifications, and role responsibilities
-\end{itemize}
-
-\noindent Produce:
 \begin{enumerate}
-  \item A binary classification label $\hat{y} \in \{0, 1\}$ where $\hat{y} = 1$ indicates that the candidate represented by $R$ is a suitable match for the role described by $J$, with an associated confidence probability $p \in [0, 1]$
-  \item An explanation structure $E$ containing:
-    \begin{itemize}
-      \item For each skill $s \in S_J$ (required by the JD): whether it was matched, at what ontological distance, and if matched, the specific sentence in $R$ that provides evidence of the skill
-      \item A ranked list of missing skills $s \in S_J \setminus S_R$, ordered by their estimated counterfactual impact on the match score
-      \item A SHAP feature attribution vector indicating which of the 14 input features were most influential in the classification decision
-    \end{itemize}
+  \item A binary label $\hat{y} \in \{0, 1\}$ with confidence $p \in [0,1]$
+  \item An explanation structure $E$ containing: per-skill match evidence (matched skill, ontological distance, resume evidence sentence), ranked missing skill list ordered by counterfactual impact, and SHAP feature attribution across 14 input features
 \end{enumerate}
 
-This is treated as a supervised binary classification problem over a structured 14-dimensional feature space, with explainability generated through a combination of SHAP attribution and rule-based evidence extraction.
+This is treated as supervised binary classification over a 14-dimensional feature space with post-hoc explainability via SHAP and rule-based evidence extraction.
 
 \section{Research Contributions}
 
-The specific research contributions of this project are:
-
 \begin{enumerate}
-  \item \textbf{A neurosymbolic matching pipeline}: The first resume--job matching system to simultaneously employ symbolic ontology graph traversal, fine-tuned neural sentence embeddings, and structural feature signals, fused by a learned classifier. No prior published system combines all three signal types.
-
-  \item \textbf{A domain-specific skill ontology}: A 434-node directed graph of skill relationships derived from the O*NET occupational database and extended with technology-specific nodes relevant to Indian software engineering hiring contexts, with a complementary 800-entry alias normalization table.
-
-  \item \textbf{Domain-adapted SBERT for hiring}: Fine-tuning of \texttt{all-MiniLM-L6-v2} on 887 real resume--job description pairs from genuine B.Tech student resumes and industry job postings, adapting the model to the specific semantic patterns of technical hiring.
-
-  \item \textbf{Structured explainability}: Sentence-level evidence mapping that identifies the exact resume sentence proving each matched skill, combined with counterfactual skill gap analysis that tells candidates specifically what to learn and in what order.
-
-  \item \textbf{State-of-the-art performance with public validation}: F1 = 0.951 on our dataset (CV F1 = 0.9045) and F1 = 0.720 on the public ResuméAtlas benchmark, with full ablation study validating the contribution of each component.
+  \item \textbf{Neurosymbolic matching pipeline}: The first resume--job matching system to simultaneously employ symbolic ontology traversal, fine-tuned neural embeddings, and structural features fused by a learned classifier.
+  \item \textbf{Domain-specific skill ontology}: A 434-node directed graph derived from O*NET and extended for Indian software engineering hiring, with an 800-entry alias normalization table.
+  \item \textbf{Domain-adapted SBERT}: Fine-tuned \texttt{all-MiniLM-L6-v2} on 887 real resume--JD pairs, adapting the model to technical hiring semantics.
+  \item \textbf{Structured explainability}: Sentence-level evidence mapping and counterfactual skill gap analysis with ranked learning resources.
+  \item \textbf{State-of-the-art results with public validation}: CV F1 = 0.9045, full-data F1 = 0.951, ResumeAtlas F1 = 0.720 --- highest reported among comparable published systems.
 \end{enumerate}
 
 \section{Scope and Limitations}
 
-ExplainHire is designed and validated for technical and software engineering job roles. The ontology and alias table cover technology skills relevant to roles in software development, data science, machine learning, and related fields. Extension to non-technical domains (law, medicine, finance) would require ontology expansion and new fine-tuning data.
-
-The system accepts resume text in English and processes job descriptions written in English. Multi-lingual support is a direction for future work.
-
-Classification is binary (match/no-match). Ranking across multiple candidates is achievable by comparing confidence scores but is not the primary evaluated task.
+ExplainHire is validated for technical and software engineering roles in English. The ontology covers technology skills relevant to software development, data science, and machine learning. Extension to non-technical domains, multi-lingual resumes, or candidate ranking across a pool are directions for future work.
 
 \section{Report Organization}
 
-The remainder of this report is organized as follows. Chapter 2 provides background on automated recruitment systems and reviews relevant prior work in resume matching, graph-based skill modeling, and explainable AI. Chapter 3 describes the complete seven-layer system architecture in detail. Chapter 4 covers the dataset construction, labeling methodology, and model training procedures. Chapter 5 presents experimental results including the ablation study, external benchmark evaluation, and comparison with prior work. Chapter 6 discusses design decisions, limitations, and future directions. Chapter 7 concludes the report.
+Chapter 2 reviews prior work and relevant background. Chapter 3 describes the system architecture in full. Chapter 4 covers dataset construction and model training. Chapter 5 presents experimental results. Chapter 6 discusses design trade-offs and limitations. Chapter 7 concludes.
 
 % ══════════════════════════════════════════════════════════════════════════════
 % CHAPTER 2 — BACKGROUND AND RELATED WORK
@@ -395,44 +334,31 @@ The remainder of this report is organized as follows. Chapter 2 provides backgro
 
 \section{The Recruitment Technology Landscape}
 
-Modern recruitment is mediated by software at virtually every stage. A typical hiring pipeline at a large organization proceeds as follows: a recruiter posts a job description on platforms such as Naukri, LinkedIn, or the company careers portal; candidates submit resumes through an online form; the ATS parses and indexes all submissions; automated filters eliminate candidates below a threshold; the surviving pool is reviewed by human recruiters; shortlisted candidates proceed to interviews.
-
-The ATS filter is the critical bottleneck. Industry surveys conducted by Jobscan and Resume Worded consistently find that 75--88\% of applicants are eliminated at the ATS stage, before any human has read their application. For a competitive role receiving 500 applications, this means approximately 375--440 candidates are rejected by an algorithm. The accuracy of this algorithmic filter therefore has enormous consequences --- not merely for individual candidates but for the quality of talent pools that organizations build.
-
-Despite this consequence, the core technology underlying most ATS products remains primitive. The standard approach is:
-
-\begin{enumerate}
-  \item Parse resume into fields (name, education, skills, work history)
-  \item Extract keywords from the job description
-  \item Score each resume by the count and weight of keyword overlaps
-  \item Rank candidates by score and apply a cutoff threshold
-\end{enumerate}
-
-This approach has a well-understood fundamental flaw: it is \textbf{lexically sensitive} but \textbf{semantically blind}. It treats language as a bag of tokens with no understanding of meaning, context, or conceptual relationships. A candidate who writes ``developed machine learning models for fraud detection'' scores zero against a JD that requires ``AI engineer with experience in anomaly detection,'' despite the two descriptions being substantively equivalent.
+Despite the consequences of ATS filtering --- 75--88\% of applicants rejected before human review --- the core technology underlying most ATS products remains primitive. The standard algorithm parses resumes into fields, extracts keywords from job descriptions, scores each resume by keyword overlap count, and ranks candidates by score. This is \textbf{lexically sensitive but semantically blind}: a candidate who writes ``developed machine learning models for fraud detection'' scores zero against a JD requiring ``AI engineer with experience in anomaly detection,'' despite the substantive equivalence.
 
 \section{Prior Work in Resume--Job Matching}
 
-\subsection{Neural Representation Learning Approaches}
+\subsection{Neural Representation Learning}
 
-\textbf{PJFNN (Zhu et al., 2018)} \cite{zhu2018} introduced the Person-Job Fit Neural Network, one of the earliest deep learning approaches to resume--job matching. PJFNN uses a hierarchical Convolutional Neural Network (CNN) to learn joint representations of resumes and job descriptions from user click behavior logs collected from the Baidu recruitment platform. By training on implicit feedback from millions of candidate-recruiter interactions, the model learns to embed resumes and job descriptions in a shared semantic space where matching pairs cluster together. PJFNN achieves F1 = 0.800 on its proprietary dataset. However, it requires large volumes of implicit feedback data that are unavailable to most practitioners, provides no explanation for its decisions, and does not capture structured skill relationships.
+\textbf{PJFNN} \cite{zhu2018} (Zhu et al., 2018) introduced a hierarchical CNN learning joint representations of resumes and JDs from Baidu click behavior logs, achieving F1 = 0.800 on a proprietary dataset. It requires large implicit feedback data, provides no explanations, and ignores structured skill relationships.
 
-\textbf{Li et al. (2020)} \cite{li2020} proposed a BERT-based model with multi-head attention for collaborative recruitment matching on the CRC (Collaborative Recruitment Corpus) dataset. The model applies BERT to encode resume and job description text, then uses multi-head attention to compute cross-document interactions. Reported accuracy is 0.792 on that dataset. While BERT provides substantially better language understanding than CNN approaches, the model remains a black box --- attention weights in BERT are not reliably interpretable and do not provide structured explanations.
+\textbf{Li et al.} \cite{li2020} (2020) applied BERT with multi-head attention for cross-document interaction, reporting accuracy 0.792. While semantically richer than CNN approaches, the model is a black box.
 
 \subsection{Graph and Multi-View Approaches}
 
-\textbf{Bian et al. (2020)} \cite{bian2020} presented a multi-view co-teaching network for job--resume matching that combines graph neural network representations with BERT text representations. The system constructs co-occurrence graphs from candidate and job description tokens and applies GNN message passing to capture structural relationships. The multi-view fusion achieves approximately F1 = 0.76--0.80 on private datasets. This is the closest architectural precedent to ExplainHire in that it combines graph and neural signals; however, the graph component is co-occurrence based rather than a structured domain ontology, and no explainability is provided.
+\textbf{Bian et al.} \cite{bian2020} (2020) combined GNN representations with BERT using a co-teaching multi-view network, achieving approximately F1 = 0.78. The graph component is co-occurrence-based rather than a structured domain ontology, and no explainability is provided.
 
 \subsection{Sentence Embedding Approaches}
 
-\textbf{conSultantBERT (Lavi et al., 2021)} \cite{lavi2021} fine-tuned Sentence-BERT on the proprietary Randstad recruitment dataset using a Siamese network architecture to learn similarity between job titles and candidate profiles. ConSultantBERT achieves F1 = 0.749 on the Randstad dataset. This is the most directly comparable work to our SBERT fine-tuning component. The key differences are: (1) conSultantBERT fine-tunes on a proprietary dataset that cannot be reproduced or extended; (2) it does not combine neural embeddings with symbolic ontology signals; and (3) it provides no explanation for its similarity scores.
+\textbf{conSultantBERT} \cite{lavi2021} (Lavi et al., 2021) fine-tuned Sentence-BERT on the proprietary Randstad recruitment dataset using a Siamese architecture, achieving F1 = 0.749. It is the closest precedent to our SBERT component; key differences are its proprietary data and absence of symbolic or structural signals.
 
-\subsection{Benchmark and Baseline Work}
+\subsection{Benchmark Work}
 
-\textbf{Heakl et al. (2024)} \cite{heakl2024} introduced the ResuméAtlas dataset, comprising 13,389 resumes across 43 job categories, and established a TF-IDF + XGBoost baseline achieving macro F1 = 0.61 on this dataset. ResuméAtlas is the only public large-scale resume dataset with labeled job category annotations among all prior work we reviewed. All other datasets used in the papers cited above are private and unavailable for external validation. This makes ResuméAtlas uniquely valuable as an independent benchmark, which is why we use it for external validation in Section 5.2.
+\textbf{Heakl et al.} \cite{heakl2024} (2024) introduced the ResumeAtlas dataset (13,389 resumes, 43 categories) with a TF-IDF + XGBoost baseline achieving macro F1 = 0.610. This is the only large-scale public benchmark in the field, and we use it for external validation.
 
-\subsection{Summary of Prior Work Limitations}
+\subsection{Prior Work Comparison}
 
-Table \ref{tab:priorwork_compare} summarizes the key dimensions along which ExplainHire differs from all prior work.
+Table \ref{tab:priorwork_compare} summarizes the key dimensions on which ExplainHire advances over all prior work.
 
 \begin{table}[h]
 \centering
@@ -448,36 +374,29 @@ Structural features & \texttimes & \texttimes & \texttimes & \texttimes & \check
 Decision explanation & \texttimes & \texttimes & \texttimes & \texttimes & \checkmark \\
 Skill gap analysis & \texttimes & \texttimes & \texttimes & \texttimes & \checkmark \\
 Public dataset validation & \texttimes & \texttimes & \texttimes & \texttimes & \checkmark \\
-Web application & \texttimes & \texttimes & \texttimes & \texttimes & \checkmark \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \section{Neurosymbolic Artificial Intelligence}
 
-Neurosymbolic AI refers to architectures that combine the complementary strengths of symbolic and neural computing paradigms. The distinction between the two paradigms is as follows:
-
-\textbf{Symbolic AI} systems represent knowledge as explicit structures --- rules, graphs, ontologies, logic programs. They are interpretable by design: every inference step can be traced, every conclusion has an explicit justification. However, they are brittle to input variation: if the input does not match the expected form, the system fails. They cannot generalize from data or handle the inherent ambiguity of natural language.
-
-\textbf{Neural AI} systems learn representations from data through gradient optimization. They generalize remarkably well across input variations and handle natural language with unprecedented capability. However, the learned representations are distributed across millions of parameters with no human-interpretable structure. Decision-making is opaque.
-
-Neurosymbolic integration has been an active research area since the early 1990s, experiencing renewed interest with the rise of deep learning. In ExplainHire, the integration is direct and purposeful: the ontology graph provides structured, interpretable skill reasoning (the symbolic component); SBERT provides semantic language understanding (the neural component); XGBoost provides a learned fusion that discovers the optimal weighting of both signals from labeled data; and SHAP provides post-hoc explanation of the learned fusion. This architecture ensures that every decision has both a statistically learned justification (SHAP values) and a human-readable structural justification (ontology traversal paths and evidence sentences).
+Neurosymbolic AI combines the complementary strengths of symbolic and neural computing. \textbf{Symbolic AI} represents knowledge as explicit structures (rules, graphs, ontologies) --- interpretable by design but brittle to input variation. \textbf{Neural AI} learns representations from data through gradient optimization --- generalizes well across input variations but is opaque. In ExplainHire: the ontology graph provides structured, interpretable skill reasoning (symbolic); SBERT provides semantic language understanding (neural); XGBoost provides learned fusion that discovers the optimal signal weighting from labeled data; and SHAP provides post-hoc explanation of the learned fusion. This ensures every decision has both a statistically learned justification (SHAP values) and a structural justification (ontology traversal paths and evidence sentences).
 
 \section{Explainability Methods}
 
 \subsection{SHAP (SHapley Additive exPlanations)}
 
-SHAP \cite{lundberg2017} is a model-agnostic framework for explaining machine learning predictions. It is grounded in cooperative game theory: the Shapley value of a feature $i$ for a prediction $f(x)$ is defined as the average marginal contribution of feature $i$ across all possible feature orderings:
+SHAP \cite{lundberg2017} grounds feature attribution in cooperative game theory. The Shapley value of feature $i$ for prediction $f(x)$ is:
 
 \begin{equation}
 \phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F|-|S|-1)!}{|F|!} \left[ f_{S \cup \{i\}}(x_{S \cup \{i\}}) - f_S(x_S) \right]
 \end{equation}
 
-where $F$ is the full feature set and $f_S$ is the model prediction using only features in subset $S$. SHAP TreeExplainer computes exact Shapley values for tree ensembles including XGBoost in polynomial time, making it computationally feasible for production use.
+SHAP TreeExplainer computes exact Shapley values for tree ensembles including XGBoost in polynomial time.
 
 \subsection{Ontology-Based Explanation}
 
-Independent of SHAP, the skill ontology provides a structurally different form of explanation: the traversal path that produced each match score. When the system determines that a candidate's resume skill ``pytorch'' matches the JD requirement ``machine\_learning'' via a child-to-parent hop, this relationship is both the computational evidence for the match and a human-intelligible explanation: ``You have PyTorch, which is a deep learning framework, which is a type of machine learning --- the JD requires machine learning.'' This form of explanation is not available in any purely neural system.
+Independent of SHAP, the skill ontology provides explanation via traversal path: when ``pytorch'' matches the JD requirement ``machine learning'' via a child-to-parent hop, this is simultaneously the computational evidence for the match and a human-intelligible justification. This form of explanation has no equivalent in any purely neural system.
 
 % ══════════════════════════════════════════════════════════════════════════════
 % CHAPTER 3 — SYSTEM ARCHITECTURE
@@ -486,302 +405,170 @@ Independent of SHAP, the skill ontology provides a structurally different form o
 
 \section{Neurosymbolic Architecture Overview}
 
-Figure \ref{fig:architecture} illustrates how the three independent matching signals --- symbolic, neural, and structural --- are computed in parallel and fused by the XGBoost classifier to produce a final prediction with full explainability.
+Figure \ref{fig:architecture} illustrates how three independent matching signals (symbolic, neural, structural) are computed in parallel and fused by XGBoost to produce a final prediction with full explainability.
 
 \begin{figure}[H]
 \centering
-\includesvg[width=0.95\textwidth]{fig3_architecture}
+\figplaceholder[0.88\textwidth]{fig3\_architecture --- Neurosymbolic Architecture Diagram}
 \caption{ExplainHire neurosymbolic architecture: three signals fused by learned classifier}
 \label{fig:architecture}
 \end{figure}
 
 \section{Design Principles}
 
-The ExplainHire architecture is guided by four design principles:
-
-\begin{enumerate}
-  \item \textbf{Separation of concerns}: Each layer of the pipeline has a single, well-defined responsibility. This makes individual components testable, replaceable, and independently improvable.
-  \item \textbf{Signal independence}: The three matching signals (graph, semantic, structural) are computed independently before fusion. This ensures that the failure or weakness of any one signal does not corrupt the others.
-  \item \textbf{Explainability by design}: Explanation is not a post-processing afterthought but an architectural requirement. Every component that contributes to a decision also contributes to its explanation.
-  \item \textbf{Graceful degradation}: The system produces a meaningful output even when individual signals return edge-case values (e.g., a resume with no extractable skills still receives a SBERT score and structural score).
-\end{enumerate}
+ExplainHire is guided by four principles: (1) \textbf{Separation of concerns} --- each layer has a single, well-defined responsibility; (2) \textbf{Signal independence} --- the three signals are computed independently before fusion; (3) \textbf{Explainability by design} --- every component contributing to a decision also contributes to its explanation; (4) \textbf{Graceful degradation} --- the system produces meaningful output even when individual signals return edge-case values.
 
 \section{Pipeline Overview}
 
-Figure \ref{fig:pipeline} shows the complete seven-layer pipeline. Data flows sequentially from raw document input to structured output presented in the web interface.
+Figure \ref{fig:pipeline} shows the complete seven-layer pipeline.
 
 \begin{figure}[H]
 \centering
-\includesvg[width=0.88\textwidth]{fig1_pipeline}
+\figplaceholder[0.75\textwidth]{fig1\_pipeline --- Seven-Layer Pipeline Diagram}
 \caption{ExplainHire seven-layer pipeline architecture}
 \label{fig:pipeline}
 \end{figure}
 
-\section{L1 — Input Validation}
+\section{L1 --- Input Validation}
 
-The input validation layer is the first line of defense against malformed or unprocessable inputs. It performs the following checks in sequence:
+The validation layer accepts only PDF and DOCX files, validates file type by magic bytes, enforces a 5 MB size limit, detects and rejects scanned image PDFs (no embedded text), enforces minimum content length, and validates JD non-emptiness. Any failure returns an HTTP error with a user-facing explanation.
 
-\textbf{File type validation}: Only PDF and DOCX files are accepted. File type is validated by inspecting the file's magic bytes (not merely its extension), preventing trivial bypass attempts.
+\section{L2 --- Parsing}
 
-\textbf{File size validation}: Files exceeding 5 MB are rejected. Most well-formatted resumes are well under 1 MB; the 5 MB limit accommodates graphics-heavy resumes while preventing resource exhaustion.
+PDF text is extracted using PyMuPDF; DOCX using python-docx. From the resume, the parser extracts: (a) \textbf{Skills} --- vocabulary-based scan covering all canonical ontology nodes and alias table entries; (b) \textbf{YOE} --- regex patterns matching ``3 years'', ``3+ years'', ``2 to 4 years'' expressions; (c) \textbf{Education Level} --- degree keywords mapped to ordinal ranks (High School=1 through PhD=5); (d) \textbf{Section Coverage} --- presence/absence of Skills, Experience, Projects, and Education sections. The same techniques are applied to the JD.
 
-\textbf{Text extractability}: The resume is parsed for machine-readable text content. Scanned image PDFs, which contain pixel data with no embedded text layer, are detected and rejected with an informative error message directing the candidate to upload a text-based PDF.
+\section{L3 --- Normalization}
 
-\textbf{Minimum content check}: Extracted text must meet a minimum character count threshold to ensure that the downstream pipeline receives sufficient content for meaningful feature extraction.
-
-\textbf{JD validation}: The job description input is validated for non-emptiness and minimum length before processing begins.
-
-Any validation failure returns an HTTP error response with a user-facing message explaining the specific issue and how to resolve it.
-
-\section{L2 — Parsing}
-
-The parsing layer extracts structured data from both the resume and the job description. PDF text is extracted using PyMuPDF (fitz), which preserves text ordering and handles multi-column layouts more reliably than many alternatives. DOCX text is extracted using python-docx.
-
-\subsection{Resume Parsing}
-
-From the resume text, the parser extracts:
-
-\textbf{Skills}: A vocabulary-based scan identifies all skill mentions. The vocabulary covers all canonical node names in the ontology plus all surface forms in the alias table. Skills are extracted as a list of raw strings; normalization occurs in L3.
-
-\textbf{Years of Experience}: A suite of regex patterns extracts YOE from the resume text:
-\begin{itemize}
-  \item Pattern ``\texttt{[0-9]+\textbackslash{}s*\textbackslash{}+?\textbackslash{}s*year}'' matches expressions like ``3 years'', ``3+ years'', ``3 years of experience''
-  \item Pattern ``\texttt{[0-9]+\textbackslash{}s*to\textbackslash{}s*[0-9]+\textbackslash{}s*year}'' matches ranges like ``2 to 4 years''
-  \item When multiple matches are found, the maximum is taken as the candidate's YOE
-\end{itemize}
-
-\textbf{Education Level}: Degree keywords are searched in the resume text and mapped to a numeric rank: High School (1), Diploma (2), B.Tech/B.Sc/B.E. (3), M.Tech/M.Sc/M.E./MBA (4), PhD/Doctorate (5). The highest detected rank is used.
-
-\textbf{Section Coverage}: The parser detects the presence or absence of standard resume sections by searching for section header keywords: ``skills''/``technical skills'', ``experience''/``work experience'', ``projects''/``academic projects'', ``education''/``qualifications''. The fraction of these four sections present constitutes the section coverage score.
-
-\subsection{Job Description Parsing}
-
-The same techniques are applied to extract required skills, required YOE (from phrases such as ``minimum 3 years'', ``3+ years required''), and required education level from the job description text.
-
-\section{L3 — Normalization}
-
-The normalization layer bridges the gap between the natural language variation in resume text and the controlled vocabulary of the skill ontology. This gap is the primary reason simple keyword matching fails: there are hundreds of ways to express the same skill in a resume, and an ontology-based system cannot reason about them without first resolving this ambiguity.
-
-The \textbf{alias table} is a JSON file containing 800+ entries mapping surface forms to canonical ontology node identifiers:
+The normalization layer bridges natural language variation in resume text and the controlled ontology vocabulary. The \textbf{alias table} (800+ entries) maps surface forms to canonical node identifiers:
 
 \begin{lstlisting}[language={}]
-{
-  "nodejs":        "node.js",
-  "node js":       "node.js",
-  "node.js":       "node.js",
-  "Node.JS":       "node.js",
-  "reactjs":       "react",
-  "react.js":      "react",
-  "ML":            "machine_learning",
-  "deep learning": "deep_learning",
-  "pytorch":       "pytorch",
-  "PyTorch":       "pytorch"
-}
-```
+{ "nodejs": "node.js", "react.js": "react",
+  "ML": "machine_learning", "PyTorch": "pytorch" }
 \end{lstlisting}
 
-The alias table was constructed through a manual review of all 144 real resumes in our dataset. Every distinct spelling variant observed was added as an alias entry. This process ensures near-complete coverage of the surface forms that appear in real B.Tech student resumes in Indian technical hiring contexts.
+The table was constructed by manual review of all 144 real resumes. After normalization, all skills from resume and JD are canonical ontology node identifiers.
 
-After normalization, all skill mentions from both the resume and the JD are represented as canonical ontology node identifiers, enabling consistent graph traversal in L4a.
+\section{L4 --- Matching Layer}
 
-\section{L4 — Matching Layer}
+\subsection{L4a --- Graph Matcher (Symbolic AI)}
 
-The matching layer computes three independent signals from the normalized resume and JD representations. These signals capture fundamentally different aspects of candidate--job compatibility.
+\subsubsection{Ontology Structure}
 
-\subsection{L4a — Graph Matcher (Symbolic AI)}
+The skill ontology is a directed graph $G = (V, E)$ where each node $v \in V$ is a canonical skill and each edge $(u, v) \in E$ is an IS-A relationship. The graph contains 434 nodes built from the O*NET technology subtree, manually extended for Indian software engineering contexts (Flutter, FastAPI, Golang, Docker, Kubernetes, Redis, etc.).
 
-\subsubsection{Ontology Graph Structure}
-
-The skill ontology is a directed graph $G = (V, E)$ where each node $v \in V$ represents a canonical skill and each edge $(u, v) \in E$ represents an IS-A relationship (``$u$ is a type of $v$''). The graph contains 434 nodes and was constructed from two sources:
-
-\textbf{O*NET Database}: The Occupational Information Network (O*NET), maintained by the U.S. Department of Labor, provides a hierarchical taxonomy of occupational skills, knowledge areas, and abilities. We extracted the technology-relevant subtrees from O*NET and translated them into a NetworkX DiGraph structure.
-
-\textbf{Manual Extension}: O*NET's technology coverage is biased toward U.S. occupational contexts and does not include many skills that are central to Indian software engineering hiring. We manually added nodes for frameworks, tools, and technologies that appear in our 17 real job descriptions and 144 real resumes, including Flutter, FastAPI, Golang, Redis, Docker, Kubernetes, and their relationships.
-
-Figure \ref{fig:ontology} illustrates an example subgraph of the ontology, showing how skills are organized hierarchically and how partial-credit matching works across ontological distances.
+Figure \ref{fig:ontology} illustrates an example subgraph.
 
 \begin{figure}[H]
 \centering
-\includesvg[width=0.95\textwidth]{fig4_ontology}
-\caption{Skill ontology subgraph showing IS-A relationships and match weight assignment. A resume listing ``pytorch'' receives a match weight of 0.7 against a JD requiring ``machine\_learning'' via a child-to-parent hop --- a relationship keyword matching would score as zero.}
+\figplaceholder[0.88\textwidth]{fig4\_ontology --- Skill Ontology Subgraph}
+\caption{Skill ontology subgraph showing IS-A relationships and match weights. A resume listing ``pytorch'' receives weight 0.7 against a JD requiring ``machine learning'' via a child-to-parent hop --- keyword matching scores this 0.}
 \label{fig:ontology}
 \end{figure}
 
 \subsubsection{Traversal Algorithm}
 
-For each required skill $s_j$ in the JD, the matcher finds the highest-scoring match among all resume skills $s_r \in S_R$ using the six-level weight scheme defined in Equation (3.1):
+For each required JD skill $s_j$, the matcher finds the best match among all resume skills using the six-level weight scheme:
 
 \begin{equation}
 w(s_r, s_j) = \begin{cases}
-1.0 & \text{if } s_r = s_j \text{ (exact match)} \\
-0.9 & \text{if } s_r \text{ is an alias of } s_j \text{ (alias match)} \\
-0.7 & \text{if } s_j \in \text{ancestors}(s_r, G) \text{ (child is more specific)} \\
-0.5 & \text{if } s_r \in \text{ancestors}(s_j, G) \text{ (child is more general)} \\
-0.4 & \text{if } \exists p \in V : p \in \text{ancestors}(s_r, G) \cap \text{ancestors}(s_j, G) \text{ (siblings)} \\
-0.3 & \text{if shortest\_path}(s_r, s_j, G) = 2 \text{ (two-hop)} \\
-0.0 & \text{otherwise (no connection)}
+1.0 & \text{exact match} \\
+0.9 & \text{alias match} \\
+0.7 & \text{child to parent (resume skill is more specific)} \\
+0.5 & \text{parent to child (resume skill is more general)} \\
+0.4 & \text{sibling (common ancestor)} \\
+0.3 & \text{two-hop traversal} \\
+0.0 & \text{no connection}
 \end{cases}
 \end{equation}
 
-The rationale for these weights reflects the semantic distance implied by each relationship. A candidate who lists ``pytorch'' is fully qualified in the sense of knowing a deep learning framework when the JD requires ``deep\_learning'' (0.7 --- child to parent), but only partially qualified when the JD specifically requires ``tensorflow'' (0.4 --- sibling, both are children of deep\_learning). This nuanced partial-credit system allows the pipeline to recognize competence where keyword matching would score zero.
-
-The overall graph score is the mean of the best match weights across all JD skills:
-
+The overall graph score is:
 \begin{equation}
 \text{GraphScore}(R, J) = \frac{1}{|S_J|} \sum_{s_j \in S_J} \max_{s_r \in S_R} w(s_r, s_j)
 \end{equation}
 
-In addition to the scalar GraphScore, this computation yields four categorical counts: \texttt{exact\_matches}, \texttt{partial\_matches}, \texttt{no\_matches}, and \texttt{coverage} (the fraction of JD skills receiving any non-zero weight). These five values constitute the graph matcher's contribution to the feature vector.
+The graph matcher contributes 5 features to the feature vector: \{graph\_score, coverage, exact\_matches, partial\_matches, no\_matches\}.
 
-\subsection{L4b — Semantic Matcher (Neural AI)}
+\subsection{L4b --- Semantic Matcher (Neural AI)}
 
-\subsubsection{SBERT Architecture}
-
-The semantic matcher employs Sentence-BERT \cite{reimers2019}, specifically the \texttt{all-MiniLM-L6-v2} variant. SBERT is a Siamese BERT architecture that adds a pooling layer over BERT's output to produce a fixed-size sentence embedding. The \texttt{all-MiniLM-L6-v2} variant is a distilled model with 6 transformer layers and 384-dimensional embeddings, offering a favorable balance between semantic quality and inference speed.
-
-The semantic similarity between resume $R$ and job description $J$ is computed as the cosine similarity between their SBERT embeddings:
+The semantic matcher employs \texttt{all-MiniLM-L6-v2} SBERT \cite{reimers2019}, a 6-layer distilled Siamese BERT with 384-dimensional embeddings. The semantic similarity is:
 
 \begin{equation}
 \text{SBERT\_Score}(R, J) = \frac{\vec{v}_R \cdot \vec{v}_J}{\|\vec{v}_R\| \cdot \|\vec{v}_J\|}
 \end{equation}
 
-where $\vec{v}_R = \text{SBERT}(\text{text}(R))$ and $\vec{v}_J = \text{SBERT}(\text{text}(J))$.
+Long texts are truncated to the last 2,000 characters before encoding, prioritizing skills/projects sections over boilerplate headers.
 
-Since \texttt{all-MiniLM-L6-v2} has a 256-token input limit (approximately 1,500 characters), long texts are truncated to the final 2,000 characters before encoding. The tail of the resume (which typically contains projects and technical skills) and the tail of the JD (which typically contains required qualifications) are thus prioritized over boilerplate header text.
-
-\subsubsection{SBERT Fine-Tuning}
-
-The base \texttt{all-MiniLM-L6-v2} was trained on general-purpose internet text corpora. While it provides reasonable semantic similarity for general English, it has not been exposed to the specific patterns of technical hiring language. Consider the following pair:
-
-\begin{quote}
-Resume: ``Implemented CI/CD pipelines using Jenkins and Docker for microservices deployment in a fintech startup.''\\
-JD: ``Looking for a DevOps engineer with deployment automation and containerization experience.''
-\end{quote}
-
-A human hiring manager immediately recognizes this as a strong match. The base SBERT model, lacking domain context, may assign a lower-than-appropriate similarity because the surface vocabulary overlap is limited. Fine-tuning on domain-specific pairs teaches the model what ``similar'' means in a hiring context.
-
-We fine-tune using \textbf{CosineSimilarityLoss}:
-
+\textbf{Fine-Tuning}: The base model was fine-tuned using CosineSimilarityLoss on 887 real resume--JD pairs:
 \begin{equation}
 \mathcal{L} = \frac{1}{N} \sum_{i=1}^{N} \left( \cos(\vec{v}_{R_i}, \vec{v}_{J_i}) - y_i \right)^2
 \end{equation}
 
-where $y_i \in \{0.0, 1.0\}$ is the match label. For positive pairs ($y_i = 1.0$), the loss pushes the embeddings toward cosine similarity 1.0; for negative pairs ($y_i = 0.0$), it pushes them toward cosine similarity 0.0. After fine-tuning, the SBERT score becomes domain-specific: it measures not general English similarity but hiring-domain match.
+where $y_i \in \{0.0, 1.0\}$ is the match label. Training ran for 4 epochs with batch size 16, reaching final loss 0.069. This teaches the model what ``similar'' means in a hiring context rather than general English.
 
-\subsection{L4c — Structural Matcher}
+\subsection{L4c --- Structural Matcher}
 
-The structural matcher captures candidate--job compatibility along dimensions that neither the ontology graph nor the semantic model can directly address: years of experience and educational qualifications.
-
-\subsubsection{Years of Experience Score}
-
+\textbf{YOE Score:}
 \begin{equation}
-\text{YOE\_Score} = \max\left(0.0,\ 1.0 - \frac{\max(0,\ \text{YOE}_\text{req} - \text{YOE}_\text{resume})}{\text{YOE}_\text{req} + 1}\right)
+\text{YOE\_Score} = \max\!\left(0,\ 1 - \frac{\max(0,\; \text{YOE}_\text{req} - \text{YOE}_\text{resume})}{\text{YOE}_\text{req} + 1}\right)
 \end{equation}
 
-This formula produces 1.0 when the candidate meets or exceeds the YOE requirement, and decreases proportionally as the shortfall increases. The denominator ($\text{YOE}_\text{req} + 1$) prevents division by zero for roles with no stated YOE requirement.
+\textbf{Education Score:} Education levels are ranked 1--5. Score is 1.0 if candidate meets or exceeds requirement, 0.5 if one rank below, 0.0 otherwise.
 
-\subsubsection{Education Score}
-
-Education levels are mapped to ordinal ranks (High School=1, Diploma=2, B.Tech=3, M.Tech=4, PhD=5). The education score is:
-
+\textbf{Section Score:}
 \begin{equation}
-\text{Edu\_Score} = \begin{cases}
-1.0 & \text{if } \text{rank}_\text{resume} \geq \text{rank}_\text{req} \\
-0.5 & \text{if } \text{rank}_\text{resume} = \text{rank}_\text{req} - 1 \\
-0.0 & \text{otherwise}
-\end{cases}
+\text{Section\_Score} = \frac{|\text{detected sections}|}{4}
 \end{equation}
 
-\subsubsection{Section Score}
+The structural matcher contributes 8 features: \{structural\_score, yoe\_score, edu\_score, section\_score, resume\_yoe, required\_yoe, resume\_edu\_rank, required\_edu\_rank\}.
 
-\begin{equation}
-\text{Section\_Score} = \frac{|\text{detected\_sections}|}{|\text{expected\_sections}|}
-\end{equation}
-
-where expected sections are Skills, Experience, Projects, and Education (4 sections total).
-
-\subsubsection{Combined Structural Score}
-
-\begin{equation}
-\text{StructuralScore} = \frac{\text{YOE\_Score} + \text{Edu\_Score} + \text{Section\_Score}}{3}
-\end{equation}
-
-The structural matcher produces four features: \texttt{structural\_score}, \texttt{yoe\_score}, \texttt{edu\_score}, \texttt{section\_score}, plus two raw values: \texttt{resume\_yoe}, \texttt{required\_yoe}, \texttt{resume\_edu\_rank}, \texttt{required\_edu\_rank}.
-
-\section{L5 — Classification and Explainability}
+\section{L5 --- Classification and Explainability}
 
 \subsection{Feature Vector}
 
-The 14-dimensional feature vector $\mathbf{x}$ passed to XGBoost is:
-
+The 14-dimensional feature vector fused by XGBoost is:
 \begin{equation}
-\mathbf{x} = [\underbrace{g_1, g_2, g_3, g_4, g_5}_{\text{graph}},\ \underbrace{s_1}_{\text{SBERT}},\ \underbrace{t_1, t_2, t_3, t_4, t_5, t_6, t_7, t_8}_{\text{structural + raw}}]
+\mathbf{x} = [\underbrace{g_1,\ldots,g_5}_{\text{graph}},\ \underbrace{s_1}_{\text{SBERT}},\ \underbrace{t_1,\ldots,t_8}_{\text{structural}}]
 \end{equation}
-
-where the graph features are \{graph\_score, coverage, exact\_matches, partial\_matches, no\_matches\}, the SBERT feature is \{sbert\_score\}, and the structural features are \{structural\_score, yoe\_score, edu\_score, section\_score, resume\_yoe, required\_yoe, resume\_edu\_rank, required\_edu\_rank\}.
 
 \subsection{XGBoost Classifier}
 
-XGBoost \cite{chen2016} (Extreme Gradient Boosting) is an ensemble method that builds an additive model of decision trees, where each successive tree corrects the residual errors of its predecessors by following the gradient of the loss function:
-
+XGBoost \cite{chen2016} builds an additive ensemble of decision trees where each tree corrects the residual errors of its predecessors:
 \begin{equation}
 \hat{y}^{(t)} = \hat{y}^{(t-1)} + \eta \cdot f_t(\mathbf{x})
 \end{equation}
 
-where $\hat{y}^{(t)}$ is the prediction after $t$ trees, $\eta$ is the learning rate, and $f_t$ is the $t$-th regression tree fitted to the negative gradient of the loss. The final prediction is the sigmoid of the sum over all trees, producing a probability in $[0, 1]$.
-
-XGBoost was selected for three reasons: (1) it achieves state-of-the-art performance on tabular datasets with under 5,000 training samples; (2) it produces native SHAP-compatible tree structures; and (3) it trains in seconds on CPU, making it suitable for deployment without GPU infrastructure.
+XGBoost was selected for three reasons: state-of-the-art performance on small tabular datasets; native SHAP-compatible tree structures; and CPU-only training feasible in seconds.
 
 \subsection{SHAP Attribution}
 
-After XGBoost produces its prediction, SHAP TreeExplainer computes exact Shapley values for each of the 14 features. Figure \ref{fig:shap} shows a representative SHAP attribution plot for a single prediction, illustrating which features pushed the classifier toward Match and which pushed it toward No Match.
-
+After XGBoost produces its prediction, SHAP TreeExplainer computes exact Shapley values $\phi_i$ for each of the 14 features:
 \begin{equation}
 f(\mathbf{x}) = \phi_0 + \sum_{i=1}^{14} \phi_i
 \end{equation}
 
-where $\phi_0$ is the base rate (mean training prediction) and $\phi_i$ is the Shapley value of feature $i$. Positive $\phi_i$ means feature $i$ pushed the prediction toward ``Match''; negative $\phi_i$ means it pushed toward ``No Match''. These values are displayed to the user as a horizontal bar chart.
+Figure \ref{fig:shap} shows a representative SHAP attribution plot. Positive $\phi_i$ pushes toward Match; negative pushes toward No Match.
 
 \begin{figure}[H]
 \centering
-\includesvg[width=0.88\textwidth]{fig5_shap}
-\caption{SHAP feature attribution for an example prediction. Bars extending right (blue) push toward Match; bars extending left (red) push toward No Match. In this case, strong graph and SBERT scores drive the Match verdict despite a YOE shortfall.}
+\figplaceholder[0.85\textwidth]{fig5\_shap --- SHAP Feature Attribution Bar Chart}
+\caption{SHAP feature attribution for an example prediction. Strong graph and SBERT scores drive the Match verdict despite a YOE shortfall.}
 \label{fig:shap}
 \end{figure}
 
-\section{L6 — Explainer}
+\section{L6 --- Explainer}
 
-\subsection{Evidence Mapper}
+\textbf{Evidence Mapper}: For each matched JD skill, the mapper finds the most relevant resume sentence via TF-IDF weighted token overlap. The user sees the matched skill, its ontological distance, and the specific resume sentence as evidence.
 
-For each skill $s_j \in S_J$ that was matched (i.e., received a non-zero graph weight), the evidence mapper finds the most relevant sentence in the resume. It computes TF-IDF weighted token overlap between the skill string and each sentence in the resume, returning the sentence with the highest score as the evidence sentence.
-
-The user sees: ``Matched: \textit{machine\_learning} (via pytorch, child→parent) — Evidence: \textit{`Developed ML pipeline for credit risk scoring using PyTorch and scikit-learn.'}''
-
-\subsection{Skill Gap Ranker}
-
-For each unmatched skill $s_j \in S_J$ that received a graph weight of 0.0, the skill gap ranker computes a counterfactual impact score: how much would the overall match probability increase if this skill were added to the resume?
-
-The impact is estimated by constructing a modified feature vector $\mathbf{x}'$ in which the missing skill is hypothetically added to the resume's skill set, recomputing the graph features, and computing the change in XGBoost predicted probability:
-
+\textbf{Skill Gap Ranker}: For each unmatched skill, the ranker estimates counterfactual impact:
 \begin{equation}
 \Delta_j = P_\text{XGB}(\mathbf{x}'_j) - P_\text{XGB}(\mathbf{x})
 \end{equation}
 
-Missing skills are ranked by $\Delta_j$ in descending order and presented to the user with links to learning resources from a curated JSON map (\texttt{learning\_resources.json}).
+where $\mathbf{x}'_j$ is the feature vector with the missing skill hypothetically added. Gaps are ranked by $\Delta_j$ and presented with curated learning resource links.
 
-\section{L7 — Web Application}
+\section{L7 --- Web Application}
 
-The Flask web application provides the end-user interface. Key features include:
-
-\begin{itemize}
-  \item \textbf{Resume upload}: Drag-and-drop or click-to-upload interface accepting PDF and DOCX
-  \item \textbf{JD input}: Free-text area for pasting job description text
-  \item \textbf{Results dashboard}: Match verdict with confidence percentage, three score cards (graph / SBERT / structural), skill-by-skill breakdown with evidence sentences, ranked skill gap list with learning links, SHAP bar chart
-  \item \textbf{Match history}: All previous analyses stored in SQLite via Flask-SQLAlchemy, accessible in a paginated history view
-  \item \textbf{Authentication}: User registration and login via Flask-Login with bcrypt password hashing
-  \item \textbf{Ontology visualizer}: Interactive skill graph explorer built with vis-network (JavaScript), allowing users to browse the 434-node ontology and understand skill relationships
-  \item \textbf{Theme}: Dark/light mode toggle with CSS custom properties
-\end{itemize}
+The Flask application provides: resume upload (PDF/DOCX), JD text input, a results dashboard with match verdict, three score cards, per-skill breakdown with evidence sentences, ranked skill gap list, and SHAP bar chart. Additional features include match history (SQLite/Flask-SQLAlchemy), user authentication (Flask-Login, bcrypt), an interactive 434-node ontology visualizer (vis-network), and dark/light mode toggle.
 
 % ══════════════════════════════════════════════════════════════════════════════
 % CHAPTER 4 — DATASET AND TRAINING
@@ -790,45 +577,21 @@ The Flask web application provides the end-user interface. Key features include:
 
 \section{Data Collection Strategy}
 
-The quality of a supervised machine learning system is fundamentally bounded by the quality of its training data. For resume--job matching, there are two central challenges: (1) labeled resume--JD pairs are not publicly available at scale, because most recruitment data is proprietary; and (2) generic public datasets (such as the Kaggle resume dataset) do not capture the specific distribution of Indian technical hiring contexts.
-
-We addressed both challenges by assembling a multi-source dataset combining synthetic edge cases, a publicly available resume collection, and a proprietary dataset of real resumes from our own peer network matched against real industry job descriptions.
+Labeled resume--JD pairs are not publicly available at scale. We assembled a multi-source dataset combining synthetic edge cases, a public Kaggle collection, and a proprietary dataset of real resumes from our peer network matched against real industry JDs.
 
 \section{Dataset Sources}
 
-\subsection{Synthetic Pairs}
+\subsection{Synthetic Pairs (167 rows)}
 
-We manually constructed 167 resume--JD pairs to cover edge cases and boundary conditions that are unlikely to appear naturally in collected data:
+Manually constructed to cover: semantic equivalence pairs (testing SBERT), near-miss negative pairs (testing false positive resistance), ontology boundary cases (testing sibling/child matching), and experience gap pairs (testing structural component). All pairs were independently labeled by two team members with disagreements resolved by discussion.
 
-\begin{itemize}
-  \item \textbf{Semantic equivalence pairs}: Resume and JD use entirely different terminology for the same concept (e.g., ``API development'' vs. ``REST endpoint engineering''), testing the SBERT component's ability to recognize equivalent meaning
-  \item \textbf{Near-miss negative pairs}: Resume is superficially similar to JD (e.g., both mention Python) but is clearly not a match (e.g., data analyst resume for software engineering role), testing the system's ability to avoid false positives
-  \item \textbf{Ontology boundary cases}: Resume has a skill that is a sibling of the required skill, testing the 0.4-weight sibling matching behavior
-  \item \textbf{Experience gap pairs}: Candidate has all required skills but insufficient YOE, testing the structural component
-\end{itemize}
+\subsection{Kaggle Resume Dataset (800 rows)}
 
-\subsection{Kaggle Resume Dataset}
+The Kaggle Resume Dataset (Anbhawal, 2020) contains 800 real resumes across 24 job categories. We constructed resume--JD pairs by matching resumes against JDs from their own category (positive) and randomly sampled different categories (negative).
 
-The Kaggle Resume Dataset (Anbhawal, 2020) contains 800 real resumes across 24 job categories. We used the category labels to construct resume--JD pairs: resumes were matched against job descriptions from their own category (positive pairs) and from randomly sampled different categories (negative pairs). This dataset provides breadth across job categories but lacks the depth of real industry JD text.
+\subsection{Friends Dataset (887 rows)}
 
-\subsection{Friends Dataset}
-
-This is the most valuable and novel component of our training data. We collected 144 real B.Tech student resumes from our peer network, spanning students from multiple institutions and covering a range of technical specializations. Against these 144 resumes, we matched 17 real job descriptions manually collected from Naukri and LinkedIn. The 17 JDs cover roles including:
-
-\begin{itemize}
-  \item Full Stack Developer (React + Node.js)
-  \item Data Scientist (Python, ML, SQL)
-  \item Backend Engineer (Java, Spring Boot)
-  \item Flutter Developer (Dart, Firebase)
-  \item Machine Learning Engineer (Python, TensorFlow, MLOps)
-  \item Java Backend Developer (Java, REST APIs, MySQL)
-  \item MERN Stack Developer (MongoDB, Express, React, Node.js)
-  \item Golang Developer (Go, microservices, Docker)
-  \item DevOps Engineer (Docker, Kubernetes, CI/CD)
-  \item Android Developer (Java/Kotlin, Android SDK)
-\end{itemize}
-
-The full cross-product of 144 resumes $\times$ 17 JDs yields 2,448 pairs. Feature extraction was run on all pairs, and auto-labeling was applied based on the extracted signal thresholds (described in Section 4.3), yielding 887 usable labeled pairs.
+We collected 144 real B.Tech student resumes and matched them against 17 real industry JDs from Naukri and LinkedIn, covering roles including Full Stack Developer, Data Scientist, Backend Engineer, Flutter Developer, Machine Learning Engineer, Golang Developer, DevOps Engineer, and Android Developer. The full 144 $\times$ 17 = 2,448 cross-product was feature-extracted and score-based auto-labeled.
 
 \begin{table}[h]
 \centering
@@ -838,9 +601,9 @@ The full cross-product of 144 resumes $\times$ 17 JDs yields 2,448 pairs. Featur
 \toprule
 \textbf{Source} & \textbf{Rows} & \textbf{Label Type} & \textbf{Notes} \\
 \midrule
-Synthetic pairs & 167 & Manual annotation & Edge cases, boundary conditions \\
+Synthetic pairs & 167 & Manual annotation & Edge cases \\
 Kaggle Resume Dataset & 800 & Category-based & 24 job categories \\
-Friends dataset & 887 & Score-based auto-label & 144 real resumes $\times$ 17 real JDs \\
+Friends dataset & 887 & Score-based auto-label & 144 resumes $\times$ 17 JDs \\
 \midrule
 \textbf{Total} & \textbf{1,854} & & \\
 \bottomrule
@@ -849,46 +612,21 @@ Friends dataset & 887 & Score-based auto-label & 144 real resumes $\times$ 17 re
 
 \section{Labeling Methodology}
 
-\subsection{Manual Labeling (Synthetic Pairs)}
-
-All 167 synthetic pairs were manually labeled by the project team, with each pair reviewed independently by two team members. Disagreements were resolved by discussion and majority vote.
-
-\subsection{Score-Based Auto-Labeling (Friends Dataset)}
-
-For the 887 pairs from the friends dataset, manual labeling at scale was not feasible. We applied a threshold-based auto-labeling rule grounded in the intuition that two independent matching signals agreeing strongly is a reliable indicator of the true label:
+For the friends dataset, manual labeling at 2,448 pairs was infeasible. We applied conservative threshold-based auto-labeling requiring both signals to agree strongly:
 
 \begin{equation}
 \text{label}(R, J) = \begin{cases}
-1 & \text{if } \text{GraphScore}(R,J) > 0.4 \text{ AND } \text{SBERT\_Score}(R,J) > 0.4 \\
-0 & \text{if } \text{GraphScore}(R,J) < 0.3 \text{ AND } \text{SBERT\_Score}(R,J) < 0.3 \\
--1 & \text{otherwise (excluded from training)}
+1 & \text{if } \text{GraphScore} > 0.4 \text{ AND } \text{SBERT\_Score} > 0.4 \\
+0 & \text{if } \text{GraphScore} < 0.3 \text{ AND } \text{SBERT\_Score} < 0.3 \\
+-1 & \text{excluded (signals disagree)}
 \end{cases}
 \end{equation}
 
-This conservative thresholding approach produced 636 positive pairs (label=1) and 251 negative pairs (label=0), for a total of 887 labeled pairs. The 1,561 ``mixed'' pairs (where the two signals disagreed) were excluded from training to avoid label noise. The resulting label distribution is imbalanced (71.7\% positive, 28.3\% negative), reflecting the fact that most B.Tech resumes have at least some overlap with the technical JDs they were matched against.
+This yielded 636 positive and 251 negative pairs (887 total), with 1,561 mixed pairs excluded. The label distribution is 71.7\% positive / 28.3\% negative.
 
 \section{SBERT Fine-Tuning}
 
-\subsection{Training Setup}
-
-Fine-tuning was conducted using the sentence-transformers library. The 887 labeled pairs were converted to \texttt{InputExample} objects with the resume text, JD text, and label (0.0 or 1.0 as float). A \texttt{DataLoader} with \texttt{batch\_size=16} was constructed and \texttt{CosineSimilarityLoss} was used as the training objective.
-
-Training hyperparameters:
-\begin{itemize}
-  \item Base model: \texttt{all-MiniLM-L6-v2}
-  \item Epochs: 4
-  \item Batch size: 16
-  \item Warmup steps: 88 (10\% of total training steps)
-  \item Optimizer: AdamW (default sentence-transformers configuration)
-  \item Total training steps: 887 / 16 $\times$ 4 = 222 steps
-  \item Final training loss: 0.069
-\end{itemize}
-
-The fine-tuned model was saved to \texttt{models/sbert\_finetuned/}. The pipeline's semantic matcher automatically loads this model when it exists, falling back to the base model if it does not.
-
-\subsection{Effect of Fine-Tuning}
-
-The impact of SBERT fine-tuning is visible in the XGBoost classifier performance:
+Fine-tuning used the sentence-transformers library with CosineSimilarityLoss, batch size 16, 4 epochs, 88 warmup steps, and AdamW optimizer. Final training loss: \textbf{0.069}. The fine-tuned model was saved to \texttt{models/sbert\_finetuned/} and is automatically loaded by the pipeline.
 
 \begin{table}[h]
 \centering
@@ -897,25 +635,19 @@ The impact of SBERT fine-tuning is visible in the XGBoost classifier performance
 \toprule
 \textbf{Configuration} & \textbf{CV F1} & \textbf{Full-data F1} \\
 \midrule
-Base SBERT (pre fine-tuning) + 967 training rows & 0.899 & 0.899 \\
-Fine-tuned SBERT + 1,854 training rows & \textbf{0.9045} & \textbf{0.951} \\
+Base SBERT + 967 training rows & 0.899 & 0.899 \\
+Fine-tuned SBERT + 1,854 rows & \textbf{0.9045} & \textbf{0.951} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The improvement reflects both the domain-adapted SBERT signal and the larger training set produced by incorporating friends dataset pairs.
-
 \section{XGBoost Training}
 
-\subsection{Feature Extraction}
-
-For all 1,854 labeled pairs, the complete 14-feature vector was extracted by running each pair through layers L1--L4 of the pipeline. This feature extraction was performed offline and cached in \texttt{data/annotation.csv} to decouple the classifier training from the full pipeline execution.
-
-\subsection{Training Configuration}
+The 14-feature vector was extracted for all 1,854 pairs and cached in \texttt{data/annotation.csv}. XGBoost was trained with the following configuration:
 
 \begin{table}[h]
 \centering
-\caption{XGBoost training hyperparameters}
+\caption{XGBoost hyperparameters}
 \begin{tabular}{ll}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\
@@ -926,14 +658,11 @@ learning\_rate & 0.1 \\
 tree\_method & hist (CPU-optimized) \\
 eval\_metric & mlogloss \\
 random\_state & 42 \\
-n\_jobs & -1 (all cores) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Cross-Validation}
-
-Model performance was evaluated using 5-fold stratified cross-validation, which ensures that the positive/negative class ratio is preserved in each fold. Stratification is critical here because of the label imbalance (71.7\% positive). Without stratification, a fold could contain disproportionately few negative examples, leading to an inflated F1 estimate. The cross-validated F1 of \textbf{0.9045} is our primary honest performance estimate, as it reflects performance on examples the model has never seen during training.
+Model performance was evaluated using 5-fold stratified cross-validation (stratified to preserve the 71.7/28.3\% class ratio in each fold). The CV F1 of \textbf{0.9045} is our primary honest performance estimate.
 
 % ══════════════════════════════════════════════════════════════════════════════
 % CHAPTER 5 — EXPERIMENTS AND RESULTS
@@ -942,189 +671,124 @@ Model performance was evaluated using 5-fold stratified cross-validation, which 
 
 \section{Experimental Setup}
 
-All experiments were conducted on a consumer-grade laptop with an Intel Core i5 processor, 16 GB RAM, and no GPU. This was a deliberate design choice: we wanted to demonstrate that the full ExplainHire pipeline is deployable without specialized hardware. SBERT fine-tuning ran on CPU using the \texttt{accelerate} library and completed in approximately 15 minutes for 4 epochs over 887 pairs.
-
-All reported F1 scores are macro-averaged F1 computed using scikit-learn's \texttt{f1\_score} with \texttt{average="macro"} and \texttt{zero\_division=0}. We report macro F1 rather than weighted F1 because the classes are imbalanced, and macro F1 penalizes poor performance on the minority class.
+All experiments ran on a consumer laptop (Intel Core i5, 16 GB RAM, no GPU), demonstrating that ExplainHire is deployable without specialized hardware. SBERT fine-tuning completed in approximately 15 minutes on CPU. All F1 scores are macro-averaged using scikit-learn's \texttt{f1\_score(average="macro", zero\_division=0)}, which penalizes poor performance on the minority class.
 
 \section{Ablation Study}
 
-To validate the contribution of each pipeline component, we conducted a five-configuration ablation study evaluated on all 1,854 labeled pairs using 5-fold stratified cross-validation.
+We evaluated five configurations on all 1,854 labeled pairs using 5-fold stratified cross-validation.
 
 \begin{figure}[H]
 \centering
-\includesvg[width=0.92\textwidth]{fig2_ablation}
-\caption{Ablation study bar chart. Each bar represents the macro F1 of one pipeline configuration. The full ExplainHire pipeline achieves F1 = 0.951, improving over the best single-signal baseline (Graph + SBERT) by +11.86\%.}
+\figplaceholder[0.90\textwidth]{fig2\_ablation --- Ablation Study Bar Chart}
+\caption{Ablation study: macro F1 by configuration. Full ExplainHire pipeline achieves F1 = 0.951, improving +11.86\% over the best single-signal baseline.}
 \label{fig:ablation}
 \end{figure}
 
 \begin{table}[h]
 \centering
-\caption{Ablation study results (5-fold stratified CV on 1,854 pairs)}
+\caption{Ablation study results (5-fold stratified CV, 1,854 pairs)}
 \label{tab:ablation}
 \begin{tabular}{lccc}
 \toprule
-\textbf{Configuration} & \textbf{Macro F1} & \textbf{$\Delta$ vs. prev.} & \textbf{What this proves} \\
+\textbf{Configuration} & \textbf{Macro F1} & \textbf{$\Delta$ vs. prev.} & \textbf{Interpretation} \\
 \midrule
-TF-IDF baseline & 0.037 & --- & Keyword matching is ineffective \\
-SBERT-only & 0.484 & +44.7\% & Neural semantic matching helps significantly \\
-Graph-only & 0.747 & +26.3\% & Ontology matching is the strongest single signal \\
-Graph + SBERT & 0.832 & +8.5\% & Symbolic + neural combination is better than either \\
-\textbf{Full pipeline} & \textbf{0.951} & \textbf{+11.9\%} & Structural features add substantial value \\
+TF-IDF baseline & 0.037 & --- & Keyword matching fails entirely \\
+SBERT-only & 0.484 & +44.7\% & Semantics help; global similarity imprecise \\
+Graph-only & 0.747 & +26.3\% & Ontology is the strongest single signal \\
+Graph + SBERT & 0.832 & +8.5\% & Symbolic + neural are complementary \\
+\textbf{Full pipeline} & \textbf{0.951} & \textbf{+11.9\%} & Structural features add independent value \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Analysis of results:}
+The TF-IDF baseline (F1 = 0.037) confirms keyword co-occurrence is nearly useless. The Graph-only result (F1 = 0.747) is the most informative single result: structured skill matching over an ontology is substantially more informative than either keyword matching or global semantic similarity, validating the core architectural decision. The full pipeline (F1 = 0.951) confirms all three signals contribute independently.
 
-The TF-IDF baseline (macro F1 = 0.037) confirms that keyword co-occurrence is nearly useless for this task. The extreme low score reflects the many near-miss cases where resumes and JDs discuss the same domain using different vocabulary.
+\section{External Benchmark: ResumeAtlas}
 
-SBERT-only (F1 = 0.484) represents a substantial improvement over TF-IDF, demonstrating that semantic embedding captures meaningful signal. However, at roughly chance performance for a two-class problem, SBERT alone is insufficient. The likely reason is that global document similarity is an imprecise proxy for skill-by-skill match: a resume from a data scientist will be semantically similar to an ML engineer JD, but may lack specific required skills.
-
-Graph-only (F1 = 0.747) is the strongest single-signal configuration and the most informative result of the ablation study. It demonstrates that structured skill matching over an ontology is substantially more informative than either keyword matching or global semantic similarity. This validates the core architectural decision to build a skill ontology.
-
-Graph + SBERT (F1 = 0.832) improves further, confirming that the neural and symbolic signals are complementary rather than redundant. SBERT captures contextual fit that the graph cannot (e.g., overall career narrative alignment), while the graph provides structured skill-level precision that SBERT cannot (e.g., distinguishing partial from exact skill matches).
-
-Full pipeline (F1 = 0.951) achieves the highest performance, with structural features contributing +11.9\% over the Graph + SBERT baseline. This is a large improvement attributable to structural features, indicating that years of experience and education level carry significant independent predictive power. A candidate can be a strong semantic match for a job but lack the required experience --- the structural matcher captures this directly.
-
-\section{External Benchmark Evaluation}
-
-To assess generalizability beyond our training distribution, we evaluated ExplainHire on the publicly available ResuméAtlas dataset (Heakl et al., 2024).
-
-\subsection{Dataset Description}
-
-ResuméAtlas contains 13,389 resumes across 43 job categories, with each resume labeled with its job category. We frame this as a category classification task: train on 80\% of the data and predict category labels on the held-out 20\% (2,678 resumes).
-
-\subsection{Methods Evaluated}
-
-\begin{itemize}
-  \item \textbf{TF-IDF + Logistic Regression}: The baseline reported by Heakl et al. (2024), using TF-IDF features with logistic regression, reproducing their reported F1 = 0.61
-  \item \textbf{SBERT + Logistic Regression}: ExplainHire's neural component applied to category classification
-  \item \textbf{SBERT + XGBoost}: ExplainHire's full classification stack (SBERT embeddings as features, XGBoost as classifier)
-\end{itemize}
+To assess generalizability, we evaluated on the public ResumeAtlas dataset (13,389 resumes, 43 job categories). We trained on 80\% and evaluated on 20\% (2,678 resumes).
 
 \begin{table}[h]
 \centering
-\caption{ResuméAtlas benchmark results (13,389 resumes, 43 categories)}
+\caption{ResumeAtlas benchmark results}
 \label{tab:benchmark}
 \begin{tabular}{lcc}
 \toprule
 \textbf{Method} & \textbf{Macro F1} & \textbf{vs. Heakl et al. baseline} \\
 \midrule
-TF-IDF + LR \textit{(Heakl et al. reported)} & 0.610 & --- \\
-SBERT + LR \textit{(ExplainHire neural)} & 0.706 & +9.6\% \\
-\textbf{SBERT + XGBoost \textit{(ExplainHire stack)}} & \textbf{0.720} & \textbf{+11.06\%} \\
+TF-IDF + LR \textit{(Heakl et al.)} & 0.610 & --- \\
+SBERT + LR & 0.706 & +9.6\% \\
+\textbf{SBERT + XGBoost (ExplainHire)} & \textbf{0.720} & \textbf{+11.06\%} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-ExplainHire's SBERT + XGBoost stack outperforms the reported TF-IDF baseline by \textbf{+11.06\%} on the same public dataset, validating that the neural and classification components of ExplainHire generalize beyond the training distribution.
-
-\section{Comparison with Published Prior Work}
+\section{Comparison with Prior Work}
 
 \begin{table}[h]
 \centering
-\caption{Comparison of ExplainHire with published prior work}
+\caption{Comparison with published prior work}
 \label{tab:priorwork}
 \begin{tabular}{llccc}
 \toprule
 \textbf{System} & \textbf{Method} & \textbf{F1} & \textbf{Dataset} & \textbf{Explainable} \\
 \midrule
 PJFNN \cite{zhu2018} & CNN joint representation & 0.800 & Baidu (private) & No \\
-Li et al. \cite{li2020} & BERT + multi-head attention & 0.792 & CRC (private) & No \\
+Li et al. \cite{li2020} & BERT + attention & 0.792 & CRC (private) & No \\
 Bian et al. \cite{bian2020} & Graph + BERT multi-view & $\sim$0.78 & Private & No \\
 conSultantBERT \cite{lavi2021} & Fine-tuned SBERT & 0.749 & Randstad (private) & No \\
-Heakl et al. \cite{heakl2024} & TF-IDF + XGBoost & 0.610 & ResuméAtlas & No \\
+Heakl et al. \cite{heakl2024} & TF-IDF + XGBoost & 0.610 & ResumeAtlas & No \\
 \midrule
 \textbf{ExplainHire (full)} & \textbf{Neurosymbolic} & \textbf{0.951} & \textbf{This work} & \textbf{Yes} \\
-ExplainHire on ResuméAtlas & SBERT + XGBoost & 0.720 & ResuméAtlas & Yes \\
+ExplainHire on ResumeAtlas & SBERT + XGBoost & 0.720 & ResumeAtlas & Yes \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-ExplainHire achieves the highest reported F1 among all comparable systems. We note that direct F1 comparison across papers is complicated by different datasets, label definitions, and evaluation protocols. However, the improvement over PJFNN (+15.1\% F1) and the external ResuméAtlas validation (+11.06\% over the same reported baseline) provide strong evidence that ExplainHire's approach is genuinely superior to prior methods.
-
-The most important dimension in which ExplainHire exceeds all prior work is not quantitative: it is the only system that provides structured, auditable, sentence-level explanations for every prediction, combined with actionable skill gap analysis. This is the primary research contribution, and it has no equivalent in any published prior work.
+ExplainHire achieves the highest reported F1 among all comparable systems, and is the only system providing structured, auditable explanations.
 
 % ══════════════════════════════════════════════════════════════════════════════
 % CHAPTER 6 — DISCUSSION
 % ══════════════════════════════════════════════════════════════════════════════
 \chapter{DISCUSSION}
 
-\section{Why Each Component Matters}
+\section{Signal Importance}
 
-The ablation results reveal a clear hierarchy of signal importance: Graph (0.747) > SBERT (0.484) > Structural (contributes +11.9\% at the margin). This ordering has practical implications.
-
-The ontology graph is the most valuable single component because resume--job matching is fundamentally a structured problem: a job requires specific skills, a resume has specific skills, and the question is whether the candidate's skills cover the job's requirements. A structured knowledge graph is the natural representation for this kind of hierarchical coverage checking. The graph's 6-level traversal means it can credit a candidate who has a related but not identical skill, which is exactly the kind of judgment a human reviewer would make.
-
-SBERT contributes substantially as the second signal, capturing contextual alignment that the skill-by-skill graph cannot. However, SBERT alone underperforms the graph because global document similarity is an imprecise proxy for structured skill coverage: two documents can be highly semantically similar without the resume containing the specific skills required by the JD. The graph catches this; SBERT does not.
-
-Structural features add the most value at the margin, suggesting that years of experience and education level provide information orthogonal to both skill signals. This makes intuitive sense: it is entirely possible to have all the required skills but insufficient professional experience, or the right skills and experience but not the required degree level. The structural features capture these dimensions directly.
+The ablation results reveal a hierarchy: Graph (0.747) $>$ SBERT (0.484) $>$ Structural (+11.9\% at margin). The graph is the most valuable single component because resume--job matching is fundamentally a structured coverage problem: a job requires specific skills, a resume has specific skills, and the question is whether the candidate's skills cover the requirements. A structured knowledge graph is the natural representation for hierarchical coverage checking, and the 6-level traversal credits candidates with related skills as a human reviewer would. SBERT captures contextual alignment the graph cannot, but global similarity is an imprecise proxy for skill-by-skill coverage. Structural features add orthogonal information --- a candidate can have all required skills but insufficient experience, which neither ontology nor SBERT detects.
 
 \section{Comparison with Large Language Models}
 
-A natural question is whether ExplainHire's approach is competitive with modern large language models (LLMs) such as GPT-4, Claude, or Gemini, which can be prompted to assess resume--JD fit.
-
-\textbf{Where LLMs have advantages}: Large language models have broader world knowledge, can read career narratives and extract implicit signals (e.g., infer technical level from project descriptions), and can handle unusual or ambiguous cases through reasoning.
-
-\textbf{Where ExplainHire has advantages}:
-
-\begin{itemize}
-  \item \textbf{Consistency}: ExplainHire produces the same output for the same input every time. LLMs produce different outputs across runs, making them unsuitable for fair, auditable employment screening.
-  \item \textbf{Cost and speed}: A single LLM inference for a long resume + JD pair costs money and takes seconds. ExplainHire runs in milliseconds at essentially zero marginal cost. At the scale of thousands of applications per role, this difference is decisive.
-  \item \textbf{Structured explainability}: ExplainHire's explanations are structured data: specific matched skills, specific evidence sentences, specific SHAP values. LLM explanations are natural language text that may be fluent but internally inconsistent and non-reproducible.
-  \item \textbf{Auditability}: For employment law compliance, decisions need to be auditable. ExplainHire's SHAP values and ontology traversal paths constitute an audit trail. An LLM's chain of thought does not.
-\end{itemize}
-
-ExplainHire is not competing with LLMs for the task of nuanced text understanding. It is competing with ATS systems for the task of structured, explainable, consistent, scalable employment screening. On that framing, it wins clearly.
+LLMs (GPT-4, Claude, Gemini) can assess resume--JD fit through prompting. ExplainHire's advantages over LLMs in this context are: (1) \textbf{Consistency} --- same input always produces same output, essential for fair employment screening; (2) \textbf{Cost and speed} --- milliseconds at near-zero marginal cost versus expensive per-token LLM inference at scale; (3) \textbf{Structured explainability} --- SHAP values and ontology traversal paths constitute an audit trail, unlike LLM natural language reasoning; (4) \textbf{Regulatory compliance} --- feature-level attribution is auditable under emerging employment AI regulations. ExplainHire is not competing with LLMs for nuanced text understanding --- it is competing with ATS systems for structured, explainable, scalable employment screening.
 
 \section{Limitations}
 
-\textbf{Dataset scope}: Our training data is biased toward Indian B.Tech students in software engineering roles. Performance on resumes from other educational backgrounds, career stages (senior, executive), or non-technical domains has not been evaluated and may be lower.
-
-\textbf{Auto-labeling noise}: The 887 friends-dataset pairs were auto-labeled by threshold rules. While conservative thresholds reduce noise, some labels may be incorrect, introducing training signal errors.
-
-\textbf{Ontology coverage}: The 434-node ontology covers the roles in our 17 job descriptions well but will have gaps for other technical domains. Any JD skill not present in the ontology or alias table will receive a graph score of 0 regardless of whether a semantically equivalent skill is in the resume.
-
-\textbf{YOE extraction reliability}: Year-of-experience extraction by regex is inherently imperfect. Resumes that state experience implicitly (``worked from 2021 to present'') rather than explicitly (``3 years of experience'') may have their YOE underestimated.
+\begin{itemize}[noitemsep]
+  \item \textbf{Dataset scope}: Training data biased toward Indian B.Tech students in software engineering. Performance on non-technical domains or senior roles is unevaluated.
+  \item \textbf{Auto-labeling noise}: Score-based thresholding of friends-dataset pairs may introduce label errors despite conservative thresholds.
+  \item \textbf{Ontology gaps}: Any JD skill absent from the 434-node graph will receive graph score 0 regardless of semantic equivalence in the resume.
+  \item \textbf{YOE extraction}: Regex-based extraction may underestimate YOE for candidates stating experience implicitly rather than explicitly.
+\end{itemize}
 
 \section{Future Work}
 
-\begin{itemize}
-  \item \textbf{Ontology expansion}: Extending the skill graph to cover non-technical domains (finance, law, healthcare) and more fine-grained technology skill hierarchies
-  \item \textbf{Active learning}: Using the counterfactual skill gap ranker to identify which unlabeled pairs would be most informative to label manually, improving training data quality
-  \item \textbf{Multi-lingual support}: Adding Hindi and regional Indian language support for resume parsing, reflecting the linguistic reality of many Indian job seekers
-  \item \textbf{Candidate ranking}: Extending from binary classification to ranked candidate scoring across a full applicant pool
-  \item \textbf{LLM integration}: Exploring whether LLM-based narrative understanding can be integrated as a fourth signal alongside graph, SBERT, and structural
-\end{itemize}
+Directions include: ontology expansion to non-technical domains; active learning using counterfactual gap ranking to prioritize manual labeling; multi-lingual resume support; multi-candidate ranking; and LLM integration as a fourth signal for narrative understanding.
 
 % ══════════════════════════════════════════════════════════════════════════════
 % CHAPTER 7 — CONCLUSION
 % ══════════════════════════════════════════════════════════════════════════════
 \chapter{CONCLUSION}
 
-This report has presented \textbf{ExplainHire}, a neurosymbolic artificial intelligence system for explainable resume--job description matching. The system was designed to address two fundamental failures of current ATS technology: semantic blindness (the inability to match semantically equivalent skill descriptions that use different surface forms) and decision opacity (the complete absence of structured explanation for screening outcomes).
+This report presented \textbf{ExplainHire}, a neurosymbolic AI system for explainable resume--job description matching. The seven-layer pipeline combines a 434-node symbolic skill ontology graph, a domain-adapted SBERT model fine-tuned on 887 real recruitment pairs, and structural features (YOE, education, section coverage), fused by XGBoost with SHAP explainability and sentence-level evidence mapping.
 
-ExplainHire's seven-layer pipeline combines a 434-node symbolic skill ontology graph derived from O*NET, a domain-adapted SBERT sentence embedding model fine-tuned on 887 real resume--JD pairs, and structural features capturing years of experience and education level. These three signals are fused by an XGBoost classifier trained on 1,854 labeled pairs, with SHAP TreeExplainer providing feature attribution and a sentence-level evidence mapper providing skill-by-skill justification.
-
-The key findings of this work are:
-
+Key findings:
 \begin{enumerate}
-  \item \textbf{All three signals are necessary}. The TF-IDF baseline achieves F1 = 0.037; the full pipeline achieves F1 = 0.951. No single signal approaches this level of performance alone.
-
-  \item \textbf{The symbolic ontology graph is the most valuable single component} (F1 = 0.747 alone), outperforming the neural SBERT signal (F1 = 0.484), confirming that structured domain knowledge cannot be replaced by statistical language models for skill matching.
-
-  \item \textbf{Fine-tuning SBERT on real recruitment data is important}. The domain-adapted SBERT model contributes more effectively than the base model and enables the system to capture semantic equivalences specific to technical hiring language.
-
-  \item \textbf{Structural features add substantial value at the margin} (+11.9\% F1 over Graph + SBERT), demonstrating that non-skill signals carry significant independent predictive power.
-
-  \item \textbf{ExplainHire generalizes to public benchmarks}. On ResuméAtlas (Heakl et al., 2024), ExplainHire achieves F1 = 0.720, outperforming the reported TF-IDF baseline by +11.06\%.
-
-  \item \textbf{Explainability is achieved without sacrificing accuracy}. ExplainHire is simultaneously the most accurate and the only explainable system among all comparable published works. Explainability and accuracy are not in tension in this architecture --- they reinforce each other.
+  \item All three signals are necessary. No single signal approaches full-pipeline performance (TF-IDF: 0.037; full pipeline: 0.951).
+  \item The symbolic ontology graph is the most valuable single component (F1 = 0.747), outperforming neural SBERT (F1 = 0.484) and confirming that structured domain knowledge cannot be replaced by statistical language models for skill matching.
+  \item Structural features add +11.9\% F1 at the margin, demonstrating significant independent predictive power beyond the two skill-matching signals.
+  \item ExplainHire generalizes to public benchmarks: F1 = 0.720 on ResumeAtlas vs. 0.610 reported baseline (+11.06\%).
+  \item Explainability is achieved without sacrificing accuracy. ExplainHire is simultaneously the most accurate and the only explainable system among all comparable published works.
 \end{enumerate}
 
-ExplainHire demonstrates that the neurosymbolic paradigm --- combining structured symbolic knowledge with learned neural representations --- is a productive approach for high-stakes natural language understanding tasks where both accuracy and explainability are required. The recruitment domain is one of many such tasks; similar architectures could be applied to medical diagnosis, legal document review, and other domains where decisions must be both accurate and accountable.
-
-The complete system, including the trained models, ontology, training data pipeline, evaluation scripts, and Flask web application, is available in the project repository.
+ExplainHire demonstrates that the neurosymbolic paradigm is a productive approach for high-stakes NLP tasks requiring both accuracy and accountability. The recruitment domain is one of many such applications; similar architectures could extend to medical diagnosis, legal document review, and other domains where decisions must be both accurate and auditable.
 
 % ══════════════════════════════════════════════════════════════════════════════
 % APPENDICES
@@ -1135,103 +799,54 @@ The complete system, including the trained models, ontology, training data pipel
 
 \begin{lstlisting}[language={}]
 ExplainHire/
-├── app/                         # Flask web application
-│   ├── __init__.py              # Application factory
-│   ├── models.py                # SQLAlchemy database models
-│   └── routes/
-│       ├── auth.py              # /login /register /logout
-│       ├── match.py             # /match (main pipeline endpoint)
-│       ├── history.py           # /history /result/<id>
-│       └── ontology_view.py     # /ontology (graph explorer)
-├── pipeline/
-│   ├── l1_input/                # Input validation
-│   ├── l2_parse/                # Resume + JD parser
-│   ├── l3_normalize/            # Alias normalization
-│   ├── l4_match/
-│   │   ├── graph_matcher.py     # Ontology graph traversal
-│   │   ├── semantic_matcher.py  # SBERT cosine similarity
-│   │   ├── structural_matcher.py# YOE, education, section
-│   │   └── finetune_sbert.py    # SBERT fine-tuning script
-│   ├── l5_classify/
-│   │   ├── trainer.py           # XGBoost training + CV
-│   │   └── predictor.py         # Inference + SHAP
-│   ├── l6_explain/
-│   │   ├── evidence_mapper.py   # Sentence evidence extraction
-│   │   └── skill_gap.py         # Counterfactual gap ranking
-│   └── l7_present/
-│       └── orchestrator.py      # Full pipeline coordinator
-├── ontology/
-│   ├── skill_ontology.gpickle   # Compiled 434-node NetworkX graph
-│   ├── alias_table.json         # 800+ surface forms -> nodes
-│   └── learning_resources.json  # Skill -> learning URL map
-├── data/
-│   ├── raw/
-│   │   ├── friends/             # 144 real B.Tech resumes (PDF)
-│   │   └── jds/                 # 17 real industry JDs (txt)
-│   ├── annotation.csv           # 1,854 labeled pairs (features)
-│   ├── friends_rows.csv         # Friends dataset pairs + labels
-│   ├── load_friends.py          # Generates resume x JD pairs
-│   └── build_dataset.py         # Merges all sources
-├── evaluation/
-│   ├── ablation.py              # Five-configuration ablation
-│   ├── baselines.py             # TF-IDF baseline
-│   └── benchmark_resumeatlas.py # External benchmark
-├── models/
-│   ├── xgb_matcher.pkl          # Trained XGBoost model
-│   └── sbert_finetuned/         # Fine-tuned SBERT model
-├── paper/
-│   ├── explainHire_ieee.tex     # IEEE conference paper
-│   └── dtu_report.tex           # This report
-├── config.py                    # Flask configuration
-├── requirements.txt             # Python dependencies
-└── run.py                       # Application entry point
+|-- app/                         # Flask web application
+|   |-- __init__.py
+|   |-- models.py                # SQLAlchemy DB models
+|   `-- routes/
+|       |-- auth.py              # /login /register /logout
+|       |-- match.py             # /match  (main pipeline)
+|       |-- history.py           # /history /result/<id>
+|       `-- ontology_view.py     # /ontology
+|-- pipeline/
+|   |-- l1_input/
+|   |-- l2_parse/
+|   |-- l3_normalize/
+|   |-- l4_match/
+|   |   |-- graph_matcher.py
+|   |   |-- semantic_matcher.py
+|   |   |-- structural_matcher.py
+|   |   `-- finetune_sbert.py
+|   |-- l5_classify/
+|   |   |-- trainer.py
+|   |   `-- predictor.py
+|   |-- l6_explain/
+|   |   |-- evidence_mapper.py
+|   |   `-- skill_gap.py
+|   `-- l7_present/
+|       `-- orchestrator.py
+|-- ontology/
+|   |-- skill_ontology.gpickle   # 434-node NetworkX graph
+|   |-- alias_table.json         # 800+ surface forms
+|   `-- learning_resources.json
+|-- data/
+|   |-- raw/friends/             # 144 real B.Tech resumes
+|   |-- raw/jds/                 # 17 real industry JDs
+|   |-- annotation.csv           # 1,854 labeled pairs
+|   `-- friends_rows.csv
+|-- evaluation/
+|   |-- ablation.py
+|   |-- baselines.py
+|   `-- benchmark_resumeatlas.py
+|-- models/
+|   |-- xgb_matcher.pkl
+|   `-- sbert_finetuned/
+|-- paper/
+|-- config.py
+|-- requirements.txt
+`-- run.py
 \end{lstlisting}
 
-\chapter{Reproducing Results}
-
-All experiments in this report can be reproduced using the following commands, executed from the project root directory with the virtual environment activated.
-
-\textbf{Environment setup:}
-\begin{lstlisting}[language=bash]
-python -m venv venv
-venv\Scripts\activate          # Windows
-pip install -r requirements.txt
-pip install "accelerate>=1.1.0"
-python -m spacy download en_core_web_sm
-\end{lstlisting}
-
-\textbf{Rebuild training dataset:}
-\begin{lstlisting}[language=bash]
-python data/build_dataset.py
-\end{lstlisting}
-
-\textbf{Fine-tune SBERT:}
-\begin{lstlisting}[language=bash]
-python pipeline/l4_match/finetune_sbert.py
-\end{lstlisting}
-
-\textbf{Train XGBoost classifier:}
-\begin{lstlisting}[language=bash]
-python pipeline/l5_classify/trainer.py
-\end{lstlisting}
-
-\textbf{Run ablation study:}
-\begin{lstlisting}[language=bash]
-python evaluation/ablation.py
-\end{lstlisting}
-
-\textbf{Run ResuméAtlas benchmark:}
-\begin{lstlisting}[language=bash]
-python evaluation/benchmark_resumeatlas.py
-\end{lstlisting}
-
-\textbf{Start web application:}
-\begin{lstlisting}[language=bash]
-python run.py
-# Open http://127.0.0.1:5050
-\end{lstlisting}
-
-\chapter{Key Numerical Results Summary}
+\chapter{Key Numerical Results}
 
 \begin{table}[h]
 \centering
@@ -1243,18 +858,18 @@ python run.py
 Pipeline layers & 7 \\
 Ontology nodes & 434 \\
 Alias table entries & 800+ \\
-Training pairs (total) & 1,854 \\
+Total training pairs & 1,854 \\
 SBERT fine-tuning pairs & 887 \\
 SBERT fine-tuning loss & 0.069 \\
 SBERT fine-tuning epochs & 4 \\
 XGBoost trees & 200 \\
-Feature vector dimensionality & 14 \\
-Cross-validated F1 (honest estimate) & 0.9045 \\
+Feature vector size & 14 \\
+Cross-validated F1 & 0.9045 \\
 Full-dataset F1 & 0.951 \\
 Best single-signal F1 (Graph-only) & 0.747 \\
 Improvement over best baseline & +11.86\% \\
 TF-IDF baseline F1 & 0.037 \\
-ResuméAtlas F1 & 0.720 \\
+ResumeAtlas F1 & 0.720 \\
 Improvement over Heakl et al. & +11.06\% \\
 \bottomrule
 \end{tabular}
@@ -1267,58 +882,31 @@ Improvement over Heakl et al. & +11.06\% \\
 \begin{thebibliography}{99}
 
 \bibitem{zhu2018}
-R. Zhu, Z. Hou, X. Li, X. Ma, J. Liu, and D. Song,
-``Person-Job Fit: Adapting the Right Talent for the Right Job with Joint Representation Learning,''
-\textit{ACM Transactions on Management Information Systems}, vol.~9, no.~3, pp.~1--17, 2018.
-DOI: \texttt{10.1145/3234465}
+R. Zhu et al., ``Person-Job Fit: Adapting the Right Talent for the Right Job with Joint Representation Learning,'' \textit{ACM TMIS}, vol.~9, no.~3, 2018. DOI: \texttt{10.1145/3234465}
 
 \bibitem{li2020}
-X. Li, Y. Chen, Z. Ma, and W. Feng,
-``BERT-based Neural Collaborative Filtering and Fixed-point Number Embedding for Job-Resume Matching,''
-in \textit{Proc. 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, 2020.
-DOI: \texttt{10.18653/v1/2020.emnlp-main.681}
+X. Li et al., ``BERT-based Neural Collaborative Filtering and Fixed-point Number Embedding for Job-Resume Matching,'' \textit{EMNLP 2020}. DOI: \texttt{10.18653/v1/2020.emnlp-main.681}
 
 \bibitem{bian2020}
-S. Bian, X. Chen, K. Zhao, J. He, D. Ma, P. Zhang, R. Xie, and L. Zheng,
-``Learning to Match Jobs with Resumes from Sparse Interaction Data using Multi-View Co-Teaching Network,''
-in \textit{Proc. 29th ACM International Conference on Information and Knowledge Management (CIKM)}, 2020.
-DOI: \texttt{10.1145/3340531.3411929}
+S. Bian et al., ``Learning to Match Jobs with Resumes from Sparse Interaction Data using Multi-View Co-Teaching Network,'' \textit{CIKM 2020}. DOI: \texttt{10.1145/3340531.3411929}
 
 \bibitem{lavi2021}
-D. Lavi, O. Medini, and O. Kurland,
-``consultantBERT: Fine-tuned Siamese Sentence-BERT for Job Title Benchmarking,''
-\textit{arXiv preprint}, arXiv:2109.06912, 2021.
-DOI: \texttt{10.48550/arXiv.2109.06912}
+D. Lavi, O. Medini, and O. Kurland, ``consultantBERT: Fine-tuned Siamese Sentence-BERT for Job Title Benchmarking,'' \textit{arXiv:2109.06912}, 2021.
 
 \bibitem{heakl2024}
-A. Heakl, A. Abdellatif, M. Khalifa, and L. Zhao,
-``ResumeAtlas: Revisiting Resume Classification with Large-Scale Datasets and Large Language Models,''
-\textit{arXiv preprint}, arXiv:2406.18125, 2024.
-DOI: \texttt{10.48550/arXiv.2406.18125}
+A. Heakl et al., ``ResumeAtlas: Revisiting Resume Classification with Large-Scale Datasets and Large Language Models,'' \textit{arXiv:2406.18125}, 2024.
 
 \bibitem{reimers2019}
-N. Reimers and I. Gurevych,
-``Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks,''
-in \textit{Proc. 2019 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, 2019.
-DOI: \texttt{10.18653/v1/D19-1410}
+N. Reimers and I. Gurevych, ``Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks,'' \textit{EMNLP 2019}. DOI: \texttt{10.18653/v1/D19-1410}
 
 \bibitem{chen2016}
-T. Chen and C. Guestrin,
-``XGBoost: A Scalable Tree Boosting System,''
-in \textit{Proc. 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, 2016.
-DOI: \texttt{10.1145/2939672.2939785}
+T. Chen and C. Guestrin, ``XGBoost: A Scalable Tree Boosting System,'' \textit{KDD 2016}. DOI: \texttt{10.1145/2939672.2939785}
 
 \bibitem{lundberg2017}
-S. Lundberg and S.-I. Lee,
-``A Unified Approach to Interpreting Model Predictions,''
-in \textit{Advances in Neural Information Processing Systems (NeurIPS)}, vol.~30, 2017.
-DOI: \texttt{10.48550/arXiv.1705.07874}
+S. Lundberg and S.-I. Lee, ``A Unified Approach to Interpreting Model Predictions,'' \textit{NeurIPS 2017}. DOI: \texttt{10.48550/arXiv.1705.07874}
 
 \bibitem{onet}
-National Center for O*NET Development,
-``O*NET OnLine,''
-U.S. Department of Labor, Employment and Training Administration.
-[Online]. Available: \url{https://www.onetonline.org}
+National Center for O*NET Development, ``O*NET OnLine,'' U.S. Department of Labor. [Online]. Available: \url{https://www.onetonline.org}
 
 \end{thebibliography}
 
@@ -1326,7 +914,7 @@ U.S. Department of Labor, Employment and Training Administration.
 \newpage
 \thispagestyle{plain}
 \begin{center}
-\vspace*{6cm}
+\vspace*{5cm}
 {\Large \textbf{PAPER ACCEPTANCE PROOF}}\\[20pt]
 \textit{(To be attached upon paper acceptance)}
 \end{center}
@@ -1334,7 +922,7 @@ U.S. Department of Labor, Employment and Training Administration.
 \newpage
 \thispagestyle{plain}
 \begin{center}
-\vspace*{6cm}
+\vspace*{5cm}
 {\Large \textbf{REGISTRATION PROOF}}\\[20pt]
 \textit{(To be attached upon conference registration)}
 \end{center}
@@ -1342,7 +930,7 @@ U.S. Department of Labor, Employment and Training Administration.
 \newpage
 \thispagestyle{plain}
 \begin{center}
-\vspace*{6cm}
+\vspace*{5cm}
 {\Large \textbf{SCOPUS INDEXED CONFERENCE PROOF}}\\[20pt]
 \textit{(To be attached)}
 \end{center}
